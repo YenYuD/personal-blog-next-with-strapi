@@ -7,10 +7,12 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "yarn biome lint ./src",
-		"format": "biome format --write ./",
+		"format": "biome format --write",
 		"sort": "biome check --write",
 		"reporter": "yarn biome check --reporter=summary",
-		"prepare": "husky"
+		"prepare": "husky",
+		"test": "echo 'no test yet.'",
+		"lint-staged": "lint-staged"
 	},
 	"dependencies": {
 		"next": "14.2.5",
@@ -22,6 +24,8 @@
 		"@types/node": "^20",
 		"@types/react": "^18",
 		"@types/react-dom": "^18",
+		"husky": "^9.1.4",
+		"lint-staged": "^15.2.9",
 		"postcss": "^8",
 		"tailwindcss": "^3.4.1",
 		"typescript": "^5"

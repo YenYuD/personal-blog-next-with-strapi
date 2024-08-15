@@ -1,0 +1,7 @@
+{
+	"*.{js,jsx,ts,tsx}": [
+		"yarn biome lint ./src",
+		"biome format --write",
+		"yarn test"
+	]
+}
