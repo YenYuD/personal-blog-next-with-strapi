@@ -1,0 +1,2 @@
+echo '🌝🌝🌝 Running commitlint... 🌝🌝🌝'
+yarn commitlint --edit $1

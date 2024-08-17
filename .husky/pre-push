@@ -1,0 +1,13 @@
+#!/bin/sh
+
+echo '🔀🔀🔀 Verifying branch status for GitHub Flow... 🔀🔀🔀'
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+PROTECTED_BRANCHES="^(master|main)"
+
+if [[ "$BRANCH" =~ $PROTECTED_BRANCHES ]]; then
+    echo -e "\n❌ Unable to push to remote $BRANCH branch, please push your dev branch and do pull request/merge request."
+    exit 1
+fi
+
+echo '✅✅✅ All checks passed. Ready to push! ✅✅✅'
