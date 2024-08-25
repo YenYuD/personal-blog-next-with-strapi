@@ -17,6 +17,10 @@ export type Response<T> = {
 	};
 };
 
+export type ServerResponse<T> = {
+	data: T[];
+};
+
 export type LanguageType = {
 	id: number;
 	attributes: {
