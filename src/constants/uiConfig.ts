@@ -33,3 +33,8 @@ export const homePageSidebarConfig = [
 ];
 
 export type LinkConfig = typeof homePageSidebarConfig;
+
+export const langaugeMapping = {
+	en: 'en',
+	'zh-TW': 'zh-Hant-TW',
+};
