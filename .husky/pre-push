@@ -1,13 +1,33 @@
-#!/bin/sh
+#!/bin/bash
 
 echo '🔀🔀🔀 Verifying branch status for GitHub Flow... 🔀🔀🔀'
 
-BRANCH=$(git rev-parse --abbrev-ref HEAD)
-PROTECTED_BRANCHES="^(master|main)"
+BRANCH=$(git rev-parse --abbrev-ref HEAD) # it returns the current branch name
+PROTECTED_BRANCHES="^(master|main)$"
 
 if [[ "$BRANCH" =~ $PROTECTED_BRANCHES ]]; then
-    echo -e "\n❌ Unable to push to remote $BRANCH branch, please push your dev branch and do pull request/merge request."
+    echo -e "\n❌ Unable to push to remote $BRANCH branch. Please push your dev branch and create a pull request/merge request."
     exit 1
 fi
 
+# Modify this regex according to your naming convention
+if ! [[ "$BRANCH" =~ ^(feature|bugfix|hotfix|release|chore|build|ci|docs|perf|refactor|style|test)\/[a-z0-9._-]+$ ]]; then
+  echo "Error: Branch name '$BRANCH' does not follow the convention."
+  exit 1
+fi
+
 echo '✅✅✅ All checks passed. Ready to push! ✅✅✅'
+
+
+#feature: new feature or enhancement
+#bugfix: bug fix in the codebase
+#hotfix: urgent fix, typically for production
+#release: preparing and managing a new version of the app
+#chore: routine tasks, like maintenance, that don’t alter functionality
+#build: changes related to build processes or tools
+#docs: updating or adding documentation
+#refactor: improving code structure or readability without changing behavior
+#style: formatting changes that do not affect the code's logic
+#test: adding or updating tests
+#ci: changes to continuous integration configurations or scripts
+#perf: performance improvements in the codebase
