@@ -10,6 +10,13 @@ if [[ "$BRANCH" =~ $PROTECTED_BRANCHES ]]; then
     exit 1
 fi
 
+
+if [[ "$BRANCH" =~ ^(develop|release\/[a-z0-9._-]+)$ ]]; then
+    echo '✅✅✅ All checks passed for '$BRANCH'. Ready to push! ✅✅✅'
+    exit 0
+fi
+
+
 # Modify this regex according to your naming convention
 if ! [[ "$BRANCH" =~ ^(feature|bugfix|hotfix|release|chore|build|ci|docs|perf|refactor|style|test)\/[a-z0-9._-]+$ ]]; then
   echo "Error: Branch name '$BRANCH' does not follow the convention."
