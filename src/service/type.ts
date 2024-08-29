@@ -1,3 +1,5 @@
+import type { languageMapping } from '@/constants/uiConfig';
+
 export type ArticleType = {
 	id: number;
 	attributes: {
@@ -60,3 +62,5 @@ export type SecondSubItemType = {
 		data: ArticleType[];
 	};
 };
+
+export type Language = keyof typeof languageMapping;

@@ -1,3 +1,4 @@
+import type { Language } from '@/service/type';
 import '../../globals.css';
 import { BlogSideBar } from '@/containers/layouts';
 
@@ -6,7 +7,7 @@ export default function BlogLayout({
 	params: { lang },
 }: Readonly<{
 	children: React.ReactNode;
-	params: { lang: string };
+	params: { lang: Language };
 }>) {
 	return (
 		<div>

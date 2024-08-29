@@ -1,4 +1,3 @@
-import { langaugeMapping } from '@/constants/uiConfig';
 import { UiService } from '@/service/server/uiService';
 import { processSearchParams } from '@/service/utils/processSearchParams';
 import Link from 'next/link';
@@ -8,6 +7,8 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from '@/components/ui/accordion';
+import type { Language } from '@/service/type';
+import { mapLanguageParam } from '@/service/utils/langaugeMapping';
 
 const SIDE_BAR_NAME = 'blog-sidebar';
 
@@ -19,10 +20,10 @@ function LinkItem({ label, href }: { label: string; href: string }) {
 	);
 }
 
-export default async function BlogSideBar({ lang }: { lang: string }) {
+export default async function BlogSideBar({ lang }: { lang: Language }) {
 	const { data: sidebar } = await UiService.getSideBar(
 		processSearchParams({
-			locale: langaugeMapping[lang as keyof typeof langaugeMapping],
+			locale: mapLanguageParam(lang),
 			fields: ['title'],
 			populate: 'sub.sub.articles',
 		}),
@@ -30,8 +31,6 @@ export default async function BlogSideBar({ lang }: { lang: string }) {
 
 	const blogSidebar = sidebar.find((item) => item.attributes.title === SIDE_BAR_NAME)?.attributes
 		.sub;
-
-	const mappedLang = langaugeMapping[lang as keyof typeof langaugeMapping];
 
 	if (!blogSidebar)
 		return (
@@ -59,7 +58,7 @@ export default async function BlogSideBar({ lang }: { lang: string }) {
 										<AccordionContent>
 											{data.map(({ id, attributes: { title } }) => (
 												<li key={id}>
-													<LinkItem label={title} href={`/blog/${mappedLang}/${id}`} />
+													<LinkItem label={title} href={`/blog/${lang}/${id}`} />
 												</li>
 											))}
 										</AccordionContent>
