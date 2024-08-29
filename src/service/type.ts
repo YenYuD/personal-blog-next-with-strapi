@@ -32,3 +32,31 @@ export type LanguageType = {
 		publishedAt?: string;
 	};
 };
+
+export type SidebarsType = {
+	id: number;
+	attributes: {
+		title: string;
+		order: number;
+		createdAt: string;
+		updatedAt: string;
+		publishedAt: string;
+		locale: string;
+		sub: SubItemType[];
+	};
+};
+
+export type SubItemType = {
+	id: number;
+	_component: string;
+	title: string;
+	sub: SecondSubItemType[];
+};
+
+export type SecondSubItemType = {
+	id: number;
+	title: string;
+	articles: {
+		data: ArticleType[];
+	};
+};
