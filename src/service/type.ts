@@ -75,7 +75,7 @@ export type SubItemType = {
 	};
 };
 
-type CategoryType = {
+export type CategoryType = {
 	id: number;
 	attributes: {
 		name: string;
