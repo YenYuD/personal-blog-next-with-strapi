@@ -12,7 +12,9 @@ export const ClientUiService = {
 async function getLanguages(searchParams?: Record<string, unknown>) {
 	const params = searchParams ? processSearchParams(searchParams) : '';
 	const pathName = '/api/get-languages';
-	const url = urlJoin(pathName, params);
+	const url = urlJoin(pathName, {
+		searchParams: params,
+	});
 
 	const {
 		data: { res: result },
