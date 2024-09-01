@@ -58,7 +58,7 @@ export default function LanguageSwitcher() {
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<Button
-					className="min-w-[90px] max-w-32 focus-visible:ring-0 focus-visible:ring-offset-0"
+					className="min-w-[90px] max-w-32 font-medium focus-visible:ring-0 focus-visible:ring-offset-0"
 					variant="outline"
 				>
 					{displayedText}
