@@ -8,16 +8,18 @@ import {
 } from '@/components/ui/card';
 
 type Props = {
-	title: string;
-	description: string;
+	cover?: React.ReactNode;
+	title: React.ReactNode;
+	description: React.ReactNode;
 	children: React.ReactNode;
 	footer?: React.ReactNode;
 };
 
-export default function CardWrapper({ children, title, description, footer }: Props) {
+export default function CardWrapper({ children, title, description, footer, cover }: Props) {
 	return (
 		<Card x-chunk="dashboard-04-chunk-1">
 			<CardHeader>
+				{cover ?? null}
 				<CardTitle>{title}</CardTitle>
 				<CardDescription>{description}</CardDescription>
 			</CardHeader>

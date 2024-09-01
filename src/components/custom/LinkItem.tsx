@@ -2,13 +2,29 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { SheetClose } from '../ui/sheet';
+import { Fragment } from 'react';
+import { cn } from '@/lib/utils';
 
-export default function LinkItem({ label, href }: { label: string; href: string }) {
+type Props = {
+	label: string;
+	href: string;
+	isSheet?: boolean;
+	className?: string;
+};
+
+export default function LinkItem({ label, href, isSheet, className }: Props) {
+	const [Wrapper, WrapperProps] = isSheet ? [SheetClose, { asChild: true }] : [Fragment, {}];
+
 	const locale = usePathname().split('/')[1] ?? 'en';
 	const url = `/${locale}${href}`;
+	const classNames = cn('text-primary hover:underline', className);
+
 	return (
-		<Link className="text-muted-foreground transition-colors hover:text-foreground" href={url}>
-			{label}
-		</Link>
+		<Wrapper {...WrapperProps}>
+			<Link className={classNames} href={url}>
+				{label}
+			</Link>
+		</Wrapper>
 	);
 }
