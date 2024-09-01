@@ -20,7 +20,7 @@ export default function Navbar({ config }: Props) {
 					<span>{siteTitle}</span>
 				</Link>
 				<div className="max-w-6xl mx-auto flex flex-1 ml-[10px] items-center">
-					<nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+					<nav className="hidden flex-col gap-6 text-lg font-bold md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
 						{navbarConfig.map((item) => (
 							<LinkItem key={item.href} label={item.label} href={item.href} />
 						))}
@@ -37,7 +37,7 @@ export default function Navbar({ config }: Props) {
 					</Button>
 				</SheetTrigger>
 				<SheetContent side="left">
-					<nav className="grid gap-6 text-lg font-medium">
+					<nav className="grid gap-6 text-lg font-bold">
 						<Link href="#" className="flex items-center gap-2 text-lg font-semibold">
 							<Image src="/favicon.ico" alt="logo" width={32} height={32} />
 							<span>{siteTitle}</span>
