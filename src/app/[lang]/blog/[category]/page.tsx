@@ -1,12 +1,14 @@
-import { ArticlesService } from '@/service/server/articleService';
 import type { Metadata } from 'next';
+import type { Language } from '@/service/type';
+import { ArticlesService } from '@/service/server/articleService';
+import { UiService } from '@/service/server/uiService';
+import { CategoryService } from '@/service/server/categoryService';
 import { siteTitle } from '@/constants/uiConfig';
 import { processSearchParams } from '@/service/utils/processSearchParams';
-import Articles from '@/containers/Articles';
 import { mapLanguageParam } from '@/service/utils/langaugeMapping';
-import type { Language } from '@/service/type';
-import { UiService } from '@/service/server/uiService';
+import Articles from '@/containers/Articles';
 import { BlogSideBar } from '@/containers/layouts';
+import { capitalize } from '@/lib/capitalize';
 
 export const metadata: Metadata = {
 	title: `${siteTitle} | Blog`,
@@ -15,13 +17,29 @@ export const metadata: Metadata = {
 
 export async function generateStaticParams() {
 	const languages = await UiService.getLanguages();
+	const categories = await CategoryService.getCategories(
+		processSearchParams({
+			fields: ['name', 'path'],
+		}),
+	);
 
-	return (
-		languages.data.map(({ attributes: { value } }) => ({
+	const languageParams = languages.data.map(({ attributes: { value } }) => ({
+		params: {
 			lang: value,
 			category: 'all',
-		})) ?? []
+		},
+	}));
+
+	const categoryParams = languages.data.map(({ attributes: { value } }) =>
+		categories.data.flatMap(({ attributes: { path } }) => ({
+			params: {
+				lang: value,
+				category: path,
+			},
+		})),
 	);
+
+	return [...languageParams, ...categoryParams];
 }
 
 export default async function BlogPage({
@@ -29,6 +47,9 @@ export default async function BlogPage({
 }: {
 	params: { lang: Language; category: string };
 }) {
+	const isAll = category === 'all';
+	let displayedCategoryText = 'All Articles';
+
 	const { data: articles } = await ArticlesService.getArticles(
 		processSearchParams({
 			locale: mapLanguageParam(lang),
@@ -40,27 +61,47 @@ export default async function BlogPage({
 					fields: ['name'],
 				},
 			},
-			...(category !== 'all'
-				? {
-						filters: {
-							category: {
-								path: {
-									$eq: category,
-								},
-							},
+			...(!isAll && {
+				filters: {
+					category: {
+						path: {
+							$eq: category,
 						},
-					}
-				: {}),
+					},
+				},
+			}),
 		}),
 	);
 
-	const firstCapital = category.charAt(0).toUpperCase() + category.slice(1);
+	if (!isAll) {
+		const { data: categoryInfo } = await CategoryService.getCategories(
+			processSearchParams({
+				locale: mapLanguageParam(lang),
+				filters: {
+					path: {
+						$eq: category,
+					},
+				},
+			}),
+		);
+
+		if (!categoryInfo.length) {
+			return {
+				notFound: true,
+			};
+		}
+
+		const {
+			attributes: { name },
+		} = categoryInfo[0];
+		displayedCategoryText = capitalize(name);
+	}
 
 	return (
 		<>
 			<BlogSideBar lang={lang} />
 			<div>
-				<h2 className="text-4xl text-primary font-semibold py-2">{firstCapital}</h2>
+				<h2 className="text-4xl text-primary font-semibold py-2">{displayedCategoryText}</h2>
 				<div className="flex flex-col sm:grid grid-cols-2 gap-4">
 					<Articles articles={articles} />
 				</div>
