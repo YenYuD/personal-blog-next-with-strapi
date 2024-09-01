@@ -2,8 +2,10 @@ import CardWrapper from '@/components/custom/CardWrapper';
 import { ArticlesService } from '@/service/server/articleService';
 import ReactMarkdown from 'react-markdown';
 import type { Metadata } from 'next';
-import { langaugeMapping } from '@/constants/uiConfig';
 import { processSearchParams } from '@/service/utils/processSearchParams';
+import { UiService } from '@/service/server/uiService';
+import { mapLanguageParam } from '@/service/utils/langaugeMapping';
+import type { Language } from '@/service/type';
 
 export const metadata: Metadata = {
 	title: 'Emily.dev | Blog',
@@ -11,17 +13,21 @@ export const metadata: Metadata = {
 };
 
 export async function generateStaticParams() {
-	const languages = ['en', 'zh-TW'];
+	const languages = await UiService.getLanguages();
 
-	return languages.map((lang) => ({
-		lang,
-	}));
+	return (
+		languages.data.map(({ attributes: { value } }) => ({
+			params: {
+				lang: value,
+			},
+		})) ?? []
+	);
 }
 
-async function Articles({ lang }: { lang: string }) {
+async function Articles({ lang }: { lang: Language }) {
 	const { data: articles } = await ArticlesService.getArticles(
 		processSearchParams({
-			locale: langaugeMapping[lang as keyof typeof langaugeMapping],
+			locale: mapLanguageParam(lang),
 			populate: 'cover_image',
 		}),
 	);
@@ -42,7 +48,7 @@ async function Articles({ lang }: { lang: string }) {
 export default function Blog({
 	params: { lang },
 }: {
-	params: { lang: string };
+	params: { lang: Language };
 }) {
 	return (
 		<div className="flex flex-col gap-4">
