@@ -8,7 +8,10 @@ export const UiService = {
 };
 
 async function getLanguages(searchParams?: string) {
-	const url = urlJoin('/api/languages', searchParams, { isServer: true });
+	const url = urlJoin('/api/languages', {
+		searchParams,
+		isServer: true,
+	});
 	const res = await fetcher(url, {
 		cache: 'force-cache',
 	});
@@ -16,11 +19,10 @@ async function getLanguages(searchParams?: string) {
 }
 
 async function getSideBar(searchParams?: string) {
-	const url = urlJoin('/api/sidebars', searchParams, { isServer: true });
-	const res = await fetcher(url, {
-		next: {
-			revalidate: 60, // 1 minute
-		},
+	const url = urlJoin('/api/sidebars', {
+		searchParams,
+		isServer: true,
 	});
+	const res = await fetcher(url);
 	return res as ServerResponse<SidebarsType[]>;
 }

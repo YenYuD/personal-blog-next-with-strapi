@@ -9,7 +9,7 @@ export const navbarConfig = [
 	},
 	{
 		label: 'Blog',
-		href: '/blog',
+		href: '/blog/all',
 	},
 ];
 
@@ -38,3 +38,5 @@ export const languageMapping = {
 	en: 'en',
 	'zh-TW': 'zh-Hant-TW',
 };
+
+export const siteTitle = 'Emily.Dev';

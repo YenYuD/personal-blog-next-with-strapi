@@ -1,24 +1,16 @@
 import { UiService } from '@/service/server/uiService';
 import { processSearchParams } from '@/service/utils/processSearchParams';
-import Link from 'next/link';
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
 	AccordionTrigger,
 } from '@/components/ui/accordion';
-import type { Language, SecondSubItemType } from '@/service/type';
+import type { Language, SecondSubItemType, SubItemType } from '@/service/type';
 import { mapLanguageParam } from '@/service/utils/langaugeMapping';
+import { LinkItem } from '@/components/custom';
 
 const SIDE_BAR_NAME = 'blog-sidebar';
-
-function LinkItem({ label, href }: { label: string; href: string }) {
-	return (
-		<Link className="first:font-semibold first:text-primary hover:underline leading-6" href={href}>
-			{label}
-		</Link>
-	);
-}
 
 function NestedAccordion({ subItems, lang }: { subItems: SecondSubItemType[]; lang: string }) {
 	return (
@@ -31,7 +23,7 @@ function NestedAccordion({ subItems, lang }: { subItems: SecondSubItemType[]; la
 						</AccordionTrigger>
 						<AccordionContent>
 							{data.map(({ id, attributes: { title } }) => (
-								<li key={id} className=" decoration-clone">
+								<li key={id} className="decoration-clone">
 									<LinkItem label={title} href={`/blog/${lang}/${id}`} />
 								</li>
 							))}
@@ -43,12 +35,44 @@ function NestedAccordion({ subItems, lang }: { subItems: SecondSubItemType[]; la
 	);
 }
 
+function MobileAccordion({ blogSidebar, lang }: { blogSidebar: SubItemType[]; lang: string }) {
+	return (
+		<div className="lg:hidden gap-4 text-sm text-muted-foreground max-h-[90vh] overflow-y-scroll">
+			<Accordion type="single" collapsible>
+				<AccordionItem value="categories" className="border-0">
+					<AccordionTrigger className="font-bold tracking-widest text-muted-foreground uppercase no-underline hover:no-underline">
+						Categories
+					</AccordionTrigger>
+					<AccordionContent className="pl-2">
+						{blogSidebar.map(({ id, sub, title, path }) => (
+							<Accordion key={id} type="single" collapsible className="w-full">
+								<AccordionItem value={title}>
+									<AccordionTrigger className=" font-bold tracking-widest uppercase">
+										<LinkItem
+											className="first:text-muted-foreground"
+											label={title}
+											href={`/blog/${path}`}
+										/>
+									</AccordionTrigger>
+									<AccordionContent>
+										<NestedAccordion subItems={sub} lang={lang} />
+									</AccordionContent>
+								</AccordionItem>
+							</Accordion>
+						))}
+					</AccordionContent>
+				</AccordionItem>
+			</Accordion>
+		</div>
+	);
+}
+
 export default async function BlogSideBar({ lang }: { lang: Language }) {
 	const { data: sidebar } = await UiService.getSideBar(
 		processSearchParams({
 			locale: mapLanguageParam(lang),
 			fields: ['title'],
-			populate: 'sub.sub.articles',
+			populate: ['sub.sub.articles', 'sub.categories'],
 		}),
 	);
 
@@ -63,38 +87,20 @@ export default async function BlogSideBar({ lang }: { lang: Language }) {
 
 	return (
 		<>
-			<div className="lg:hidden gap-4 text-sm text-muted-foreground max-h-[90vh] overflow-y-scroll">
-				<Accordion type="single" collapsible>
-					<AccordionItem value="categories" className="border-0">
-						<AccordionTrigger className="font-bold tracking-widest text-muted-foreground uppercase no-underline hover:no-underline">
-							Categories
-						</AccordionTrigger>
-						<AccordionContent className="pl-2">
-							{blogSidebar.map(({ id, sub, title }) => (
-								<Accordion key={id} type="single" collapsible className="w-full">
-									<AccordionItem value={title}>
-										<AccordionTrigger className=" font-bold tracking-widest uppercase">
-											{title}
-										</AccordionTrigger>
-										<AccordionContent>
-											<NestedAccordion subItems={sub} lang={lang} />
-										</AccordionContent>
-									</AccordionItem>
-								</Accordion>
-							))}
-						</AccordionContent>
-					</AccordionItem>
-				</Accordion>
-			</div>
+			<MobileAccordion blogSidebar={blogSidebar} lang={lang} />
 			<div
 				className="hidden lg:grid gap-4 text-sm text-muted-foreground max-h-[90vh] overflow-y-scroll"
 				x-chunk="dashboard-04-chunk-0"
 			>
-				{blogSidebar.map(({ id, sub, title }) => (
+				{blogSidebar.map(({ id, sub, title, path }) => (
 					<Accordion key={id} type="single" collapsible className="w-full">
 						<AccordionItem value={title}>
 							<AccordionTrigger className="font-bold tracking-widest uppercase">
-								{title}
+								<LinkItem
+									className="first:text-muted-foreground"
+									label={title}
+									href={`/blog/${path}`}
+								/>
 							</AccordionTrigger>
 							<AccordionContent>
 								<NestedAccordion subItems={sub} lang={lang} />

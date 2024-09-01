@@ -10,7 +10,23 @@ export type ArticleType = {
 		updatedAt: string;
 		publishedAt: string;
 		locale: string;
+		description: string;
+		visibility: boolean;
+		cover_image: CoverImage;
 	};
+};
+
+type CoverImage = {
+	data: {
+		id: number;
+		attributes: {
+			name: string;
+			width: number;
+			height: number;
+			hash: string;
+			url: string;
+		};
+	} | null;
 };
 
 export type Response<T> = {
@@ -53,6 +69,24 @@ export type SubItemType = {
 	_component: string;
 	title: string;
 	sub: SecondSubItemType[];
+	path: string;
+	categories: {
+		data: CategoryType[];
+	};
+};
+
+export type CategoryType = {
+	id: number;
+	attributes: {
+		name: string;
+		title: string;
+		createdAt?: string;
+		updatedAt?: string;
+		publishedAt?: string;
+		locale: string;
+		visibility: boolean;
+		path: string;
+	};
 };
 
 export type SecondSubItemType = {
@@ -61,6 +95,7 @@ export type SecondSubItemType = {
 	articles: {
 		data: ArticleType[];
 	};
+	path: string;
 };
 
 export type Language = keyof typeof languageMapping;
