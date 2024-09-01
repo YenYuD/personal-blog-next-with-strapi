@@ -1,4 +1,5 @@
 import { Merriweather, Saira } from 'next/font/google';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
 import { Navbar } from '@/containers/layouts';
 import { navbarConfig } from '@/constants/uiConfig';
@@ -32,6 +33,7 @@ export default function RootLayout({
 			<body className={`${merriWheartherSans.variable} ${saira.variable} font-merri`}>
 				<Navbar config={navbarConfig} />
 				{children}
+				<SpeedInsights />
 			</body>
 		</html>
 	);
