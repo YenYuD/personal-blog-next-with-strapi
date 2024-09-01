@@ -7,7 +7,6 @@ import { siteTitle } from '@/constants/uiConfig';
 import { processSearchParams } from '@/service/utils/processSearchParams';
 import { mapLanguageParam } from '@/service/utils/langaugeMapping';
 import Articles from '@/containers/Articles';
-import { BlogSideBar } from '@/containers/layouts';
 import { capitalize } from '@/lib/capitalize';
 
 async function fetchCategoryInfo(lang: Language, category: string): Promise<CategoryType | null> {
@@ -118,7 +117,6 @@ export default async function BlogPage({
 		if (!categoryInfo) {
 			return (
 				<>
-					<BlogSideBar lang={lang} />
 					<div>
 						<h2 className="text-4xl text-primary font-semibold py-2">{category}</h2>
 						<div className="flex flex-col sm:grid grid-cols-2 gap-4">No articles found.</div>
@@ -131,7 +129,6 @@ export default async function BlogPage({
 
 	return (
 		<>
-			<BlogSideBar lang={lang} />
 			<BlogContent displayedText={displayedText} articles={articles} />
 		</>
 	);
