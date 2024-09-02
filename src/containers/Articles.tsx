@@ -1,4 +1,4 @@
-import { CardWrapper, LinkItem } from '@/components/custom';
+import { CardWrapper, CldImage, LinkItem } from '@/components/custom';
 import type { ArticleType } from '@/service/type';
 import { formatDate } from '@/service/utils/formatDate';
 import Image from 'next/image';
@@ -16,18 +16,13 @@ type DescriptionProps = {
 };
 
 type CoverImageProps = {
-	imageData: ArticleType['attributes']['cover_image']['data'];
+	imageData: string;
 };
 
 function ArticleCard({ article }: ArticleCardProps) {
 	const {
 		id,
-		attributes: {
-			title,
-			publish_at,
-			description,
-			cover_image: { data: imageData },
-		},
+		attributes: { title, publish_at, description, cover_image_path: imageData },
 	} = article;
 
 	return (
@@ -50,12 +45,7 @@ function CoverImage({ imageData }: CoverImageProps) {
 
 	return (
 		<div className="w-full relative pt-[64%] mb-2">
-			<Image
-				src={`${process.env.API_URL}${imageData?.attributes.url}`}
-				alt={imageData?.attributes.name ?? 'cover_image'}
-				className="object-cover z-0"
-				fill
-			/>
+			<CldImage src={imageData} alt={imageData} fill className="object-cover z-0" />
 		</div>
 	);
 }
