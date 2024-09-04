@@ -40,7 +40,7 @@ export default function Navbar({ config }: Props) {
 							<LanguageSwitcher />
 						</Provider>
 					</nav>
-					<div className="flex">
+					<div className="hidden md:flex">
 						{iconConfig.map((item) => (
 							<Button key={item.link} variant="ghost" size="icon">
 								<a target="_blank" href={item.link} key={item.link} rel="noreferrer">
