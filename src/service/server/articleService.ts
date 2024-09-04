@@ -14,11 +14,7 @@ async function getArticles(searchParams?: string) {
 		searchParams,
 		isServer: true,
 	});
-	const res = await fetcher(url, {
-		next: {
-			revalidate: 120,
-		},
-	});
+	const res = await fetcher(url);
 	return res as ServerResponse<ArticleType[]>;
 }
 
@@ -26,10 +22,6 @@ async function getArticleById(id: string) {
 	const url = urlJoin(`${PATHNAME_PREFIX}/${id}`, {
 		isServer: true,
 	});
-	const res = await fetcher(url, {
-		next: {
-			revalidate: 120,
-		},
-	});
+	const res = await fetcher(url);
 	return res as ServerResponse<ArticleType>;
 }
