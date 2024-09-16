@@ -1,24 +1,27 @@
-import { render, screen, within, act, waitFor } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import { render, screen, within, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom/vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import LanguageSwitcher from '../LanguageSwitcher';
 import { usePathname, useRouter } from 'next/navigation';
 import userEvent from '@testing-library/user-event';
 import { useQuery } from '@tanstack/react-query';
 
-jest.mock('next/navigation', () => ({
-	usePathname: jest.fn(),
-	useRouter: jest.fn(),
+vi.mock('next/navigation', () => ({
+	usePathname: vi.fn(),
+	useRouter: vi.fn(),
 }));
 
-jest.mock('@tanstack/react-query', () => ({
-	useQuery: jest.fn(),
+vi.mock('@tanstack/react-query', () => ({
+	useQuery: vi.fn(),
 }));
 
 describe('LanguageSwitcher', () => {
 	beforeEach(() => {
-		(usePathname as jest.Mock).mockReturnValue('/en/path');
-		(useRouter as jest.Mock).mockReturnValue({ push: jest.fn() });
-		(useQuery as jest.Mock).mockReturnValue({
+		vi.clearAllMocks();
+		document.body.innerHTML = '';
+		vi.mocked(usePathname).mockReturnValue('/en/path');
+		vi.mocked(useRouter).mockReturnValue({ push: vi.fn() } as any);
+		vi.mocked(useQuery).mockReturnValue({
 			data: [
 				{
 					id: 1,
@@ -37,7 +40,7 @@ describe('LanguageSwitcher', () => {
 					},
 				},
 			],
-		});
+		} as any);
 	});
 
 	it('renders with the correct initial language', () => {
@@ -48,24 +51,20 @@ describe('LanguageSwitcher', () => {
 	});
 
 	it('changes the language when a different option is selected', async () => {
-		const pushMock = jest.fn();
-		(useRouter as jest.Mock).mockReturnValue({ push: pushMock });
+		const pushMock = vi.fn();
+		vi.mocked(useRouter).mockReturnValue({ push: pushMock } as any);
 		render(<LanguageSwitcher />);
 
 		const button = screen.getByRole('button', { name: /english/i });
 
-		await act(async () => {
-			userEvent.click(button);
-		});
+		await userEvent.click(button);
 
 		const menu = await screen.findByRole('menu');
 		const zhOption = within(menu)
 			.getByText('繁體中文')
 			.closest('[role="menuitemradio"]') as HTMLElement;
 
-		await act(async () => {
-			userEvent.click(zhOption);
-		});
+		await userEvent.click(zhOption);
 
 		await waitFor(() => {
 			expect(pushMock).toHaveBeenCalledWith('/zh-TW/path');
