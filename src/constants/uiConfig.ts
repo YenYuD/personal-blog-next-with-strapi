@@ -39,4 +39,11 @@ export const languageMapping = {
 	'zh-TW': 'zh-Hant-TW',
 };
 
+export const textAnimationConfig: [string, string][] = [
+	['フロントエンド', 'エンジニア。'],
+	['Ingénieur', 'Front-end.'],
+	['프론트엔드', '엔지니어.'],
+	['Frontend', 'Developer.'],
+];
+
 export const siteTitle = 'Emily.Dev';
