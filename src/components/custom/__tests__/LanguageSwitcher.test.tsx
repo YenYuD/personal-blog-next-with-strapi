@@ -4,7 +4,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import LanguageSwitcher from '../LanguageSwitcher';
 import { usePathname, useRouter } from 'next/navigation';
 import userEvent from '@testing-library/user-event';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, UseQueryResult } from '@tanstack/react-query';
 
 vi.mock('next/navigation', () => ({
 	usePathname: vi.fn(),
@@ -15,32 +15,41 @@ vi.mock('@tanstack/react-query', () => ({
 	useQuery: vi.fn(),
 }));
 
+const mockedLangaugeData = [
+	{
+		id: 1,
+		attributes: {
+			label: 'English',
+			value: 'en',
+			order: 1,
+		},
+	},
+	{
+		id: 2,
+		attributes: {
+			label: '繁體中文',
+			value: 'zh-TW',
+			order: 2,
+		},
+	},
+]
+
 describe('LanguageSwitcher', () => {
 	beforeEach(() => {
 		vi.clearAllMocks();
 		document.body.innerHTML = '';
 		vi.mocked(usePathname).mockReturnValue('/en/path');
-		vi.mocked(useRouter).mockReturnValue({ push: vi.fn() } as any);
+		vi.mocked(useRouter).mockReturnValue({
+			push: vi.fn(),
+			back: vi.fn(),
+			forward: vi.fn(),
+			refresh: vi.fn(),
+			replace: vi.fn(),
+			prefetch: vi.fn(),
+		});
 		vi.mocked(useQuery).mockReturnValue({
-			data: [
-				{
-					id: 1,
-					attributes: {
-						label: 'English',
-						value: 'en',
-						order: 1,
-					},
-				},
-				{
-					id: 2,
-					attributes: {
-						label: '繁體中文',
-						value: 'zh-TW',
-						order: 2,
-					},
-				},
-			],
-		} as any);
+			data: mockedLangaugeData
+		} as UseQueryResult<typeof mockedLangaugeData, unknown>);
 	});
 
 	it('renders with the correct initial language', () => {
@@ -52,7 +61,14 @@ describe('LanguageSwitcher', () => {
 
 	it('changes the language when a different option is selected', async () => {
 		const pushMock = vi.fn();
-		vi.mocked(useRouter).mockReturnValue({ push: pushMock } as any);
+		vi.mocked(useRouter).mockReturnValue({
+			push: pushMock,
+			back: vi.fn(),
+			forward: vi.fn(),
+			refresh: vi.fn(),
+			replace: vi.fn(),
+			prefetch: vi.fn(),
+		});
 		render(<LanguageSwitcher />);
 
 		const button = screen.getByRole('button', { name: /english/i });
