@@ -11,6 +11,7 @@ vi.mock("@/components/custom", () => ({
 }));
 
 vi.mock("lucide-react", () => ({
+  ArrowDown: () => <span data-testid="move-down-icon" />,
   MoveDown: () => <span data-testid="move-down-icon" />,
   Terminal: () => <span data-testid="terminal-icon" />
 }));
@@ -51,7 +52,7 @@ describe('FirstBlock', () => {
 
   it('applies the correct CSS classes', () => {
     render(<FirstBlock />);
-    expect(screen.getByText(/Profolio/).parentElement).toHaveClass('mt-[3rem] flex flex-col w-full');
+    expect(screen.getByText(/Profolio/).parentElement).toHaveClass('mt-[5rem] flex flex-col w-full sm:items-center');
     expect(screen.getByText(/I am a frontend developer./).parentElement).toHaveClass('italic text-background text-lg font-normal mt-[3rem]');
   });
 
