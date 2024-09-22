@@ -8,48 +8,68 @@ interface ChildProps {
 
 interface Props {
 	children: ReactElement<ChildProps> | ReactElement<ChildProps>[];
+	threshold?: number;
+	scrollableClass?: string;
 }
 
-export default function ScrollingWrapper({ children }: Props) {
+export default function ScrollingWrapper({
+	children,
+	threshold = 50,
+	scrollableClass = 'scrollable',
+}: Props) {
 	const [contentID, setContentID] = useState(0);
 	const lastTouchYRef = useRef(0);
+	const accumulatedDeltaRef = useRef(0);
 	const childrenCount = Children.count(children);
 
-	const handleOnWheel = (event: WheelEvent) => {
-		const wheelDelta = event.deltaY;
-		const scrollDown = wheelDelta > 0;
-		const scrollUp = wheelDelta < 0;
-		if (scrollDown) {
-			setContentID((prev) => Math.min(prev + 1, childrenCount - 1));
+	const isScrollableContent = (target: EventTarget | null): boolean => {
+		if (target instanceof Element) {
+			return target.closest(`.${scrollableClass}`) !== null;
+		}
+		return false;
+	};
+
+	const handleScroll = (delta: number, event: Event) => {
+		if (isScrollableContent(event.target)) {
+			return; // if the target is scrollable content, do nothing
 		}
 
-		if (scrollUp) {
-			setContentID((prev) => Math.max(prev - 1, 0));
+		// accumulate delta until it reaches the threshold
+		accumulatedDeltaRef.current += delta;
+
+		// if accumulatedDelta is greater than the threshold, change the content
+		if (Math.abs(accumulatedDeltaRef.current) >= threshold) {
+			// determine the direction of the scroll, 1 for down, -1 for up
+			const direction = accumulatedDeltaRef.current > 0 ? 1 : -1;
+			setContentID((prev) => {
+				// make sure the contentID is within the range of children
+				const next = prev + direction;
+				return Math.max(0, Math.min(next, childrenCount - 1));
+			});
+			accumulatedDeltaRef.current = 0;
 		}
 	};
 
+	const handleOnWheel = (event: WheelEvent) => {
+		handleScroll(event.deltaY, event);
+	};
+
 	const handleOnTouchStart = (event: TouchEvent) => {
+		if (isScrollableContent(event.target)) return;
 		lastTouchYRef.current = event.touches[0].clientY;
 	};
 
 	const handleOnTouchMove = (event: TouchEvent) => {
-		const touchDeltaY = event.touches[0].clientY;
-		const scrollDown = touchDeltaY - lastTouchYRef.current < 0;
-		const scrollUp = touchDeltaY - lastTouchYRef.current > 0;
-
-		if (scrollDown) {
-			setContentID((prev) => Math.min(prev + 1, childrenCount - 1));
-		}
-
-		if (scrollUp) {
-			setContentID((prev) => Math.max(prev - 1, 0));
-		}
-
-		lastTouchYRef.current = touchDeltaY;
+		if (isScrollableContent(event.target)) return;
+		const touchDeltaY = lastTouchYRef.current - event.touches[0].clientY;
+		handleScroll(touchDeltaY, event);
+		lastTouchYRef.current = event.touches[0].clientY;
 	};
 
 	useEffect(() => {
-		window.addEventListener('wheel', handleOnWheel);
+		//passive: false to prevent the default behavior of the event,
+		//with this, we can fully control the scroll behavior
+		window.addEventListener('wheel', handleOnWheel, { passive: false });
 		window.addEventListener('touchstart', handleOnTouchStart);
 		window.addEventListener('touchmove', handleOnTouchMove);
 
