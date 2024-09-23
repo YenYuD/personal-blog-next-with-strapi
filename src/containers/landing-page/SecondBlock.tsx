@@ -46,8 +46,15 @@ export default async function SecondBlock({ lang }: Props) {
 				<div className="relative aspect-square max-w-[125px] mx-auto w-full rounded-full overflow-hidden">
 					<Image src="/DSC9487.jpg" alt="self-protrait" fill className="object-cover" />
 				</div>
-				<div className="scrollable mt-6 font-saira lg:text-lg max-w-[85vw] text-center break-words mx-auto text-black leading-8 font-[300] max-h-[256px] overflow-scroll">
-					<ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
+				<div className="mt-6 font-saira lg:text-lg max-w-[85vw] text-center break-words mx-auto text-black leading-8 font-[300] max-h-[256px] overflow-scroll">
+					<ReactMarkdown
+						rehypePlugins={[rehypeRaw]}
+						components={{
+							p: ({ node, ...props }) => <p className="scrollable" {...props} />,
+						}}
+					>
+						{content}
+					</ReactMarkdown>
 				</div>
 				<div className="mt-12 relative opacity-50 hover:opacity-100">
 					<MarqueeBar speed={30} pauseOnHover autoFill>
