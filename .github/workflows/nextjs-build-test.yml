@@ -26,6 +26,7 @@ jobs:
         with:
           node-version: 18.17
           cache: 'npm'
-      - run: npm ci
+      - name: Install dependencies
+          run: yarn --frozen-lockfile
       - name: Run unit tests
         run: yarn test
