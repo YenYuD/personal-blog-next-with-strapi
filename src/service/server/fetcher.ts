@@ -4,9 +4,11 @@ export const fetcher = async (url: string, options?: RequestInit) => {
 			'Content-Type': 'application/json',
 			authorization: `Bearer ${process.env.API_TOKEN}`,
 		},
-		next: {
-			revalidate: 1 * 60 * 60, // 1 hour
-		},
+		...(!options?.cache && {
+			next: {
+				revalidate: 1 * 60 * 60, // 1 hour
+			},
+		}),
 		...options,
 	});
 	return await res.json();

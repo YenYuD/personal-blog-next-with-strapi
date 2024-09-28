@@ -12,21 +12,8 @@ export type ArticleType = {
 		locale: string;
 		description: string;
 		visibility: boolean;
-		cover_image: CoverImage;
+		cover_image_path: string;
 	};
-};
-
-type CoverImage = {
-	data: {
-		id: number;
-		attributes: {
-			name: string;
-			width: number;
-			height: number;
-			hash: string;
-			url: string;
-		};
-	} | null;
 };
 
 export type Response<T> = {
@@ -96,6 +83,13 @@ export type SecondSubItemType = {
 		data: ArticleType[];
 	};
 	path: string;
+};
+
+export type AboutType = {
+	id: number;
+	attributes: {
+		content: string;
+	};
 };
 
 export type Language = keyof typeof languageMapping;

@@ -1,24 +1,22 @@
-import { Merriweather, Saira } from 'next/font/google';
+import { Saira } from 'next/font/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
 import { Navbar } from '@/containers/layouts';
-import { navbarConfig } from '@/constants/uiConfig';
-
-const merriWheartherSans = Merriweather({
-	weight: ['400', '700'],
-	style: ['normal', 'italic'],
-	subsets: ['latin'],
-	display: 'swap',
-	variable: '--font-merriweather',
-});
+import { navbarConfig, siteTitle } from '@/constants/uiConfig';
+import type { Metadata } from 'next';
 
 const saira = Saira({
-	weight: ['400', '700'],
+	weight: ['200', '300', '400', '500', '700'],
 	style: ['normal', 'italic'],
 	subsets: ['latin'],
 	display: 'swap',
 	variable: '--font-saira',
 });
+
+export const metadata: Metadata = {
+	title: `${siteTitle} | Home Page`,
+	description: '...',
+};
 
 export default function RootLayout({
 	children,
@@ -30,10 +28,12 @@ export default function RootLayout({
 			<head>
 				<link rel="icon" href="/favicon.ico" sizes="any" />
 			</head>
-			<body className={`${merriWheartherSans.variable} ${saira.variable} font-merri`}>
-				<Navbar config={navbarConfig} />
-				{children}
-				<SpeedInsights />
+			<body className={`${saira.variable} font-saira relative min-h-[100svh]`}>
+				<div className="h-full">
+					<Navbar config={navbarConfig} />
+					{children}
+					<SpeedInsights />
+				</div>
 			</body>
 		</html>
 	);

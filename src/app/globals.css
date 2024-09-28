@@ -2,16 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 240 10% 3.9%;
+    --foreground: 60 9.1% 97.8%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 0 0% 83.1%;
+    --primary-foreground: 60 9.1% 97.8%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
@@ -23,47 +25,160 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
+    --radius: 1.2rem;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+    --bg-color1:43 90% 69%;
+    --bg-color2:254 55% 90%;
+    --gradient1:195 68% 54%;
+    --gradient2:0 57% 85%;
+    --gradient3:0 57% 85%;
+    --gradient4:42 100% 85%;
+    --gradient5:118 40% 68%;
+    --gradient6:60 70% 75%;
+    --circle-size: 80%;
+    --blending: hard-light;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --background: 0 0% 100%;
+    --foreground: 60 9.1% 97.8%;
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 60 9.1% 97.8%;
+    --popover: 20 14.3 4.1%;
+    --popover-foreground: 60 9.1% 97.8%;
+    --primary: 0 0% 83.1%;
+    --primary-foreground: 26 83.3% 14.1%;
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 60 9.1% 97.8%;
+    --muted: 12 6.5% 15.1%;
+    --muted-foreground: 24 5.4% 63.9%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 60 9.1% 97.8%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --ring: 35.5 91.7% 32.9%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --bg-color1:43 90% 69%;
+    --bg-color2:254 55% 90%;
+    --gradient1:195,68%,54%;
+    --gradient2:0,57%,85%;
+    --gradient3:195,57%7%;
+    --gradient4:172,51%,60%;
+    --gradient5:4,64%,75%;
+    --gradient6:185,87%,65%;
+    --circle-size: 80%;
+    --blending: hard-light;
   }
 }
+
+
 
 @layer base {
   * {
     @apply border-border;
   }
+
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground h-full overscroll-none overflow-hidden;
   }
+}
+
+
+
+@layer utilities{
+
+  .bg-gradient-container{
+    @apply relative h-full overflow-hidden top-0 left-0;
+    background:linear-gradient(62deg, hsla(var(--bg-color1)), hsla(var(--bg-color2)));    
+  }
+
+  .bg-gradients {
+    @apply absolute top-0 left-0 w-full h-full;
+    filter: blur(150px) saturate(120%);
+    width: 100%;
+    height: 100%;
+  }
+
+
+  .bg-gradient-1 {
+    @apply absolute opacity-100 animate-vertical-move rounded-full z-0;
+    background: radial-gradient(circle at center, hsla(var(--gradient1)) 0, hsla(var(--gradient1)) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+    transform-origin: center center;
+  }
+
+  .bg-gradient-2 {
+    @apply absolute animate-circle-move opacity-100 rounded-full z-0;
+    background: radial-gradient(circle at center, hsla(var(--gradient2)) 0, hsla(var(--gradient2)) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+    transform-origin: calc(50% - 400px);
+  }
+
+  .bg-gradient-3 {
+    @apply absolute animate-circle-move opacity-100 rounded-full z-0;
+    background: radial-gradient(circle at center, hsla(var(--gradient3)) 0, hsla(var(--gradient3)) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2 + 200px);
+    left: calc(50% - var(--circle-size) / 2 - 500px);
+    transform-origin: calc(50% + 400px);
+    animation-timing-function: linear;
+    animation-duration: 20s;
+    animation-timeline: infinite;
+  }
+
+  .bg-gradient-4 {
+    @apply absolute animate-horizontal-move opacity-70 rounded-full z-0;
+    background: radial-gradient(circle at center, hsla(var(--gradient4)) 0, hsla(var(--gradient4)) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+    transform-origin: calc(50% - 200px);
+  }
+
+  .bg-gradient-5 {
+    @apply absolute animate-circle-move opacity-70 rounded-full z-0;
+    background: radial-gradient(circle at center, hsla(var(--gradient5)) 0, hsla(var(--gradient5)) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+    transform-origin: calc(50% - 200px);
+  }
+
+  .bg-gradient-6 {
+    @apply absolute animate-vertical-move opacity-70 rounded-full z-0;
+    background: radial-gradient(circle at center, hsla(var(--gradient6)) 0, hsla(var(--gradient6)) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+    transform-origin: calc(50% - 200px);
+  }
+
+
 }

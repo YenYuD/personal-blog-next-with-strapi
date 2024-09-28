@@ -18,7 +18,7 @@ export default function LinkItem({ label, href, isSheet, className }: Props) {
 
 	const locale = usePathname().split('/')[1] ?? 'en';
 	const url = `/${locale}${href}`;
-	const classNames = cn('text-primary hover:underline', className);
+	const classNames = cn(' text-primary-foreground hover:underline', className);
 
 	return (
 		<Wrapper {...WrapperProps}>
