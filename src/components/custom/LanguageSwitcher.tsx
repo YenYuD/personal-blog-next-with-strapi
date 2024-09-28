@@ -58,16 +58,21 @@ export default function LanguageSwitcher() {
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<Button
-					className="min-w-[90px] max-w-32 font-medium focus-visible:ring-0 focus-visible:ring-offset-0"
+					className="min-w-[90px] max-w-32 font-medium focus-visible:ring-0 bg-transparent border-foreground focus-visible:ring-offset-0 hover:bg-transparent hover:text-foreground"
 					variant="outline"
 				>
 					{displayedText}
 				</Button>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent className="w-auto">
+			<DropdownMenuContent className="w-auto md:bg-transparent bg-background">
 				<DropdownMenuRadioGroup value={currentLang} onValueChange={setCurrentLang}>
 					{data?.map(({ attributes: { value, label } }) => (
-						<DropdownMenuRadioItem key={value} value={value} onClick={() => handleChange(value)}>
+						<DropdownMenuRadioItem
+							className="text-foreground"
+							key={value}
+							value={value}
+							onClick={() => handleChange(value)}
+						>
 							{label}
 						</DropdownMenuRadioItem>
 					))}

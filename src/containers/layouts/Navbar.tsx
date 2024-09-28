@@ -31,7 +31,7 @@ export default function Navbar({ config }: Props) {
 			<div className="mx-auto grid w-full max-w-6xl items-center lg:gap-12 md:grid-cols-[180px_1fr] lg:grid-cols-[150px_1fr]">
 				<Link href="/" className="flex items-center gap-2 text-lg ">
 					<Image src="/favicon.ico" alt="logo" width={36} height={36} />
-					<span className='text-[1.25rem]'>{siteTitle}</span>
+					<span className="text-[1.25rem]">{siteTitle}</span>
 				</Link>
 				<div className="max-w-6xl mx-auto flex flex-1 ml-[10px] items-center w-full justify-between">
 					<nav className="hidden flex-col gap-6 text-lg md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
@@ -44,7 +44,7 @@ export default function Navbar({ config }: Props) {
 					</nav>
 					<div className="hidden md:flex">
 						{iconConfig.map((item) => (
-							<Button key={item.link} variant="ghost" size="icon">
+							<Button key={item.link} variant="ghost" size="icon" className="hover:bg-transparent">
 								<a target="_blank" href={item.link} key={item.link} rel="noreferrer">
 									{item.icon}
 								</a>
@@ -55,13 +55,17 @@ export default function Navbar({ config }: Props) {
 			</div>
 			<Sheet>
 				<SheetTrigger asChild>
-					<Button variant="outline" size="icon" className="shrink-0 md:hidden hover:text-foreground bg-transparent hover:bg-transparent border-none">
+					<Button
+						variant="outline"
+						size="icon"
+						className="shrink-0 md:hidden hover:text-foreground bg-transparent hover:bg-transparent border-none"
+					>
 						<Menu className="h-7 w-7 bg-transparent" />
 					</Button>
 				</SheetTrigger>
-				<SheetContent side="left">
-					<nav className="grid gap-6 text-lg font-bold">
-						<Link href="#" className="flex items-center gap-2 text-lg font-semibold">
+				<SheetContent side="left" className="bg-background/70 border-r-0">
+					<nav className="grid gap-6 text-lg">
+						<Link href="#" className="flex items-center gap-2 text-lg">
 							<Image src="/favicon.ico" alt="logo" width={32} height={32} />
 							<span>{siteTitle}</span>
 						</Link>
@@ -73,7 +77,12 @@ export default function Navbar({ config }: Props) {
 						</Provider>
 						<div className="flex">
 							{iconConfig.map((item) => (
-								<Button key={item.link} variant="ghost" size="icon">
+								<Button
+									key={item.link}
+									className="hover:bg-transparent hover:text-white"
+									variant="ghost"
+									size="icon"
+								>
 									<a target="_blank" href={item.link} key={item.link} rel="noreferrer">
 										{item.icon}
 									</a>

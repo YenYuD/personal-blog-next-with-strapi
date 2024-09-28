@@ -1,11 +1,9 @@
+import PortfolioImg from '@/assets/portfolio.png';
+
 export const navbarConfig = [
 	{
 		label: 'Home',
 		href: '/',
-	},
-	{
-		label: 'About',
-		href: '/about',
 	},
 	{
 		label: 'Blog',
@@ -13,26 +11,7 @@ export const navbarConfig = [
 	},
 ];
 
-export const homePageSidebarConfig = [
-	{
-		label: 'About',
-		href: '#about',
-	},
-	{
-		label: 'Tech Stack',
-		href: '#tech-stack',
-	},
-	{
-		label: 'Projects',
-		href: '#projects',
-	},
-	{
-		label: 'Contact',
-		href: '#contact',
-	},
-];
-
-export type LinkConfig = typeof homePageSidebarConfig;
+export type LinkConfig = typeof navbarConfig;
 
 export const languageMapping = {
 	en: 'en',
@@ -47,3 +26,40 @@ export const textAnimationConfig: [string, string][] = [
 ];
 
 export const siteTitle = 'Emily.Dev';
+
+export const backGroundColorSettings = [
+	{
+		bgColor1: '43 80% 69%',
+		bgColor2: '254 55% 90%',
+	},
+	{
+		bgColor1: '298 10% 73%',
+		bgColor2: '186 55% 64%',
+	},
+	{
+		bgColor1: '38 59% 60%',
+		bgColor2: '168 44% 68%',
+	},
+];
+
+export const cardInfo = [
+	{
+		id: 1,
+		imgSrc: PortfolioImg,
+		year: '2024',
+		alt: 'Portfolio Image',
+		title: 'Frontend Portfolio',
+		description:
+			'Frontend portfolio with personal blog. Integrate with Strapi CMS, ReactMarkdown and shadcn UI library.',
+		techStack: [
+			'Next.js',
+			'TypeScript',
+			'TailwindCSS',
+			'Strapi',
+			'Vitest',
+			'Vercel CI/CD',
+			'Husky',
+			'Heroku',
+		],
+	},
+];

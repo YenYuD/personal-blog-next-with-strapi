@@ -6,7 +6,7 @@ import { navbarConfig, siteTitle } from '@/constants/uiConfig';
 import type { Metadata } from 'next';
 
 const saira = Saira({
-	weight: ['200', '400', '500', '700'],
+	weight: ['200', '300', '400', '500', '700'],
 	style: ['normal', 'italic'],
 	subsets: ['latin'],
 	display: 'swap',
@@ -28,10 +28,8 @@ export default function RootLayout({
 			<head>
 				<link rel="icon" href="/favicon.ico" sizes="any" />
 			</head>
-			<body
-				className={`${saira.variable} font-saira relative min-h-[100svh]`}
-			>
-				<div className='h-full'>
+			<body className={`${saira.variable} font-saira relative min-h-[100svh]`}>
+				<div className="h-full">
 					<Navbar config={navbarConfig} />
 					{children}
 					<SpeedInsights />
