@@ -1,7 +1,7 @@
 import { Saira } from 'next/font/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
-import { Navbar } from '@/containers/layouts';
+import { Footer, Navbar } from '@/containers/layouts';
 import { navbarConfig, siteTitle } from '@/constants/uiConfig';
 import type { Metadata } from 'next';
 
@@ -29,9 +29,10 @@ export default function RootLayout({
 				<link rel="icon" href="/favicon.ico" sizes="any" />
 			</head>
 			<body className={`${saira.variable} font-saira relative min-h-[100svh]`}>
-				<div className="h-full">
+				<div className="h-full relative">
 					<Navbar config={navbarConfig} />
 					{children}
+					<Footer />
 					<SpeedInsights />
 				</div>
 			</body>

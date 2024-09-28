@@ -15,7 +15,7 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { SingleTypeService } from '@/service/server/singleTypeService';
 import { processSearchParams } from '@/service/utils/processSearchParams';
-import { MarqueeBar } from '@/components/custom';
+import { AnimatedTitle, MarqueeBar } from '@/components/custom';
 
 type Props = {
 	lang: Language;
@@ -40,11 +40,9 @@ export default async function SecondBlock({ lang }: Props) {
 				<div className="bg-gradient-3" />
 				<div className="bg-gradient-4" />
 			</section>
-			<div className="relative md:translate-y-1/2 z-[15] max-w-6xl mx-auto">
-				<div className="flex flex-col w-full">
-					<p className="font-normal lg:font-thin">About Me /</p>
-				</div>
-				<div className="relative aspect-square mt-[1rem] max-w-[125px] mx-auto w-full rounded-full overflow-hidden">
+			<div className="relative 2xl:translate-y-1/2 z-[15] max-w-6xl mx-auto">
+				<AnimatedTitle title="About Me /" />
+				<div className="relative aspect-square mt-[1rem] md:mt-[3rem] max-w-[125px] mx-auto w-full rounded-full overflow-hidden">
 					<Image
 						src={SelfPortrait}
 						alt="self-protrait"
@@ -63,7 +61,7 @@ export default async function SecondBlock({ lang }: Props) {
 						{content}
 					</ReactMarkdown>
 				</div>
-				<div className="mt-12 relative opacity-50 hover:opacity-100">
+				<div className="mt-12 md:mt-16 relative opacity-50 hover:opacity-100">
 					<MarqueeBar speed={30} pauseOnHover autoFill>
 						<NextJs className="h-12 w-12 mx-4" />
 						<React className="h-12 w-12 mx-4" />

@@ -11,12 +11,12 @@ export default function HomeBlock() {
 				<div className="bg-gradient-1" />
 				<div className="bg-gradient-2" />
 			</section>
-			<div className="relative md:translate-y-1/2 z-[15] flex flex-col justify-center gap-8">
+			<div className="relative 2xl:translate-y-1/2 z-[15] flex flex-col justify-center gap-8">
 				<div className="max-2xl:mt-[5rem] flex flex-col w-full sm:items-center">
 					<p className="font-extralight my-2">{thisYear} / Profolio</p>
 					<TextAnimation textData={textAnimationConfig} />
 				</div>
-				<p className="italic text-background text-lg font-normal mt-[3rem] sm:text-center">
+				<p className="italic text-background text-lg font-normal mt-[1rem] sm:mt-[3rem] sm:text-center">
 					<span className="flex gap-2 sm:justify-center">
 						<Terminal className="animate-sparkle" />
 						Hi, my name is Emily.
