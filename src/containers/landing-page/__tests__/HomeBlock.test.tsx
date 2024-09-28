@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/vitest';
 import { describe, it, expect, } from 'vitest'
 import { beforeEach } from 'vitest'
 import { render, screen } from '@testing-library/react';
-import { FirstBlock } from '@/containers/landing-page';
+import { HomeBlock } from '@/containers/landing-page';
 import { vi } from 'vitest';
 
 vi.mock("@/components/custom", () => ({
@@ -16,48 +16,48 @@ vi.mock("lucide-react", () => ({
   Terminal: () => <span data-testid="terminal-icon" />
 }));
 
-describe('FirstBlock', () => {
+describe('HomeBlock', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     document.body.innerHTML = '';
   });
 
   it('renders without crashing', () => {
-    render(<FirstBlock />);
+    render(<HomeBlock />);
     expect(screen.getByText(/Profolio/)).toBeInTheDocument();
   });
 
   it('displays the current year', () => {
     const currentYear = new Date().getFullYear();
-    render(<FirstBlock />);
+    render(<HomeBlock />);
     const yearElement = screen.getByText(`${currentYear} / Profolio`);
     expect(yearElement).toBeInTheDocument();
   });
 
   it('renders the TextAnimation component', () => {
-    render(<FirstBlock />);
+    render(<HomeBlock />);
     expect(screen.getByTestId('text-animation')).toBeInTheDocument();
   });
 
   it('displays the introduction text', () => {
-    render(<FirstBlock />);
+    render(<HomeBlock />);
     expect(screen.getByText(/Hi, my name is Emily./)).toBeInTheDocument();
     expect(screen.getByText(/I am a frontend developer./)).toBeInTheDocument();
   });
 
   it('renders the Terminal icon', () => {
-    render(<FirstBlock />);
+    render(<HomeBlock />);
     expect(screen.getByTestId('terminal-icon')).toBeInTheDocument();
   });
 
   it('applies the correct CSS classes', () => {
-    render(<FirstBlock />);
-    expect(screen.getByText(/Profolio/).parentElement).toHaveClass('mt-[5rem] flex flex-col w-full sm:items-center');
+    render(<HomeBlock />);
+    expect(screen.getByText(/Profolio/).parentElement).toHaveClass('max-2xl:mt-[5rem] flex flex-col w-full sm:items-center');
     expect(screen.getByText(/I am a frontend developer./).parentElement).toHaveClass('italic text-background text-lg font-normal mt-[3rem]');
   });
 
   it('renders background gradient elements', () => {
-    const { container } = render(<FirstBlock />);
+    const { container } = render(<HomeBlock />);
     expect(container.querySelector('.bg-gradient-1')).toBeInTheDocument();
     expect(container.querySelector('.bg-gradient-2')).toBeInTheDocument();
   });

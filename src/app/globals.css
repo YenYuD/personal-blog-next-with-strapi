@@ -35,10 +35,10 @@
     --bg-color2:254 55% 90%;
     --gradient1:195 68% 54%;
     --gradient2:0 57% 85%;
-    --gradient3:195 57% 17%;
-    --gradient4:172 51% 60%;
-    --gradient5:318 100% 68%;
-    --gradient6:178 100% 85%;
+    --gradient3:0 57% 85%;
+    --gradient4:42 100% 85%;
+    --gradient5:118 40% 68%;
+    --gradient6:60 70% 75%;
     --circle-size: 80%;
     --blending: hard-light;
   }
@@ -100,7 +100,7 @@
 
   .bg-gradient-container{
     @apply relative h-full overflow-hidden top-0 left-0;
-    background:linear-gradient(40deg, hsla(var(--bg-color1)), hsla(var(--bg-color2)));    
+    background:linear-gradient(62deg, hsla(var(--bg-color1)), hsla(var(--bg-color2)));    
   }
 
   .bg-gradients {
@@ -143,7 +143,7 @@
     left: calc(50% - var(--circle-size) / 2 - 500px);
     transform-origin: calc(50% + 400px);
     animation-timing-function: linear;
-    animation-duration: 40s;
+    animation-duration: 20s;
     animation-timeline: infinite;
   }
 

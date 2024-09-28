@@ -3,7 +3,7 @@ import { textAnimationConfig } from '@/constants/uiConfig';
 import { Badge } from '@/components/ui/badge';
 import { ArrowDown, Terminal } from 'lucide-react';
 
-export default function FirstBlock() {
+export default function HomeBlock() {
 	const thisYear = new Date().getFullYear();
 	return (
 		<div className="min-h-[100svh]">
@@ -11,8 +11,8 @@ export default function FirstBlock() {
 				<div className="bg-gradient-1" />
 				<div className="bg-gradient-2" />
 			</section>
-			<div className="relative z-[15] flex flex-col justify-center gap-8">
-				<div className="mt-[5rem] flex flex-col w-full sm:items-center">
+			<div className="relative md:translate-y-1/2 z-[15] flex flex-col justify-center gap-8">
+				<div className="max-2xl:mt-[5rem] flex flex-col w-full sm:items-center">
 					<p className="font-extralight my-2">{thisYear} / Profolio</p>
 					<TextAnimation textData={textAnimationConfig} />
 				</div>

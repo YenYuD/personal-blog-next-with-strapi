@@ -39,14 +39,14 @@ export default async function SecondBlock({ lang }: Props) {
 				<div className="bg-gradient-3" />
 				<div className="bg-gradient-4" />
 			</section>
-			<div className="relative z-[15] max-w-4xl mx-auto">
-				<div className="sm:mt-[3rem] flex flex-col w-full">
-					<p className="font-extralight">About Me /</p>
+			<div className="relative md:translate-y-1/2 z-[15] max-w-6xl mx-auto">
+				<div className="flex flex-col w-full">
+					<p className="font-normal lg:font-thin">About Me /</p>
 				</div>
-				<div className="relative aspect-square max-w-[125px] mx-auto w-full rounded-full overflow-hidden">
+				<div className="relative aspect-square mt-[1rem] max-w-[125px] mx-auto w-full rounded-full overflow-hidden">
 					<Image src="/DSC9487.jpg" alt="self-protrait" fill className="object-cover" />
 				</div>
-				<div className="mt-6 font-saira lg:text-lg max-w-[85vw] text-center break-words mx-auto text-black leading-8 font-[300] max-h-[256px] overflow-scroll">
+				<div className="mt-6 font-saira lg:text-lg max-w-[85vw] text-center lg:max-w-6xl break-words mx-auto text-black leading-8 font-[300] max-h-[256px] overflow-scroll">
 					<ReactMarkdown
 						rehypePlugins={[rehypeRaw]}
 						components={{
