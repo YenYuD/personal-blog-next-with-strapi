@@ -14,7 +14,7 @@ export const navbarConfig = [
 export type LinkConfig = typeof navbarConfig;
 
 export const languageMapping = {
-	en: 'en',
+	'en-US': 'en',
 	'zh-TW': 'zh-Hant-TW',
 };
 
