@@ -9,17 +9,28 @@
 			"recommended": true,
 			"suspicious": {
 				"noConsoleLog": "warn"
+			},
+			"correctness": {
+				"useExhaustiveDependencies": "warn"
 			}
 		},
 		"ignore": [
 			"**/node_modules/**",
 			"**/__tests__/**",
 			"**/__mocks__/**",
-			"**/__snapshots__/**"
+			"**/__snapshots__/**",
+			"**/.next/**"
 		]
 	},
 	"formatter": {
-		"enabled": true
+		"enabled": true,
+		"ignore": [
+			"**/node_modules/**",
+			"**/__tests__/**",
+			"**/__mocks__/**",
+			"**/__snapshots__/**",
+			"**/.next/**"
+		]
 	},
 	"javascript": {
 		"formatter": {

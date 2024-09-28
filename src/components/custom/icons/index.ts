@@ -1,0 +1,9 @@
+export { default as GitHub } from './GitHub';
+export { default as LinkedIn } from './LinkedIn';
+export { default as NextJs } from './NextJs';
+export { default as React } from './React';
+export { default as TailwindCSS } from './TailwindCSS';
+export { default as TypeScript } from './TypeScript';
+export { default as MUI } from './MUI';
+export { default as ReactQuery } from './ReactQuery';
+export { default as Jest } from './Jest';

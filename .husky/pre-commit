@@ -1,2 +1,7 @@
+#!/bin/sh
+echo '🌝🌝🌝 Running tests... 🌝🌝🌝'
 yarn test
+echo '🌝🌝🌝 Running lint-staged... 🌝🌝🌝'
 npx lint-staged
+echo '🌝🌝🌝 Running type check...🌝🌝🌝'
+npx tsc -p tsconfig.json --noEmit
