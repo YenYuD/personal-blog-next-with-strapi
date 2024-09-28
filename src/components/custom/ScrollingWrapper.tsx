@@ -3,23 +3,30 @@
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { Observer } from 'gsap/Observer';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { backGroundColorSettings } from '@/constants/uiConfig';
 
 gsap.registerPlugin(Observer);
 
 type Props = {
 	children: React.ReactElement[];
-	throttleTime?: number;
+	throttleTime: number;
 	scrollableClass?: string;
 };
 
 export default function ScrollingWrapper({
 	children,
-	throttleTime = 800,
+	throttleTime,
 	scrollableClass = 'scrollable',
 }: Props) {
 	const [contentID, setContentID] = useState(0);
 	const lastScrollTime = useRef(Date.now());
+
+	useEffect(() => {
+		const container = document.querySelector('.bg-gradient-container') as HTMLElement;
+		container.style.setProperty('--bg-color1', backGroundColorSettings[contentID].bgColor1);
+		container.style.setProperty('--bg-color2', backGroundColorSettings[contentID].bgColor2);
+	}, [contentID]);
 
 	useGSAP(() => {
 		const observer = Observer.create({
@@ -27,7 +34,8 @@ export default function ScrollingWrapper({
 			type: 'wheel,touch,pointer',
 			onUp: () => {
 				const currentTime = Date.now();
-				if (currentTime - lastScrollTime.current < throttleTime) {
+				const isThrottled = currentTime - lastScrollTime.current < throttleTime;
+				if (isThrottled) {
 					return;
 				}
 				setContentID((prev) => Math.min(children.length - 1, prev + 1));
@@ -35,7 +43,8 @@ export default function ScrollingWrapper({
 			},
 			onDown: () => {
 				const currentTime = Date.now();
-				if (currentTime - lastScrollTime.current < throttleTime) {
+				const isThrottled = currentTime - lastScrollTime.current < throttleTime;
+				if (isThrottled) {
 					return;
 				}
 				setContentID((prev) => Math.max(0, prev - 1));
