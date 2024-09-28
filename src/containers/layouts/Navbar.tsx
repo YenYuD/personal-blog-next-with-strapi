@@ -58,7 +58,7 @@ export default function Navbar({ config }: Props) {
 					<Button
 						variant="outline"
 						size="icon"
-						className="shrink-0 md:hidden hover:text-foreground bg-transparent hover:bg-transparent border-none"
+						className="shrink-0 md:hidden hover:text-foreground bg-transparent hover:bg-transparent border-none focus-visible:ring-transparent focus-visible:ring-offset-transparent"
 					>
 						<Menu className="h-7 w-7 bg-transparent" />
 					</Button>

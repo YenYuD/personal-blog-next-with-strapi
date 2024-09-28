@@ -5,10 +5,10 @@ export const navbarConfig = [
 		label: 'Home',
 		href: '/',
 	},
-	{
-		label: 'Blog',
-		href: '/blog/all',
-	},
+	// {
+	// 	label: 'Blog',
+	// 	href: '/blog/all',
+	// }, // Commented out because the blog has not been completed yet
 ];
 
 export type LinkConfig = typeof navbarConfig;
@@ -33,11 +33,11 @@ export const backGroundColorSettings = [
 		bgColor2: '254 55% 90%',
 	},
 	{
-		bgColor1: '298 10% 73%',
-		bgColor2: '186 55% 64%',
+		bgColor1: '32 89% 72%',
+		bgColor2: '184 59% 72%',
 	},
 	{
-		bgColor1: '38 59% 60%',
+		bgColor1: '38 59% 65%',
 		bgColor2: '168 44% 68%',
 	},
 ];
@@ -57,9 +57,10 @@ export const cardInfo = [
 			'TailwindCSS',
 			'Strapi',
 			'Vitest',
-			'Vercel CI/CD',
+			'Github Action',
 			'Husky',
 			'Heroku',
 		],
+		link: process.env.NEXT_PUBLIC_WEBSITE_LINK,
 	},
 ];
