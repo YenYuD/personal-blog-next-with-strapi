@@ -13,9 +13,9 @@ import { useQuery } from '@tanstack/react-query';
 import { ClientUiService } from '@/service/client/uiService';
 
 export default function LanguageSwitcher() {
-	const lang = usePathname().split('/')[1] ?? 'en';
+	const lang = usePathname().split('/')[1] ?? 'en-US';
 	const path = usePathname().split('/').slice(2).join('/');
-	const [currentLang, setCurrentLang] = useState<string>(lang ?? 'en');
+	const [currentLang, setCurrentLang] = useState<string>(lang ?? 'en-US');
 	const router = useRouter();
 
 	const handleChange = (value: string) => {
@@ -35,7 +35,7 @@ export default function LanguageSwitcher() {
 				id: 1,
 				attributes: {
 					label: 'English',
-					value: 'en',
+					value: 'en-US',
 					order: 1,
 				},
 			},

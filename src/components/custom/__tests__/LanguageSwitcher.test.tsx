@@ -20,7 +20,7 @@ const mockedLangaugeData = [
 		id: 1,
 		attributes: {
 			label: 'English',
-			value: 'en',
+			value: 'en-US',
 			order: 1,
 		},
 	},
@@ -38,7 +38,7 @@ describe('LanguageSwitcher', () => {
 	beforeEach(() => {
 		vi.clearAllMocks();
 		document.body.innerHTML = '';
-		vi.mocked(usePathname).mockReturnValue('/en/path');
+		vi.mocked(usePathname).mockReturnValue('/en-US/path');
 		vi.mocked(useRouter).mockReturnValue({
 			push: vi.fn(),
 			back: vi.fn(),

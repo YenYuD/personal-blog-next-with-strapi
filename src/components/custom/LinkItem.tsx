@@ -16,7 +16,7 @@ type Props = {
 export default function LinkItem({ label, href, isSheet, className }: Props) {
 	const [Wrapper, WrapperProps] = isSheet ? [SheetClose, { asChild: true }] : [Fragment, {}];
 
-	const locale = usePathname().split('/')[1] ?? 'en';
+	const locale = usePathname().split('/')[1] ?? 'en-US';
 	const url = `/${locale}${href}`;
 	const classNames = cn(' text-primary-foreground hover:underline', className);
 
