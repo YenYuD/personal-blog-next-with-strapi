@@ -9,7 +9,16 @@ import type { Language } from '@/service/type';
 
 export const metadata: Metadata = {
 	title: 'Emily.dev | Blog',
-	description: '...',
+	description: 'Hi, I am Emily, a Frontend Developer. This is my personal website.',
+	openGraph: {
+		images: [
+			{
+				url: '/portfolio.png',
+				width: 1200,
+				height: 630,
+			},
+		],
+	},
 };
 
 export async function generateStaticParams() {
