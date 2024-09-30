@@ -5,6 +5,7 @@ import './globals.css';
 import { Footer, Navbar } from '@/containers/layouts';
 import { navbarConfig, siteTitle } from '@/constants/uiConfig';
 import type { Metadata } from 'next';
+import Script from 'next/script';
 
 const saira = Saira({
 	weight: ['200', '300', '400', '500', '700'],
@@ -37,18 +38,16 @@ export default function RootLayout({
 		<html lang="en-US">
 			<head>
 				<link rel="icon" href="/favicon.ico" sizes="any" />
-				<GoogleTagManager gtmId="GTM-M9BBDP5V" />
 			</head>
+			<GoogleTagManager gtmId="G-31W15B76BT" />
+			<Script>
+				{`window.dataLayer = window.dataLayer || [];
+  			function gtag(){dataLayer.push(arguments);}
+  			gtag('js', new Date());
+  			gtag('config', 'G-31W15B76BT');
+				`}
+			</Script>
 			<body className={`${saira.variable} font-saira relative min-h-[100svh]`}>
-				<noscript>
-					<iframe
-						src="https://www.googletagmanager.com/ns.html?id=GTM-M9BBDP5V"
-						height="0"
-						width="0"
-						style={{ display: 'none', visibility: 'hidden' }}
-						title="Google Tag Manager"
-					/>
-				</noscript>
 				<div className="h-full relative">
 					<Navbar config={navbarConfig} />
 					{children}
