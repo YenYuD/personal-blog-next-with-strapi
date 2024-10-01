@@ -62,5 +62,6 @@ export const cardInfo = [
 			'Heroku',
 		],
 		link: process.env.NEXT_PUBLIC_WEBSITE_LINK,
+		repo: 'https://github.com/YenYuD/personal-blog-next-with-strapi',
 	},
 ];

@@ -32,7 +32,7 @@ export default function TextAnimation({ textData }: Props) {
 	}, []);
 
 	return (
-		<div className="w-full text-6xl min-h-[15rem] max-h-[15rem] max-sm:overflow-hidden sm:text-center lg:text-8xl">
+		<div className="w-full text-4xl small:text-6xl h-[100px] small:min-h-[15rem] small:max-h-[15rem] max-sm:overflow-hidden sm:text-center lg:text-8xl">
 			<p ref={frontendRef}>Frontend</p>
 			<p ref={developerRef}>Developer.</p>
 		</div>
