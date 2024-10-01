@@ -6,6 +6,7 @@ import { Footer, Navbar } from '@/containers/layouts';
 import { navbarConfig, siteTitle } from '@/constants/uiConfig';
 import type { Metadata } from 'next';
 import Script from 'next/script';
+import { headers } from 'next/headers';
 
 const saira = Saira({
 	weight: ['200', '300', '400', '500', '700'],
@@ -34,8 +35,10 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const lang = headers().get('referer')?.split('/')[3] ?? 'en-US';
+
 	return (
-		<html lang="en-US">
+		<html lang={lang} className="h-full">
 			<head>
 				<link rel="icon" href="/favicon.ico" sizes="any" />
 			</head>
@@ -47,7 +50,7 @@ export default function RootLayout({
   			gtag('config', 'G-31W15B76BT');
 				`}
 			</Script>
-			<body className={`${saira.variable} font-saira relative min-h-[100svh]`}>
+			<body className={`${saira.variable} font-saira relative h-full min-h-[100svh]`}>
 				<div className="h-full relative">
 					<Navbar config={navbarConfig} />
 					{children}

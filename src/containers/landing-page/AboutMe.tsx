@@ -35,33 +35,31 @@ export default async function SecondBlock({ lang }: Props) {
 	);
 
 	return (
-		<div className="min-h-[100svh]">
-			<section className="bg-gradients">
-				<div className="bg-gradient-3" />
-				<div className="bg-gradient-4" />
-			</section>
-			<div className="relative 2xl:translate-y-1/2 z-[15] max-w-6xl mx-auto">
-				<AnimatedTitle title="About Me /" />
-				<div className="relative aspect-square mt-[1rem] md:mt-[3rem] max-w-[125px] mx-auto w-full rounded-full overflow-hidden">
-					<Image
-						src={SelfPortrait}
-						alt="self-protrait"
-						fill
-						className="object-cover"
-						sizes="100vw"
-					/>
+		<div className="h-full">
+			<div className="relative z-[15] h-full max-w-6xl flex lg:max-2xl:mt-[3rem] 2xl:justify-center 2xl:mt-[-4rem] flex-col gap-4 lg:gap-16">
+				<div className="flex flex-col max-h-[85%]">
+					<AnimatedTitle title="About Me /" />
+					<div className="relative aspect-square mt-[1rem] md:mt-[3rem] max-w-[125px] mx-auto w-full rounded-full overflow-hidden">
+						<Image
+							src={SelfPortrait}
+							alt="self-protrait"
+							fill
+							className="object-cover"
+							sizes="100vw"
+						/>
+					</div>
+					<div className="mt-6 flex-1 font-saira lg:text-lg max-w-[85vw] text-center scrollable lg:max-w-6xl break-words mx-auto text-black leading-8 font-[300] max-md:overflow-y-scroll no-scrollbar">
+						<ReactMarkdown
+							rehypePlugins={[rehypeRaw]}
+							components={{
+								p: ({ node, ...props }) => <p className="scrollable" {...props} />,
+							}}
+						>
+							{content}
+						</ReactMarkdown>
+					</div>
 				</div>
-				<div className="mt-6 font-saira lg:text-lg max-w-[85vw] text-center lg:max-w-6xl break-words mx-auto text-black leading-8 font-[300] max-h-[256px] overflow-scroll">
-					<ReactMarkdown
-						rehypePlugins={[rehypeRaw]}
-						components={{
-							p: ({ node, ...props }) => <p className="scrollable" {...props} />,
-						}}
-					>
-						{content}
-					</ReactMarkdown>
-				</div>
-				<div className="mt-12 md:mt-16 relative opacity-50 hover:opacity-100">
+				<div className="relative opacity-50 hover:opacity-100">
 					<MarqueeBar speed={30} pauseOnHover autoFill>
 						<NextJs className="h-12 w-12 mx-4" />
 						<React className="h-12 w-12 mx-4" />
@@ -73,6 +71,10 @@ export default async function SecondBlock({ lang }: Props) {
 					</MarqueeBar>
 				</div>
 			</div>
+			<section className="bg-gradients">
+				<div className="bg-gradient-3" />
+				<div className="bg-gradient-4" />
+			</section>
 		</div>
 	);
 }
