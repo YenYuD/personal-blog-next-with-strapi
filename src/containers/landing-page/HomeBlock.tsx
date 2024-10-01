@@ -6,13 +6,13 @@ import { ArrowDown, Terminal } from 'lucide-react';
 export default function HomeBlock() {
 	const thisYear = new Date().getFullYear();
 	return (
-		<div className="min-h-[100svh]">
+		<div className="h-full">
 			<section className="bg-gradients">
 				<div className="bg-gradient-1" />
 				<div className="bg-gradient-2" />
 			</section>
 			<div className="relative 2xl:translate-y-1/2 z-[15] flex flex-col justify-center gap-8">
-				<div className="max-2xl:mt-[5rem] flex flex-col w-full sm:items-center">
+				<div className="lg:max-2xl:mt-[5rem] flex flex-col w-full sm:items-center">
 					<p className="font-extralight my-2">{thisYear} / Profolio</p>
 					<TextAnimation textData={textAnimationConfig} />
 				</div>

@@ -56,7 +56,10 @@ export default function ScrollingWrapper({
 			preventDefault: true,
 			onPress: (e) => {
 				const target = e.event.target as HTMLElement;
-				if (target?.classList.contains(scrollableClass)) {
+				const shouldLockScroll =
+					target?.classList.contains(scrollableClass) ||
+					target.parentElement?.classList.contains(scrollableClass);
+				if (shouldLockScroll) {
 					e.disable();
 				}
 				e.enable();
@@ -66,5 +69,5 @@ export default function ScrollingWrapper({
 		return () => observer.kill();
 	}, []);
 
-	return <div>{children[contentID]}</div>;
+	return <div className="h-full">{children[contentID]}</div>;
 }

@@ -12,6 +12,7 @@ import { ArrowRight, ArrowLeft, ChevronsRight, ArrowUpRight } from 'lucide-react
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { AnimatedTitle } from '@/components/custom';
+import { GitHub } from '@/components/custom/icons';
 
 export default function RecentWorks() {
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -103,9 +104,9 @@ export default function RecentWorks() {
 	};
 
 	return (
-		<div className="min-h-[100svh]">
-			<div className="lg:max-w-6xl lg:mx-auto relative z-[15] 2xl:translate-y-1/2">
-				<div className="relative z-[15]">
+		<div className="h-full scrollable">
+			<div className="relative z-[15] h-full max-w-6xl flex flex-col lg:max-2xl:mt-[3rem] 2xl:justify-center 2xl:mt-[-3rem] ">
+				<div className="flex-none">
 					<AnimatedTitle title="Recent Works /" />
 					<div ref={containerRef} className="mt-[1rem] lg:mt-[2rem]">
 						<Swiper
@@ -161,30 +162,41 @@ export default function RecentWorks() {
 						</Button>
 					</div>
 				</div>
-				<div className="relative z-[15]">
+				<div className="max-md:overflow-y-scroll no-scrollbar max-lg:flex-1 scrollable">
 					<p
-						className="mt-[1rem] lg:mt-[2rem] text-xl uppercase lg:text-4xl flex items-center drop-shadow-md "
+						className="pt-[1rem] lg:mt-[2rem] text-lg uppercase lg:text-4xl flex items-center drop-shadow-md scrollable"
 						ref={titleRef}
 					>
-						<ChevronsRight className="animate-pulse" /> {`${cardInfo[activeIndex].title}`}
-						<span className="font-thin text-sm lg:text-sm text-primary-foreground ml-4 self-end">{`${cardInfo[activeIndex].year}`}</span>
+						<ChevronsRight className="animate-pulse" /> {`${cardInfo[activeIndex]?.title}`}
+						<span className="font-thin text-sm lg:text-sm text-primary-foreground ml-4 self-end">{`${cardInfo[activeIndex]?.year}`}</span>
 					</p>
-					<div className="mt-[1rem] lg:mt-[2rem]">
-						<p className=" text-md font-light lg:text-lg text-slate-800" ref={descriptionRef}>
-							{cardInfo[activeIndex].description}
+					<div className="mt-[1rem] lg:mt-[2rem] scrollabel" ref={descriptionRef}>
+						<p className=" text-md scrollable font-light lg:text-lg  text-slate-800">
+							{cardInfo[activeIndex]?.description}
+						</p>
+						<div className="flex gap-2 mt-2">
 							<Badge
 								variant="outline"
-								className="font-thin ml-4 hover:text-background hover:border-background cursor-pointer"
+								className="font-thin hover:text-background hover:border-background cursor-pointer"
 							>
-								<a href={cardInfo[activeIndex].link} target="_blank" rel="noreferrer">
+								<a href={cardInfo[activeIndex]?.link} target="_blank" rel="noreferrer">
 									Visit
 								</a>
 								<ArrowUpRight className="h-4 w-4 ml-1" />
 							</Badge>
-						</p>
-						<div className="mt-[0.7rem] lg:mt-[2rem]" ref={techStackRef}>
+							<Badge
+								variant="outline"
+								className="font-thin hover:text-background hover:border-background cursor-pointer"
+							>
+								<a href={cardInfo[activeIndex]?.repo} target="_blank" rel="noreferrer">
+									Repo
+								</a>
+								<GitHub className="h-4 w-4 ml-1" />
+							</Badge>
+						</div>
+						<div className="mt-[0.7rem] lg:mt-[2rem] scrollable" ref={techStackRef}>
 							<p className="font-normal uppercase">Tech Stacks:</p>
-							{cardInfo[activeIndex].techStack && (
+							{cardInfo[activeIndex]?.techStack && (
 								<div className="flex gap-2 mt-2 flex-wrap">
 									{cardInfo[activeIndex].techStack.map((tech) => (
 										<Badge

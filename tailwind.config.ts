@@ -128,6 +128,9 @@ const config = {
 			dropShadow: {
 				lg: '0 1px 6px rgba(255, 255, 255, 0.5)',
 			},
+			screens: {
+				small: '375px',
+			},
 		},
 	},
 	plugins: [require('tailwindcss-animate')],
