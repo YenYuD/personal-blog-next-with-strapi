@@ -44,7 +44,12 @@ export default function Navbar({ config }: Props) {
 					</nav>
 					<div className="hidden md:flex">
 						{iconConfig.map((item) => (
-							<Button key={item.link} variant="ghost" size="icon" className="hover:bg-transparent">
+							<Button
+								key={item.link}
+								variant="ghost"
+								size="icon"
+								className="hover:bg-transparent hover:text-white"
+							>
 								<a target="_blank" href={item.link} key={item.link} rel="noreferrer">
 									{item.icon}
 								</a>

@@ -11,10 +11,12 @@ import {
 import { usePathname, useRouter } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { ClientUiService } from '@/service/client/uiService';
+import { cn } from '@/lib/utils';
 
 export default function LanguageSwitcher() {
 	const lang = usePathname().split('/')[1] ?? 'en-US';
 	const path = usePathname().split('/').slice(2).join('/');
+	const isBlogPage = path.includes('blog');
 	const [currentLang, setCurrentLang] = useState<string>(lang ?? 'en-US');
 	const router = useRouter();
 
@@ -64,7 +66,12 @@ export default function LanguageSwitcher() {
 					{displayedText}
 				</Button>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent className="w-auto md:bg-transparent bg-background">
+			<DropdownMenuContent
+				className={cn('w-auto ', {
+					'bg-background': isBlogPage,
+					'md:bg-transparent bg-background': !isBlogPage,
+				})}
+			>
 				<DropdownMenuRadioGroup value={currentLang} onValueChange={setCurrentLang}>
 					{data?.map(({ attributes: { value, label } }) => (
 						<DropdownMenuRadioItem

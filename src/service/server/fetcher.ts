@@ -6,7 +6,7 @@ export const fetcher = async (url: string, options?: RequestInit) => {
 		},
 		...(!options?.cache && {
 			next: {
-				revalidate: 1 * 60 * 60, // 1 hour
+				revalidate: 1 * 60 * 20, // 20 minutes
 			},
 		}),
 		...options,
