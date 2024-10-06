@@ -137,10 +137,13 @@ export default function RecentWorks() {
 							className="relative"
 							wrapperClass="max-h-[200px] aspect-video"
 						>
-							{cardInfo.map((card) => (
+							{cardInfo.map((card, index) => (
 								<SwiperSlide
 									key={card.id}
-									className="rounded-lg bg-white hover:cursor-pointer flex flex-col items-center justify-center gap-4 p-4 relative overflow-hidden"
+									className="rounded-lg bg-white hover:cursor-pointer brightness-[0.7] flex flex-col items-center justify-center gap-4 p-4 relative overflow-hidden"
+									style={{
+										filter: index === activeIndex ? 'brightness(1)' : 'brightness(0.7)',
+									}}
 								>
 									<Image src={card.imgSrc} alt={card.alt} fill className="object-cover" />
 								</SwiperSlide>
@@ -168,31 +171,33 @@ export default function RecentWorks() {
 						ref={titleRef}
 					>
 						<ChevronsRight className="animate-pulse" /> {`${cardInfo[activeIndex]?.title}`}
-						<span className="font-thin text-sm lg:text-sm text-primary-foreground ml-4 self-end">{`${cardInfo[activeIndex]?.year}`}</span>
+						<span className="font-thin text-sm lg:text-sm text-primary-foreground ml-4">{`${cardInfo[activeIndex]?.year}`}</span>
 					</p>
 					<div className="mt-[1rem] lg:mt-[2rem] scrollabel" ref={descriptionRef}>
 						<p className=" text-md scrollable font-light lg:text-lg  text-slate-800">
 							{cardInfo[activeIndex]?.description}
 						</p>
 						<div className="flex gap-2 mt-2">
-							<Badge
-								variant="outline"
-								className="font-thin hover:text-background hover:border-background cursor-pointer"
-							>
-								<a href={cardInfo[activeIndex]?.link} target="_blank" rel="noreferrer">
+							<a href={cardInfo[activeIndex]?.link} target="_blank" rel="noreferrer">
+								<Badge
+									variant="outline"
+									className="font-thin hover:text-background hover:border-background cursor-pointer"
+								>
 									Visit
-								</a>
-								<ArrowUpRight className="h-4 w-4 ml-1" />
-							</Badge>
-							<Badge
-								variant="outline"
-								className="font-thin hover:text-background hover:border-background cursor-pointer"
-							>
-								<a href={cardInfo[activeIndex]?.repo} target="_blank" rel="noreferrer">
-									Repo
-								</a>
-								<GitHub className="h-4 w-4 ml-1" />
-							</Badge>
+									<ArrowUpRight className="h-4 w-4 ml-1" />
+								</Badge>
+							</a>
+							{cardInfo[activeIndex]?.repo && (
+								<Badge
+									variant="outline"
+									className="font-thin hover:text-background hover:border-background cursor-pointer"
+								>
+									<a href={cardInfo[activeIndex]?.repo} target="_blank" rel="noreferrer">
+										Repo
+									</a>
+									<GitHub className="h-4 w-4 ml-1" />
+								</Badge>
+							)}
 						</div>
 						<div className="mt-[0.7rem] lg:mt-[2rem] scrollable" ref={techStackRef}>
 							<p className="font-normal uppercase">Tech Stacks:</p>

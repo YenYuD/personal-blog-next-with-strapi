@@ -30,7 +30,7 @@ export default function AnimatedTitle({ title }: Props) {
 
 	return (
 		<div className="flex flex-col w-full" ref={titleRef}>
-			<p className="font-normal lg:font-thin">{title}</p>
+			<p className="font-normal lg:font-light lg:text-2xl drop-shadow-md">{title}</p>
 		</div>
 	);
 }
