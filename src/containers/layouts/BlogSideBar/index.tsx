@@ -35,23 +35,19 @@ export default async function BlogSideBar({ lang }: { lang: Language }) {
 	}
 
 	return (
-		<div>
+		<div className="md:basis-1/4 max-w-[285px]">
 			<div className="md:hidden">
 				<MobileBlogSideBar blogSidebar={blogSidebar} />
 			</div>
 			<div
-				className="hidden md:grid gap-4 text-sm text-muted-foreground max-h-[90vh] overflow-y-scroll"
+				className="hidden md:flex md:flex-col gap-4 text-sm text-gray-500 h-full overflow-y-scroll no-scrollbar"
 				x-chunk="dashboard-04-chunk-0"
 			>
 				{blogSidebar.map(({ id, sub, title, path }) => (
 					<Accordion key={id} type="single" collapsible className="w-full">
 						<AccordionItem value={title}>
-							<AccordionTrigger className="font-bold tracking-widest uppercase">
-								<LinkItem
-									className="first:text-muted-foreground"
-									label={title}
-									href={`/blog/${path}`}
-								/>
+							<AccordionTrigger className="tracking-widest text-lg uppercase">
+								<LinkItem className="first:text-gray-300" label={title} href={`/blog/${path}`} />
 							</AccordionTrigger>
 							<AccordionContent>
 								<NestedAccordion subItems={sub} lang={lang} />
