@@ -1,7 +1,7 @@
 import { Saira } from 'next/font/google';
 import { GoogleTagManager } from '@next/third-parties/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import './globals.css';
+import '../../globals.css';
 import { Footer, Navbar } from '@/containers/layouts';
 import { navbarConfig, siteTitle } from '@/constants/uiConfig';
 import type { Metadata } from 'next';
@@ -50,7 +50,9 @@ export default function RootLayout({
   			gtag('config', 'G-31W15B76BT');
 				`}
 			</Script>
-			<body className={`${saira.variable} font-saira relative h-full min-h-[100svh]`}>
+			<body
+				className={`${saira.variable} font-saira relative h-full min-h-[100svh] overscroll-none overflow-hidden`}
+			>
 				<div className="h-full relative">
 					<Navbar config={navbarConfig} />
 					{children}
