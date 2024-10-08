@@ -8,8 +8,10 @@ import { processSearchParams } from '@/service/utils/processSearchParams';
 import { mapLanguageParam } from '@/service/utils/langaugeMapping';
 import Articles from '@/containers/Articles';
 import { capitalize } from '@/lib/capitalize';
-import { BlogSideBar, Footer } from '@/containers/layouts';
+import { BlogSideBar } from '@/containers/layouts';
 import { UiService } from '@/service/server/uiService';
+import { Suspense } from 'react';
+import { LoadingSkeleton } from '@/components/custom';
 
 async function fetchCategoryInfo(lang: Language, category: string): Promise<CategoryType | null> {
 	const { data: categoryInfo } = await CategoryService.getCategories(
@@ -136,8 +138,12 @@ export default async function BlogPage({
 
 	return (
 		<div className="mx-auto w-full h-full max-w-6xl pt-[5rem] flex flex-col md:flex-row gap-6 lg:gap-12 p-4 pb-[2.5rem]">
-			<BlogSideBar lang={lang} />
-			<BlogContent displayedText={displayedText} articles={articles} />
+			<Suspense fallback={<div className="md:basis-1/4 max-w-[285px]">Loading...</div>}>
+				<BlogSideBar lang={lang} />
+			</Suspense>
+			<Suspense fallback={<LoadingSkeleton />}>
+				<BlogContent displayedText={displayedText} articles={articles} />
+			</Suspense>
 		</div>
 	);
 }
