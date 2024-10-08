@@ -10,6 +10,7 @@ import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkGfm from 'remark-gfm';
 import { siteTitle } from '@/constants/uiConfig';
 import type { Language } from '@/service/type';
+import { processDateTime } from '@/lib/processDateTime';
 import { ArticlesService } from '@/service/server/articleService';
 import { UiService } from '@/service/server/uiService';
 import { processSearchParams } from '@/service/utils/processSearchParams';
@@ -156,6 +157,10 @@ export default async function Post({
 		<div className="mx-auto w-full h-full max-w-6xl pt-[5rem] flex flex-col md:flex-row gap-6 lg:gap-12 p-4 pb-[2.5rem]">
 			<BlogSideBar lang={lang} />
 			<div className="flex-1 overflow-y-scroll no-scrollbar">
+				<h1 className="scroll-m-20 text-4xl py-2 font-extrabold tracking-tight lg:text-5xl">
+					{article.title}
+				</h1>
+				<p className="opacity-[0.7]">Published at {processDateTime(article.publish_at)}</p>
 				<Markdown markdown={article.content} />
 			</div>
 		</div>

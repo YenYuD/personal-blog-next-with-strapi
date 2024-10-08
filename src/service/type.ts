@@ -73,6 +73,9 @@ export type CategoryType = {
 		locale: string;
 		visibility: boolean;
 		path: string;
+		articles?: {
+			data: ArticleType[];
+		};
 	};
 };
 
