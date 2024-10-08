@@ -10,9 +10,9 @@ import {
 	DrawerTrigger,
 } from '@/components/ui/drawer';
 import { ChevronDown, Dot } from 'lucide-react';
-import type { SubItemType } from '@/service/type';
+import type { CategoryType } from '@/service/type';
 
-export default function MobileBlogSideBar({ blogSidebar }: { blogSidebar: SubItemType[] }) {
+export default function MobileBlogSideBar({ categories }: { categories: CategoryType[] }) {
 	return (
 		<>
 			<Drawer>
@@ -25,10 +25,14 @@ export default function MobileBlogSideBar({ blogSidebar }: { blogSidebar: SubIte
 						<DrawerTitle>Categories</DrawerTitle>
 					</DrawerHeader>
 					<DrawerFooter>
-						{blogSidebar.map(({ id, title, path }) => (
+						{categories.map(({ id, attributes: { name, path, articles } }) => (
 							<div key={id}>
 								<Dot className="inline-block w-4 h-4 mr-2" />
-								<LinkItem label={title} href={`/blog/${path}`} className="w-full" />
+								<LinkItem
+									label={`${name}(${articles?.data?.length ?? 0})`}
+									href={`/blog/${path}`}
+									className="w-full"
+								/>
 							</div>
 						))}
 						<DrawerClose>
