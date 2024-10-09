@@ -1,0 +1,21 @@
+#!/bin/sh
+
+if [ "$(git rev-parse --abbrev-ref HEAD)" != "main" ]; then
+    exit 0
+fi
+
+# get the latest tag
+latest_tag=$(git describe --tags --abbrev=0)
+
+# get the changelog
+changelog=$(git log ${latest_tag}..HEAD --pretty=format:"%h - %s (%an)")
+
+# update the changelog
+echo "Changes since ${latest_tag}:" > CHANGELOG.md
+echo "$changelog" >> CHANGELOG.md
+
+# add the changelog to the commit
+git add CHANGELOG.md
+git commit -m "Update CHANGELOG.md for $latest_tag"
+
+git push origin main

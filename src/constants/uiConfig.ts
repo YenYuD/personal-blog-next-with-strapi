@@ -1,14 +1,17 @@
 import PortfolioImg from '@/assets/portfolio.png';
+import KeypoSuiteImg from '@/assets/Keypo_suite.jpeg';
+import FormosaBlackBearImg from '@/assets/formosa_blackbear.jpeg';
+import BookStoreImg from '@/assets/bookstore.jpeg';
 
 export const navbarConfig = [
 	{
 		label: 'Home',
 		href: '/',
 	},
-	// {
-	// 	label: 'Blog',
-	// 	href: '/blog/all',
-	// }, // Commented out because the blog has not been completed yet
+	{
+		label: 'Blog',
+		href: '/blog/all',
+	},
 ];
 
 export type LinkConfig = typeof navbarConfig;
@@ -20,8 +23,6 @@ export const languageMapping = {
 
 export const textAnimationConfig: [string, string][] = [
 	['フロントエンド', 'エンジニア。'],
-	['Ingénieur', 'Front-end.'],
-	['프론트엔드', '엔지니어.'],
 	['Frontend', 'Developer.'],
 ];
 
@@ -63,5 +64,40 @@ export const cardInfo = [
 		],
 		link: process.env.NEXT_PUBLIC_WEBSITE_LINK,
 		repo: 'https://github.com/YenYuD/personal-blog-next-with-strapi',
+	},
+	{
+		id: 2,
+		imgSrc: KeypoSuiteImg,
+		year: '2024',
+		alt: 'Portal Image',
+		title: 'KEYPO SUITE',
+		description:
+			'A client-facing portal that integrates three distinct products for comprehensive account management.',
+		techStack: ['Next.js', 'TypeScript', 'React-hook-form', 'MUI', 'React-Query', 'Docker', 'Jest'],
+		link: 'https://suite-info.keypo.ai/en',
+		repo: '',
+	},
+	{
+		id: 3,
+		imgSrc: FormosaBlackBearImg,
+		year: '2023',
+		alt: 'FormosaBlackBearImg',
+		title: 'If Black Bears Disappeared',
+		description: 'A Static Website Dedicated to the Conservation of the Formosan Black Bear.',
+		techStack: ['Next.js', 'GSAP', 'Scroll Trigger', 'TailwindCSS', 'AOS', 'Responsive Web Design'],
+		link: 'https://dailyview.tw/blackbear',
+		repo: '',
+	},
+	{
+		id: 4,
+		imgSrc: BookStoreImg,
+		year: '2023',
+		alt: 'FormosaBlackBearImg',
+		title: 'If Bookstores Disappeared',
+		description:
+			'A Static Website Comprising Analytical Reports on Physical Bookstores and Printed Books.',
+		techStack: ['Next.js', 'GSAP', 'Scroll Trigger', 'TailwindCSS', 'AOS', 'Responsive Web Design'],
+		link: 'https://dailyview.tw/lostbooks',
+		repo: '',
 	},
 ];
