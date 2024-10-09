@@ -50,7 +50,7 @@ export async function generateStaticParams() {
 		ArticlesService.getArticles(
 			processSearchParams({
 				locale: mapLanguageParam(lang as Language),
-				fields: ['id', 'locale'],
+				fields: ['id', 'locale', 'slug'],
 			}),
 		),
 	);
@@ -62,7 +62,7 @@ export async function generateStaticParams() {
 		return result.data.map((article) => ({
 			lang,
 			category: 'post',
-			id: article.id.toString(),
+			slug: `${article.attributes.slug}-${article.id}`,
 		}));
 	});
 
@@ -171,6 +171,7 @@ export default async function Post({
 						alt="cover_image"
 						fill
 						className="object-cover z-0"
+						priority
 					/>
 				</div>
 				<Markdown markdown={article.content} />
