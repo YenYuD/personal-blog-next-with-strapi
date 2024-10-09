@@ -12,6 +12,7 @@ import { BlogSideBar } from '@/containers/layouts';
 import { UiService } from '@/service/server/uiService';
 import { Suspense } from 'react';
 import { LoadingSkeleton } from '@/components/custom';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 async function fetchCategoryInfo(lang: Language, category: string): Promise<CategoryType | null> {
 	const { data: categoryInfo } = await CategoryService.getCategories(
@@ -80,13 +81,13 @@ function BlogContent({
 	articles: ArticleType[];
 }) {
 	return (
-		<div className="flex-1">
+		<ScrollArea className="flex-1">
 			<h2 className="text-4xl text-primary py-2">{displayedText}</h2>
 			<Separator className="w-full" />
 			<div className="flex flex-col gap-4 mt-2">
 				<Articles articles={articles} />
 			</div>
-		</div>
+		</ScrollArea>
 	);
 }
 

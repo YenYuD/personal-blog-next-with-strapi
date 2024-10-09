@@ -3,6 +3,7 @@ import type { ArticleType } from '@/service/type';
 import { Separator } from '@/components/ui/separator';
 import { formatDate } from '@/service/utils/formatDate';
 import { Badge } from '@/components/ui/badge';
+import { Fragment } from 'react';
 
 type Props = {
 	articles: ArticleType[];
@@ -82,10 +83,10 @@ export default function Articles({ articles }: Props) {
 	return (
 		<>
 			{articles.map((article) => (
-				<div key={article.id}>
+				<Fragment key={article.id}>
 					<ArticleCard key={article.id} article={article} />
 					<Separator />
-				</div>
+				</Fragment>
 			))}
 		</>
 	);
