@@ -24,8 +24,9 @@ SyntaxHighlighter.registerLanguage('json', json);
 SyntaxHighlighter.registerLanguage('javascript', javascript);
 
 export async function generateMetadata({
-	params: { id },
-}: { params: { id: string } }): Promise<Metadata> {
+	params: { slug },
+}: { params: { slug: string } }): Promise<Metadata> {
+	const id = slug.split('-').pop() || '';
 	const {
 		data: { attributes: article },
 	} = await ArticlesService.getArticleById(id);
@@ -147,8 +148,10 @@ const Markdown = ({ markdown }: { markdown: string }) => {
 };
 
 export default async function Post({
-	params: { lang, id },
-}: { params: { lang: Language; id: string } }) {
+	params: { lang, slug },
+}: { params: { lang: Language; slug: string } }) {
+	const id = slug.split('-').pop() || '';
+
 	const {
 		data: { attributes: article },
 	} = await ArticlesService.getArticleById(id);
