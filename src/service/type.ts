@@ -13,6 +13,7 @@ export type ArticleType = {
 		description: string;
 		visibility: boolean;
 		cover_image_path: string;
+		slug: string | null;
 	};
 };
 
