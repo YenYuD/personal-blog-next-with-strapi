@@ -22,13 +22,6 @@ export default function CldImage({ src, alt, ...others }: Props) {
 	const imageUrl = `${cloudinaryDomain}/${cloudName}${src}`;
 
 	return (
-		<CloudaryImg
-			src={imageUrl}
-			alt={alt}
-			sizes={
-				'(max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, (max-width: 1280px) 1280px, (max-width: 1536px) 1536px, 1920px'
-			}
-			{...others}
-		/>
+		<CloudaryImg src={imageUrl} alt={alt} sizes="(min-width: 808px) 50vw, 100vw" {...others} />
 	);
 }
