@@ -16,6 +16,7 @@ import { UiService } from '@/service/server/uiService';
 import { processSearchParams } from '@/service/utils/processSearchParams';
 import { mapLanguageParam } from '@/service/utils/langaugeMapping';
 import { BlogSideBar } from '@/containers/layouts';
+import { CldImage } from '@/components/custom';
 
 SyntaxHighlighter.registerLanguage('tsx', tsx);
 SyntaxHighlighter.registerLanguage('typescript', typescript);
@@ -164,6 +165,14 @@ export default async function Post({
 					{article.title}
 				</h1>
 				<p className="opacity-[0.7]">Published at {processDateTime(article.publish_at)}</p>
+				<div className="w-full md:w-[80%] mx-auto mt-4 relative aspect-video mb-2">
+					<CldImage
+						src={article.cover_image_path}
+						alt="cover_image"
+						fill
+						className="object-cover z-0"
+					/>
+				</div>
 				<Markdown markdown={article.content} />
 			</div>
 		</div>
