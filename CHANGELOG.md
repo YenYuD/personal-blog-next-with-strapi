@@ -1,3 +1,24 @@
+# Changes since v1.0.4:
+
+## SEO Optimization
+- 🤖 Added robots.txt for search engine crawling instructions
+- 🗺️ Implemented sitemap.xml for improved search engine indexing
+- 🔄 Modified SSG function to accommodate slug name changes
+
+## Refactoring and Optimizations
+- 🔗 Changed article identification from 'id' to 'slug' for more semantic URLs
+- 🖼️ Added cover image to article pages
+- 🧹 Removed unused NestedAccordion component
+- 🎨 Optimized CldImage component
+
+## Bug Fixes
+- 📄 Fixed robots.txt filename
+- 🔍 Various SEO-related adjustments and fixes
+
+## Other Changes
+- 🔀 Merged multiple branches including 'develop' and 'refactor/seo-optimization'
+
+
 # Changes since v1.0.3:
 
 ## New Features

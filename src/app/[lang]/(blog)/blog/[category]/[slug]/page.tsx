@@ -16,6 +16,7 @@ import { UiService } from '@/service/server/uiService';
 import { processSearchParams } from '@/service/utils/processSearchParams';
 import { mapLanguageParam } from '@/service/utils/langaugeMapping';
 import { BlogSideBar } from '@/containers/layouts';
+import { CldImage } from '@/components/custom';
 
 SyntaxHighlighter.registerLanguage('tsx', tsx);
 SyntaxHighlighter.registerLanguage('typescript', typescript);
@@ -24,8 +25,9 @@ SyntaxHighlighter.registerLanguage('json', json);
 SyntaxHighlighter.registerLanguage('javascript', javascript);
 
 export async function generateMetadata({
-	params: { id },
-}: { params: { id: string } }): Promise<Metadata> {
+	params: { slug },
+}: { params: { slug: string } }): Promise<Metadata> {
+	const id = slug.split('-').pop() || '';
 	const {
 		data: { attributes: article },
 	} = await ArticlesService.getArticleById(id);
@@ -48,7 +50,7 @@ export async function generateStaticParams() {
 		ArticlesService.getArticles(
 			processSearchParams({
 				locale: mapLanguageParam(lang as Language),
-				fields: ['id', 'locale'],
+				fields: ['id', 'locale', 'slug'],
 			}),
 		),
 	);
@@ -60,7 +62,7 @@ export async function generateStaticParams() {
 		return result.data.map((article) => ({
 			lang,
 			category: 'post',
-			id: article.id.toString(),
+			slug: `${article.attributes.slug}-${article.id}`,
 		}));
 	});
 
@@ -147,8 +149,10 @@ const Markdown = ({ markdown }: { markdown: string }) => {
 };
 
 export default async function Post({
-	params: { lang, id },
-}: { params: { lang: Language; id: string } }) {
+	params: { lang, slug },
+}: { params: { lang: Language; slug: string } }) {
+	const id = slug.split('-').pop() || '';
+
 	const {
 		data: { attributes: article },
 	} = await ArticlesService.getArticleById(id);
@@ -161,6 +165,15 @@ export default async function Post({
 					{article.title}
 				</h1>
 				<p className="opacity-[0.7]">Published at {processDateTime(article.publish_at)}</p>
+				<div className="w-full md:w-[80%] mx-auto mt-4 relative aspect-video mb-2">
+					<CldImage
+						src={article.cover_image_path}
+						alt="cover_image"
+						fill
+						className="object-cover z-0"
+						priority
+					/>
+				</div>
 				<Markdown markdown={article.content} />
 			</div>
 		</div>

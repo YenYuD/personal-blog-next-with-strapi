@@ -1,6 +1,5 @@
 'use client';
 import { CldImage as CloudaryImg } from 'next-cloudinary';
-import Image from 'next/image';
 import type { ImageProps } from 'next/image';
 
 type Props = {
@@ -22,5 +21,7 @@ export default function CldImage({ src, alt, ...others }: Props) {
 
 	const imageUrl = `${cloudinaryDomain}/${cloudName}${src}`;
 
-	return <CloudaryImg src={imageUrl} alt={alt} {...others} />;
+	return (
+		<CloudaryImg src={imageUrl} alt={alt} sizes="(min-width: 808px) 50vw, 100vw" {...others} />
+	);
 }
