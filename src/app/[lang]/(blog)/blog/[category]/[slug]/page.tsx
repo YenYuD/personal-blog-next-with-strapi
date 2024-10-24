@@ -6,6 +6,8 @@ import typescript from 'react-syntax-highlighter/dist/esm/languages/prism/typesc
 import markdown from 'react-syntax-highlighter/dist/esm/languages/prism/markdown';
 import json from 'react-syntax-highlighter/dist/cjs/languages/prism/json';
 import javascript from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
+import bash from 'react-syntax-highlighter/dist/cjs/languages/prism/bash';
+import ini from 'react-syntax-highlighter/dist/cjs/languages/prism/ini';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkGfm from 'remark-gfm';
 import { siteTitle } from '@/constants/uiConfig';
@@ -23,11 +25,13 @@ SyntaxHighlighter.registerLanguage('typescript', typescript);
 SyntaxHighlighter.registerLanguage('markdown', markdown);
 SyntaxHighlighter.registerLanguage('json', json);
 SyntaxHighlighter.registerLanguage('javascript', javascript);
+SyntaxHighlighter.registerLanguage('bash', bash);
+SyntaxHighlighter.registerLanguage('ini', ini);
 
 export async function generateMetadata({
 	params: { slug },
 }: { params: { slug: string } }): Promise<Metadata> {
-	const id = slug.split('-').pop() || '';
+	const id = slug.split('-').pop() ?? '';
 	const {
 		data: { attributes: article },
 	} = await ArticlesService.getArticleById(id);
@@ -75,6 +79,7 @@ const Markdown = ({ markdown }: { markdown: string }) => {
 		// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 		code({ node, inline, className = '', children, ...props }: any) {
 			const hasLang = /language-(\w+)/.exec(className || '');
+			const trimmedChildren = String(children).replace(/\n$/, '');
 			return hasLang ? (
 				<SyntaxHighlighter
 					style={oneDark}
@@ -83,14 +88,14 @@ const Markdown = ({ markdown }: { markdown: string }) => {
 					showLineNumbers={true}
 					useInlineStyles={true}
 				>
-					{children}
+					{trimmedChildren}
 				</SyntaxHighlighter>
 			) : (
 				<code
-					className={`${className} relative rounded bg-cyan-700 px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold`}
+					className={`${className} relative rounded bg-cyan-700 px-[0.3rem] mx-[0.2rem] py-[0.2rem] font-mono text-sm font-semibold`}
 					{...props}
 				>
-					{children}
+					{trimmedChildren}
 				</code>
 			);
 		},
@@ -102,22 +107,24 @@ const Markdown = ({ markdown }: { markdown: string }) => {
 			components={{
 				...MarkdownComponents,
 				h1: ({ children }) => (
-					<h1 className="scroll-m-20 text-4xl py-2 font-extrabold tracking-tight lg:text-5xl">
+					<h1 className="scroll-m-20 text-4xl py-4 font-extrabold tracking-tight lg:text-5xl">
 						{children}
 					</h1>
 				),
 				h2: ({ children }) => (
-					<h2 className="scroll-m-20 border-b py-2 text-3xl font-semibold tracking-tight first:mt-4">
+					<h2 className="scroll-m-20 border-b py-4 text-3xl font-semibold tracking-tight first:mt-4">
 						{children}
 					</h2>
 				),
 				h3: ({ children }) => (
-					<h3 className="scroll-m-20 text-2xl py-2 font-semibold tracking-tight">{children}</h3>
+					<h3 className="scroll-m-20 text-2xl py-4 pt-6 font-semibold tracking-tight">
+						{children}
+					</h3>
 				),
 				h4: ({ children }) => (
-					<h4 className="scroll-m-20 text-xl py-2 font-semibold tracking-tight">{children}</h4>
+					<h4 className="scroll-m-20 text-xl py-2 pt-4 font-semibold tracking-tight">{children}</h4>
 				),
-				p: ({ children }) => <p className="leading-7 [&:not(:first-child)]:mt-6">{children}</p>,
+				p: ({ children }) => <p className="leading-7 my-4">{children}</p>,
 				blockquote: ({ children }) => (
 					<blockquote className="mt-6 border-l-4 bg-cyan-700 pl-4 italic">{children}</blockquote>
 				),
@@ -141,6 +148,8 @@ const Markdown = ({ markdown }: { markdown: string }) => {
 				strong: ({ children }) => (
 					<strong className="font-semibold text-cyan-400">{children}</strong>
 				),
+				img: ({ src, alt }) => <img src={src} alt={alt} className="my-4" />,
+				li: ({ children }) => <li className="leading-7 my-4">{children}</li>,
 			}}
 		>
 			{markdown}
@@ -151,7 +160,7 @@ const Markdown = ({ markdown }: { markdown: string }) => {
 export default async function Post({
 	params: { lang, slug },
 }: { params: { lang: Language; slug: string } }) {
-	const id = slug.split('-').pop() || '';
+	const id = slug.split('-').pop() ?? '';
 
 	const {
 		data: { attributes: article },
