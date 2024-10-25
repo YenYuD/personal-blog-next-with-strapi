@@ -38,7 +38,7 @@ export default function RootLayout({
 	const lang = headers().get('referer')?.split('/')[3] ?? 'en-US';
 
 	return (
-		<html lang={lang} className="h-full">
+		<html lang={lang}>
 			<head>
 				<link rel="icon" href="/favicon.ico" sizes="any" />
 			</head>
@@ -50,13 +50,10 @@ export default function RootLayout({
   			gtag('config', 'G-31W15B76BT');
 				`}
 			</Script>
-			<body
-				className={`${saira.variable} font-saira relative h-full min-h-[100svh] overscroll-none overflow-hidden`}
-			>
-				<div className="h-full relative">
+			<body className={`${saira.variable} font-saira relative min-h-[100svh]`}>
+				<div className="relative">
 					<Navbar config={navbarConfig} />
 					{children}
-					<Footer />
 					<SpeedInsights />
 				</div>
 			</body>
