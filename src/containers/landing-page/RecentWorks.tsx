@@ -104,8 +104,8 @@ export default function RecentWorks() {
 	};
 
 	return (
-		<div className="h-full scrollable">
-			<div className="relative z-[15] h-full max-w-6xl flex flex-col lg:max-2xl:mt-[3rem] 2xl:justify-center 2xl:mt-[-3rem] ">
+		<div className="min-h-[100svh] lg:max-h-[1100px] max-small:mt-[5rem] flex flex-col justify-center">
+			<div className="z-[15] h-full max-w-6xl flex flex-col lg:max-2xl:mt-[3rem] 2xl:justify-center 2xl:mt-[-3rem] ">
 				<div className="flex-none">
 					<AnimatedTitle title="Recent Works /" />
 					<div ref={containerRef} className="mt-[1rem] lg:mt-[2rem]">
@@ -165,16 +165,16 @@ export default function RecentWorks() {
 						</Button>
 					</div>
 				</div>
-				<div className="max-md:overflow-y-scroll no-scrollbar max-lg:flex-1 scrollable">
+				<div className=" max-lg:flex-1 ">
 					<p
-						className="pt-[1rem] lg:mt-[2rem] text-lg uppercase lg:text-4xl flex items-center drop-shadow-md scrollable"
+						className="pt-[1rem] lg:mt-[2rem] text-lg uppercase lg:text-4xl flex items-center drop-shadow-md "
 						ref={titleRef}
 					>
 						<ChevronsRight className="animate-pulse" /> {`${cardInfo[activeIndex]?.title}`}
 						<span className="font-thin text-sm lg:text-sm text-primary-foreground ml-4">{`${cardInfo[activeIndex]?.year}`}</span>
 					</p>
-					<div className="mt-[1rem] lg:mt-[2rem] scrollabel" ref={descriptionRef}>
-						<p className=" text-md scrollable font-light lg:text-lg  text-slate-800">
+					<div className="mt-[1rem] lg:mt-[2rem]" ref={descriptionRef}>
+						<p className=" text-md  font-light lg:text-lg  text-slate-800">
 							{cardInfo[activeIndex]?.description}
 						</p>
 						<div className="flex gap-2 mt-2">
@@ -199,7 +199,7 @@ export default function RecentWorks() {
 								</Badge>
 							)}
 						</div>
-						<div className="mt-[0.7rem] lg:mt-[2rem] scrollable" ref={techStackRef}>
+						<div className="mt-[0.7rem] lg:mt-[2rem] " ref={techStackRef}>
 							<p className="font-normal uppercase">Tech Stacks:</p>
 							{cardInfo[activeIndex]?.techStack && (
 								<div className="flex gap-2 mt-2 flex-wrap">
@@ -218,10 +218,6 @@ export default function RecentWorks() {
 					</div>
 				</div>
 			</div>
-			<section className="bg-gradients">
-				<div className="bg-gradient-5" />
-				<div className="bg-gradient-6" />
-			</section>
 		</div>
 	);
 }

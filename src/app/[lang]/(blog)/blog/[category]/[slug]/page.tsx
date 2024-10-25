@@ -73,7 +73,7 @@ export default async function Post({
 	} = await ArticlesService.getArticleById(id);
 
 	return (
-		<div className="mx-auto w-full h-full max-w-6xl pt-[5rem] flex flex-col md:flex-row gap-6 lg:gap-12 p-4 pb-[2.5rem]">
+		<div className="mx-auto w-full h-full max-w-6xl pt-[5rem] flex flex-col md:flex-row gap-6 lg:gap-12 p-4 pb-0">
 			<BlogSideBar lang={lang} />
 			<article className="flex-1 overflow-y-scroll no-scrollbar">
 				<header>
