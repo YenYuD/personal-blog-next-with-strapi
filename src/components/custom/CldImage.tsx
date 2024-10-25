@@ -7,10 +7,10 @@ type Props = {
 	alt: string;
 } & ImageProps;
 
-export default function CldImage({ src, alt, ...others }: Props) {
-	const cloudinaryDomain = process.env.NEXT_PUBLIC_CLOUDINARY_DOMAIN ?? '';
-	const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ?? '';
+export const cloudinaryDomain = process.env.NEXT_PUBLIC_CLOUDINARY_DOMAIN ?? '';
+export const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ?? '';
 
+export default function CldImage({ src, alt, ...others }: Props) {
 	if (!cloudinaryDomain || !cloudName) {
 		return (
 			<div className="bg-muted absolute w-full h-full top-0 flex justify-center items-center">

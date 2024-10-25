@@ -90,7 +90,7 @@
 
 
   body {
-    @apply bg-background text-foreground h-full overscroll-none overflow-hidden;
+    @apply bg-background text-foreground
   }
 }
 
@@ -104,7 +104,7 @@
   }
 
   .bg-gradients {
-    @apply absolute top-0 left-0 w-full h-full;
+    @apply fixed top-0 left-0 w-full h-full;
     filter: blur(150px) saturate(120%);
     width: 100%;
     height: 100%;
@@ -113,8 +113,8 @@
 
   .bg-gradient-1 {
     @apply absolute opacity-100 animate-vertical-move rounded-full z-0;
-    background: radial-gradient(circle at center, hsla(var(--gradient1)) 0, hsla(var(--gradient1)) 50%) no-repeat;
     mix-blend-mode: var(--blending);
+    border-radius: 9999px;
     width: var(--circle-size);
     height: var(--circle-size);
     top: calc(50% - var(--circle-size) / 2);
@@ -124,60 +124,13 @@
 
   .bg-gradient-2 {
     @apply absolute animate-circle-move opacity-100 rounded-full z-0;
-    background: radial-gradient(circle at center, hsla(var(--gradient2)) 0, hsla(var(--gradient2)) 50%) no-repeat;
     mix-blend-mode: var(--blending);
     width: var(--circle-size);
     height: var(--circle-size);
+    border-radius: 9999px;
     top: calc(50% - var(--circle-size) / 2);
     left: calc(50% - var(--circle-size) / 2);
     transform-origin: calc(50% - 400px);
-  }
-
-  .bg-gradient-3 {
-    @apply absolute animate-circle-move opacity-100 rounded-full z-0;
-    background: radial-gradient(circle at center, hsla(var(--gradient3)) 0, hsla(var(--gradient3)) 50%) no-repeat;
-    mix-blend-mode: var(--blending);
-    width: var(--circle-size);
-    height: var(--circle-size);
-    top: calc(50% - var(--circle-size) / 2 + 200px);
-    left: calc(50% - var(--circle-size) / 2 - 500px);
-    transform-origin: calc(50% + 400px);
-    animation-timing-function: linear;
-    animation-duration: 20s;
-    animation-timeline: infinite;
-  }
-
-  .bg-gradient-4 {
-    @apply absolute animate-horizontal-move opacity-70 rounded-full z-0;
-    background: radial-gradient(circle at center, hsla(var(--gradient4)) 0, hsla(var(--gradient4)) 50%) no-repeat;
-    mix-blend-mode: var(--blending);
-    width: var(--circle-size);
-    height: var(--circle-size);
-    top: calc(50% - var(--circle-size) / 2);
-    left: calc(50% - var(--circle-size) / 2);
-    transform-origin: calc(50% - 200px);
-  }
-
-  .bg-gradient-5 {
-    @apply absolute animate-circle-move opacity-70 rounded-full z-0;
-    background: radial-gradient(circle at center, hsla(var(--gradient5)) 0, hsla(var(--gradient5)) 50%) no-repeat;
-    mix-blend-mode: var(--blending);
-    width: var(--circle-size);
-    height: var(--circle-size);
-    top: calc(50% - var(--circle-size) / 2);
-    left: calc(50% - var(--circle-size) / 2);
-    transform-origin: calc(50% - 200px);
-  }
-
-  .bg-gradient-6 {
-    @apply absolute animate-vertical-move opacity-70 rounded-full z-0;
-    background: radial-gradient(circle at center, hsla(var(--gradient6)) 0, hsla(var(--gradient6)) 50%) no-repeat;
-    mix-blend-mode: var(--blending);
-    width: var(--circle-size);
-    height: var(--circle-size);
-    top: calc(50% - var(--circle-size) / 2);
-    left: calc(50% - var(--circle-size) / 2);
-    transform-origin: calc(50% - 200px);
   }
 
   .no-scrollbar::-webkit-scrollbar {

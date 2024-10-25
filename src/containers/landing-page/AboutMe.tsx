@@ -35,7 +35,7 @@ export default async function SecondBlock({ lang }: Props) {
 	);
 
 	return (
-		<div className="h-full">
+		<div className="min-h-[100svh] lg:max-h-[1100px] flex flex-col justify-center">
 			<div className="relative z-[15] h-full max-w-6xl flex lg:max-2xl:mt-[3rem] 2xl:justify-center 2xl:mt-[-4rem] flex-col gap-4 lg:gap-16">
 				<div className="flex flex-col max-h-[85%]">
 					<AnimatedTitle title="About Me /" />
@@ -71,10 +71,6 @@ export default async function SecondBlock({ lang }: Props) {
 					</MarqueeBar>
 				</div>
 			</div>
-			<section className="bg-gradients">
-				<div className="bg-gradient-3" />
-				<div className="bg-gradient-4" />
-			</section>
 		</div>
 	);
 }
