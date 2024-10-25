@@ -40,7 +40,6 @@ export default function RootLayout({
 					<Navbar config={navbarConfig} />
 					<main className="h-full">{children}</main>
 					<SpeedInsights />
-					<Footer />
 				</div>
 			</body>
 		</html>

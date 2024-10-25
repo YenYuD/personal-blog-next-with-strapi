@@ -6,3 +6,4 @@ export { default as TextAnimation } from './TextAnimation';
 export { default as ScrollingWrapper } from './ScrollingWrapper';
 export { default as MarqueeBar } from './MarqueeBar';
 export { default as AnimatedTitle } from './AnimatedTitle';
+export { default as Markdown } from './Markdown';
