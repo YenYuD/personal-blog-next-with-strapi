@@ -32,13 +32,11 @@ export default async function BlogSideBar({ lang }: { lang: Language }) {
 				{category.map(({ id, attributes: { name, path, articles } }) => (
 					<Accordion key={id} type="single" collapsible className="w-full">
 						<AccordionItem value={name}>
-							<AccordionTrigger className="tracking-widest text-lg uppercase">
-								<LinkItem
-									className="first:text-gray-300"
-									label={`${name}(${articles?.data?.length ?? 0})`}
-									href={`/blog/${path}`}
-								/>
-							</AccordionTrigger>
+							<LinkItem className="first:text-gray-300" href={`/blog/${path}`}>
+								<AccordionTrigger className="tracking-widest text-lg uppercase">
+									{`${name}(${articles?.data?.length ?? 0})`}
+								</AccordionTrigger>
+							</LinkItem>
 						</AccordionItem>
 					</Accordion>
 				))}

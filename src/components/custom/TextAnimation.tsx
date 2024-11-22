@@ -1,40 +1,17 @@
 'use client';
-import { gsap } from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { TextPlugin } from 'gsap/TextPlugin';
-import { useRef } from 'react';
+import { TypeAnimation } from 'react-type-animation';
 
-gsap.registerPlugin(useGSAP, TextPlugin);
-
-type Props = {
-	textData: [string, string][];
-};
-
-export default function TextAnimation({ textData }: Props) {
-	const frontendRef = useRef<HTMLParagraphElement | null>(null);
-	const developerRef = useRef<HTMLParagraphElement | null>(null);
-
-	useGSAP(() => {
-		const tl = gsap.timeline({ repeat: -1, repeatDelay: 0 });
-
-		textData.forEach(([firstRow, secondRow], index) => {
-			tl.to(frontendRef.current, {
-				duration: 1,
-				text: firstRow,
-				delay: index === 0 ? 1 : 1.5,
-			})
-				.to(developerRef.current, {
-					duration: 1,
-					text: secondRow,
-				})
-				.to({}, { duration: 1 });
-		});
-	}, []);
-
+export default function TextAnimation() {
 	return (
-		<div className="w-full text-4xl small:text-6xl h-[100px] small:min-h-[15rem] small:max-h-[15rem] max-sm:overflow-hidden sm:text-center lg:text-8xl">
-			<p ref={frontendRef}>Frontend</p>
-			<p ref={developerRef}>Developer.</p>
+		<div className="w-full h-[100px] small:min-h-[15rem] small:max-h-[15rem] max-sm:overflow-hidden ">
+			<TypeAnimation
+				sequence={['Frontend\nDeveloper.', 1000, '']}
+				wrapper="p"
+				style={{ whiteSpace: 'pre-line', display: 'block' }}
+				className="text-4xl small:text-6xl sm:text-center lg:text-8xl"
+				speed={1}
+				repeat={Number.POSITIVE_INFINITY}
+			/>
 		</div>
 	);
 }

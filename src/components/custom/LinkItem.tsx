@@ -7,13 +7,14 @@ import { Fragment } from 'react';
 import { cn } from '@/lib/utils';
 
 type Props = {
-	label: string;
+	children?: React.ReactNode;
+	label?: string;
 	href: string;
 	isSheet?: boolean;
 	className?: string;
 };
 
-export default function LinkItem({ label, href, isSheet, className }: Props) {
+export default function LinkItem({ children, href, label, isSheet, className }: Props) {
 	const [Wrapper, WrapperProps] = isSheet ? [SheetClose, { asChild: true }] : [Fragment, {}];
 
 	const locale = usePathname().split('/')[1] ?? 'en-US';
@@ -23,7 +24,7 @@ export default function LinkItem({ label, href, isSheet, className }: Props) {
 	return (
 		<Wrapper {...WrapperProps}>
 			<Link className={classNames} href={url}>
-				{label}
+				{children ?? label}
 			</Link>
 		</Wrapper>
 	);
