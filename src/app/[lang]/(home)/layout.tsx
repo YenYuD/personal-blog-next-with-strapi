@@ -2,7 +2,7 @@ import { Saira } from 'next/font/google';
 import { GoogleTagManager } from '@next/third-parties/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import '../../globals.css';
-import { Footer, Navbar } from '@/containers/layouts';
+import { Navbar } from '@/containers/layouts';
 import { navbarConfig, siteTitle } from '@/constants/uiConfig';
 import type { Metadata } from 'next';
 import Script from 'next/script';
@@ -29,6 +29,10 @@ export const metadata: Metadata = {
 		],
 	},
 };
+
+export async function generateStaticParams() {
+	return [{ lang: 'en-US' }, { lang: 'zh-TW' }];
+}
 
 export default function RootLayout({
 	children,

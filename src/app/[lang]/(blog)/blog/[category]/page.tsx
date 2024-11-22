@@ -110,6 +110,9 @@ export default async function BlogPage({
 					fields: ['name'],
 				},
 			},
+			sort: {
+				publishedAt: 'desc',
+			},
 			...(!isAll && {
 				filters: {
 					category: {
@@ -139,9 +142,7 @@ export default async function BlogPage({
 
 	return (
 		<div className="mx-auto w-full h-full max-w-6xl pt-[5rem] flex flex-col md:flex-row gap-6 lg:gap-12 p-4">
-			<Suspense fallback={<div className="md:basis-1/4 max-w-[285px]">Loading...</div>}>
-				<BlogSideBar lang={lang} />
-			</Suspense>
+			<BlogSideBar lang={lang} />
 			<Suspense fallback={<LoadingSkeleton />}>
 				<BlogContent displayedText={displayedText} articles={articles} />
 			</Suspense>
