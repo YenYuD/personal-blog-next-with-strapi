@@ -1,4 +1,3 @@
-import type { Language } from '@/service/type';
 import Image from 'next/image';
 import {
 	Jest,
@@ -10,30 +9,9 @@ import {
 	TypeScript,
 } from '@/components/custom/icons';
 import SelfPortrait from '@/assets/DSC9487.jpg';
-import { mapLanguageParam } from '@/service/utils/langaugeMapping';
-import ReactMarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw';
-import { SingleTypeService } from '@/service/server/singleTypeService';
-import { processSearchParams } from '@/service/utils/processSearchParams';
 import { AnimatedTitle, MarqueeBar } from '@/components/custom';
 
-type Props = {
-	lang: Language;
-	isvisible?: boolean;
-};
-
-export default async function SecondBlock({ lang }: Props) {
-	const {
-		data: {
-			attributes: { content },
-		},
-	} = await SingleTypeService.getAbout(
-		processSearchParams({
-			locale: mapLanguageParam(lang),
-			fields: ['content'],
-		}),
-	);
-
+export default async function SecondBlock() {
 	return (
 		<div className="min-h-[100svh] lg:max-h-[1100px] flex flex-col justify-center">
 			<div className="relative z-[15] h-full max-w-6xl flex lg:max-2xl:mt-[3rem] 2xl:justify-center 2xl:mt-[-4rem] flex-col gap-4 lg:gap-16">
@@ -49,14 +27,13 @@ export default async function SecondBlock({ lang }: Props) {
 						/>
 					</div>
 					<div className="mt-6 flex-1 font-saira lg:text-lg max-w-[85vw] text-center scrollable lg:max-w-6xl break-words mx-auto text-black leading-8 font-[300] max-md:overflow-y-scroll no-scrollbar">
-						<ReactMarkdown
-							rehypePlugins={[rehypeRaw]}
-							components={{
-								p: ({ node, ...props }) => <p className="scrollable" {...props} />,
-							}}
-						>
-							{content}
-						</ReactMarkdown>
+						<p>
+							Hello! I’m a front-end developer from Taiwan with 2 years of experience in React,
+							Next.js, and TypeScript. I’m passionate about creating seamless user interfaces and
+							always exploring new technologies. This is my first personal website, where I’ll
+							document my notes, travel adventures, and connect with others. English isn’t my first
+							language, but I’m striving to make my articles bilingual.
+						</p>
 					</div>
 				</div>
 				<div className="relative opacity-50 hover:opacity-100">

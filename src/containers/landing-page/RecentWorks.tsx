@@ -1,9 +1,7 @@
 'use client';
-import { gsap } from 'gsap';
-import { useGSAP } from '@gsap/react';
 import type { Swiper as SwiperType } from 'swiper/types';
 import { cardInfo } from '@/constants/uiConfig';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,89 +13,7 @@ import { AnimatedTitle } from '@/components/custom';
 import { GitHub } from '@/components/custom/icons';
 
 export default function RecentWorks() {
-	const containerRef = useRef<HTMLDivElement>(null);
-	const buttonRef = useRef<HTMLDivElement>(null);
-	const titleRef = useRef<HTMLParagraphElement>(null);
-	const descriptionRef = useRef<HTMLParagraphElement>(null);
-	const techStackRef = useRef<HTMLDivElement>(null);
 	const [activeIndex, setActiveIndex] = useState(0);
-
-	useGSAP(() => {
-		gsap.fromTo(
-			containerRef.current,
-			{
-				x: 50,
-				opacity: 0,
-			},
-			{
-				x: 0,
-				opacity: 1,
-				delay: 0.1,
-				duration: 0.5,
-				ease: 'power1.in',
-			},
-		);
-
-		gsap.fromTo(
-			buttonRef.current,
-			{
-				x: 50,
-				opacity: 0,
-			},
-			{
-				x: 0,
-				opacity: 1,
-				delay: 0.4,
-				duration: 0.5,
-				ease: 'power1.in',
-			},
-		);
-
-		gsap.fromTo(
-			titleRef.current,
-			{
-				y: 50,
-				opacity: 0,
-			},
-			{
-				y: 0,
-				opacity: 1,
-				delay: 0.4,
-				duration: 0.5,
-				ease: 'power1.in',
-			},
-		);
-
-		gsap.fromTo(
-			descriptionRef.current,
-			{
-				y: 50,
-				opacity: 0,
-			},
-			{
-				y: 0,
-				opacity: 1,
-				delay: 0.6,
-				duration: 0.5,
-				ease: 'power1.in',
-			},
-		);
-
-		gsap.fromTo(
-			techStackRef.current,
-			{
-				x: -50,
-				opacity: 0,
-			},
-			{
-				x: 0,
-				opacity: 1,
-				delay: 0.8,
-				duration: 0.5,
-				ease: 'power1.in',
-			},
-		);
-	});
 
 	const handleSlideChange = (swiper: SwiperType) => {
 		setActiveIndex(swiper.realIndex);
@@ -108,7 +24,7 @@ export default function RecentWorks() {
 			<div className="z-[15] h-full max-w-6xl flex flex-col lg:max-2xl:mt-[3rem] 2xl:justify-center 2xl:mt-[-3rem] ">
 				<div className="flex-none">
 					<AnimatedTitle title="Recent Works /" />
-					<div ref={containerRef} className="mt-[1rem] lg:mt-[2rem]">
+					<div className="mt-[1rem] lg:mt-[2rem]">
 						<Swiper
 							onClick={(swiper) => {
 								setActiveIndex(swiper.clickedIndex);
@@ -150,7 +66,7 @@ export default function RecentWorks() {
 							))}
 						</Swiper>
 					</div>
-					<div className="flex gap-4 mt-[1rem]" ref={buttonRef}>
+					<div className="flex gap-4 mt-[1rem]">
 						<Button
 							variant="outline"
 							className="swiper-button-prev bg-transparent aspect-square w-[2.5rem] h-[2.5rem] rounded-full hover:bg-transparent hover:text-slate-200 px-0 border-primary-foreground"
@@ -166,14 +82,11 @@ export default function RecentWorks() {
 					</div>
 				</div>
 				<div className=" max-lg:flex-1 ">
-					<p
-						className="pt-[1rem] lg:mt-[2rem] text-lg uppercase lg:text-4xl flex items-center drop-shadow-md "
-						ref={titleRef}
-					>
+					<p className="pt-[1rem] lg:mt-[2rem] text-lg uppercase lg:text-4xl flex items-center drop-shadow-md ">
 						<ChevronsRight className="animate-pulse" /> {`${cardInfo[activeIndex]?.title}`}
 						<span className="font-thin text-sm lg:text-sm text-primary-foreground ml-4">{`${cardInfo[activeIndex]?.year}`}</span>
 					</p>
-					<div className="mt-[1rem] lg:mt-[2rem]" ref={descriptionRef}>
+					<div className="mt-[1rem] lg:mt-[2rem]">
 						<p className=" text-md  font-light lg:text-lg  text-slate-800">
 							{cardInfo[activeIndex]?.description}
 						</p>
@@ -181,7 +94,7 @@ export default function RecentWorks() {
 							<a href={cardInfo[activeIndex]?.link} target="_blank" rel="noreferrer">
 								<Badge
 									variant="outline"
-									className="font-thin hover:text-background hover:border-background cursor-pointer"
+									className="font-thin text-background/60 border-background/60 hover:text-background hover:border-background cursor-pointer"
 								>
 									Visit
 									<ArrowUpRight className="h-4 w-4 ml-1" />
@@ -190,7 +103,7 @@ export default function RecentWorks() {
 							{cardInfo[activeIndex]?.repo && (
 								<Badge
 									variant="outline"
-									className="font-thin hover:text-background hover:border-background cursor-pointer"
+									className="font-thin text-background/60 border-background/60 hover:text-background hover:border-background cursor-pointer"
 								>
 									<a href={cardInfo[activeIndex]?.repo} target="_blank" rel="noreferrer">
 										Repo
@@ -199,8 +112,8 @@ export default function RecentWorks() {
 								</Badge>
 							)}
 						</div>
-						<div className="mt-[0.7rem] lg:mt-[2rem] " ref={techStackRef}>
-							<p className="font-normal uppercase">Tech Stacks:</p>
+						<div className="mt-[1.2rem] lg:mt-[2rem] ">
+							<p className="font-light uppercase text-background">Tech Stacks:</p>
 							{cardInfo[activeIndex]?.techStack && (
 								<div className="flex gap-2 mt-2 flex-wrap">
 									{cardInfo[activeIndex].techStack.map((tech) => (
