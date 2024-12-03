@@ -85,11 +85,13 @@ export default function Markdown({ markdown }: { markdown: string }) {
 					</td>
 				),
 				ul: ({ children }) => <ul className="my-6 ml-6 list-disc [&>li]:mt-2">{children}</ul>,
+				ol: ({ children }) => <ol className="my-6 ml-6 list-decimal [&>li]:mt-2">{children}</ol>,
 				a: ({ children, href }) => (
 					<a className=" text-cyan-500 hover:underline leading-7" href={href}>
 						{children}
 					</a>
 				),
+				hr: () => <hr className="my-8 border-t opacity-45" />,
 				strong: ({ children }) => (
 					<strong className="font-semibold text-cyan-400">{children}</strong>
 				),
