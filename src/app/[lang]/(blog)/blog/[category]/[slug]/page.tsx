@@ -73,11 +73,11 @@ export default async function Post({
 	} = await ArticlesService.getArticleById(id);
 
 	return (
-		<div className="mx-auto w-full h-full max-w-6xl pt-[5rem] flex flex-col md:flex-row gap-6 lg:gap-12 p-4 pb-0">
+		<div className="mx-auto w-full h-full max-w-6xl pt-[4rem] lg:pt-[5rem] flex flex-col md:flex-row gap-3 lg:gap-12 p-4 pb-0">
 			<BlogSideBar lang={lang} />
-			<article className="flex-1 overflow-y-scroll no-scrollbar">
+			<article className="flex-1 overflow-y-scroll no-scrollbar pb-[10%]">
 				<header>
-					<h1 className="scroll-m-20 text-4xl py-2 font-extrabold tracking-tight lg:text-5xl">
+					<h1 className="scroll-m-20 text-4xl py-2 font-extrabold tracking-tight lg:text-5xl lg:leading-[1.2]">
 						{article.title}
 					</h1>
 					<p className="opacity-[0.7]">Published at {processDateTime(article.publish_at)}</p>
