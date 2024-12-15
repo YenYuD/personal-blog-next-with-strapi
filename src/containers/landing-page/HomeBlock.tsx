@@ -8,7 +8,7 @@ export default function HomeBlock() {
 		<div className="h-full min-h-[100svh]">
 			<div className="relative 2xl:translate-y-1/2 z-[15] flex flex-col justify-center gap-8">
 				<div className="lg:max-2xl:mt-[5rem] flex flex-col w-full sm:items-center">
-					<p className="font-extralight my-2">{thisYear} / Profolio</p>
+					<p className="font-extralight my-2">{thisYear} / Portfolio</p>
 					<TextAnimation />
 				</div>
 				<p className="italic text-background text-lg font-normal mt-[1rem] sm:mt-[3rem] sm:text-center">
