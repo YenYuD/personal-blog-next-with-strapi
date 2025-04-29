@@ -39,8 +39,14 @@ function Description({ text }: DescriptionProps) {
 
 function ArticleCard({ article }: ArticleCardProps) {
 	const {
-		id,
-		attributes: { title, publish_at, description, cover_image_path: imageData, slug },
+		attributes: {
+			category,
+			title,
+			publish_at,
+			description,
+			cover_image_path: imageData,
+			slug,
+		},
 	} = article;
 
 	return (
@@ -49,7 +55,7 @@ function ArticleCard({ article }: ArticleCardProps) {
 				<div className="flex-1 w-full flex flex-col justify-between">
 					<div className="flex flex-col gap-2">
 						<h2 className="text-lg lg:text-2xl font-semibold">
-							<LinkItem label={title} href={`/blog/post/${slug}-${id}`} />
+							<LinkItem label={title} href={`/blog/${category}/${slug}`} />
 						</h2>
 						<p className="text-sm text-gray-400">{formatDate(publish_at)}</p>
 						{description && <Description text={description} />}
@@ -59,7 +65,7 @@ function ArticleCard({ article }: ArticleCardProps) {
 							<LinkItem
 								label="read more"
 								className="hover:no-underline"
-								href={`/blog/post/${slug}-${id}`}
+								href={`/blog/${category}/${slug}`}
 							/>
 						</Badge>
 					</div>

@@ -1,8 +1,10 @@
 import type { languageMapping } from '@/constants/uiConfig';
 
 export type ArticleType = {
-	id: number;
+	id: string;
 	attributes: {
+		category: string;
+		lang: string;
 		title: string;
 		publish_at: string;
 		content: string;

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import type { ArticleType, CategoryType, Language } from '@/service/type';
-import { ArticlesService } from '@/service/server/articleService';
 import { Separator } from '@/components/ui/separator';
 import { CategoryService } from '@/service/server/categoryService';
 import { siteTitle } from '@/constants/uiConfig';
@@ -13,6 +12,7 @@ import { UiService } from '@/service/server/uiService';
 import { Suspense } from 'react';
 import { LoadingSkeleton } from '@/components/custom';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { getAllPosts } from '@/utils/readMarkdown'
 
 async function fetchCategoryInfo(lang: Language, category: string): Promise<CategoryType | null> {
 	const { data: categoryInfo } = await CategoryService.getCategories(
@@ -80,9 +80,12 @@ function BlogContent({
 	displayedText: string;
 	articles: ArticleType[];
 }) {
+
+	const text = displayedText === 'all' ? 'All Articles' : capitalize(displayedText)
+
 	return (
 		<ScrollArea className="flex-1">
-			<h2 className="text-4xl text-primary py-2">{displayedText}</h2>
+			<h2 className="text-4xl text-primary py-2">{text}</h2>
 			<Separator className="w-full" />
 			<div className="flex flex-col gap-4 mt-2">
 				<Articles articles={articles} />
@@ -96,55 +99,13 @@ export default async function BlogPage({
 }: {
 	params: { lang: Language; category: string };
 }) {
-	const isAll = category === 'all';
-	let displayedText = 'All Articles';
-
-	const { data: articles = [] } = await ArticlesService.getArticles(
-		processSearchParams({
-			locale: mapLanguageParam(lang),
-			populate: {
-				cover_image: {
-					fields: ['url', 'width', 'height', 'name', 'hash'],
-				},
-				category: {
-					fields: ['name'],
-				},
-			},
-			sort: {
-				publishedAt: 'desc',
-			},
-			...(!isAll && {
-				filters: {
-					category: {
-						path: {
-							$eq: category,
-						},
-					},
-				},
-			}),
-		}),
-	);
-
-	if (!isAll) {
-		const categoryInfo = await fetchCategoryInfo(lang, category);
-		if (!categoryInfo) {
-			return (
-				<>
-					<div>
-						<h2 className="text-4xl text-primary font-semibold py-2">{category}</h2>
-						<div className="flex flex-col sm:grid grid-cols-2 gap-4">No articles found.</div>
-					</div>
-				</>
-			);
-		}
-		displayedText = capitalize(categoryInfo.attributes.name);
-	}
+	const posts = await getAllPosts(lang, category)
 
 	return (
 		<div className="mx-auto w-full h-full max-w-6xl pt-[5rem] flex flex-col md:flex-row gap-6 lg:gap-12 p-4">
 			<BlogSideBar lang={lang} />
 			<Suspense fallback={<LoadingSkeleton />}>
-				<BlogContent displayedText={displayedText} articles={articles} />
+				<BlogContent displayedText={category} articles={posts} />
 			</Suspense>
 		</div>
 	);
