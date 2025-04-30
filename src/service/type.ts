@@ -67,19 +67,9 @@ export type SubItemType = {
 
 export type CategoryType = {
 	id: number;
-	attributes: {
-		name: string;
-		title: string;
-		createdAt?: string;
-		updatedAt?: string;
-		publishedAt?: string;
-		locale: string;
-		visibility: boolean;
-		path: string;
-		articles?: {
-			data: ArticleType[];
-		};
-	};
+	name: string;
+	path: string;
+	articles: number;
 };
 
 export type SecondSubItemType = {

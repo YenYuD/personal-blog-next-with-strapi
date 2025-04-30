@@ -98,3 +98,7 @@ export async function getAllPosts(lang: string, category?: string): Promise<Arti
 
 	return posts;
 }
+
+export const countPostsByCategory = (posts: ArticleType[], category: string) => {
+	return posts.filter((post) => post.attributes.category === category).length;
+};
