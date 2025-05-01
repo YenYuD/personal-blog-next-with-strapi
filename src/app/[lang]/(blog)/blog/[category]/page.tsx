@@ -28,9 +28,9 @@ export async function generateStaticParams() {
 	const categories = ['all', 'frontend', 'uncategorized']
 	const languages = ['en-US', 'zh-TW']
 
-	return categories.flatMap(category => languages.map(language => ({
-		category,
-		language
+	return languages.flatMap(language => categories.map(category => ({
+		lang: language,
+		category
 	})))
 }
 

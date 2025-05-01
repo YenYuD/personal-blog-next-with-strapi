@@ -28,11 +28,9 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
 	const langs = ['en-US', 'zh-TW']; // Add all supported languages
-	const categories = ['uncategorized', 'frontend'];
 	const posts = await Promise.all(
-		langs.map(async (lang, index) => {
-			const category = categories[index];
-			const posts = await getAllPosts(lang, category);
+		langs.map(async (lang) => {
+			const posts = await getAllPosts(lang);
 			return posts.map((post) => ({
 				lang,
 				category: post.attributes.category,
@@ -40,6 +38,7 @@ export async function generateStaticParams() {
 			}));
 		})
 	);
+	console.log(posts.flat());
 	return posts.flat();
 }
 
