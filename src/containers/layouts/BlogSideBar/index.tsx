@@ -1,19 +1,13 @@
-import { processSearchParams } from '@/service/utils/processSearchParams';
 import { Accordion, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import type { Language } from '@/service/type';
-import { mapLanguageParam } from '@/service/utils/langaugeMapping';
 import { LinkItem } from '@/components/custom';
 import MobileBlogSideBar from './MobileBlogSideBar';
-import { CategoryService } from '@/service/server/categoryService';
+import { categories, categoriesWithPostsCount } from '@/constants/uiConfig';
+import { getAllPosts } from '@/utils/readMarkdown';
 
 export default async function BlogSideBar({ lang }: { lang: Language }) {
-	const { data: category } = await CategoryService.getCategories(
-		processSearchParams({
-			locale: mapLanguageParam(lang),
-			fields: ['name', 'path'],
-			populate: ['articles'],
-		}),
-	);
+	const allPosts = await getAllPosts(lang);
+	const category = categoriesWithPostsCount(allPosts, lang);
 
 	return (
 		<div className="md:basis-1/4 max-w-[285px]">
@@ -29,12 +23,12 @@ export default async function BlogSideBar({ lang }: { lang: Language }) {
 					label={'All Articles'}
 					href={'/blog/all'}
 				/>
-				{category.map(({ id, attributes: { name, path, articles } }) => (
+				{category.map(({ id, name, path, articles }) => (
 					<Accordion key={id} type="single" collapsible className="w-full">
 						<AccordionItem value={name}>
 							<LinkItem className="first:text-gray-300" href={`/blog/${path}`}>
 								<AccordionTrigger className="tracking-widest text-lg uppercase">
-									{`${name}(${articles?.data?.length ?? 0})`}
+									{`${name}(${articles})`}
 								</AccordionTrigger>
 							</LinkItem>
 						</AccordionItem>

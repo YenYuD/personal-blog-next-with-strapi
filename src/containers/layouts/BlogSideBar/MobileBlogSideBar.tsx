@@ -25,11 +25,11 @@ export default function MobileBlogSideBar({ categories }: { categories: Category
 						<DrawerTitle>Categories</DrawerTitle>
 					</DrawerHeader>
 					<DrawerFooter>
-						{categories.map(({ id, attributes: { name, path, articles } }) => (
+						{categories.map(({ id, name, path, articles }) => (
 							<div key={id}>
 								<Dot className="inline-block w-4 h-4 mr-2" />
 								<LinkItem
-									label={`${name}(${articles?.data?.length ?? 0})`}
+									label={`${name}(${articles})`}
 									href={`/blog/${path}`}
 									className="w-full"
 								/>
