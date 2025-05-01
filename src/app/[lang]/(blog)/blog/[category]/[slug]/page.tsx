@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { siteTitle } from '@/constants/uiConfig';
 import type { Language } from '@/service/type';
-import { processDateTime } from '@/lib/processDateTime';
 import { BlogSideBar } from '@/containers/layouts';
 import { CldImage, Markdown } from '@/components/custom';
 import { cloudinaryDomain, cloudName } from '@/components/custom/CldImage';
 import { getAllPosts, getPostBySlug } from '@/utils/readMarkdown'
+import { formatDate } from '@/service/utils/formatDate';
 
 export async function generateMetadata({
 	params: { slug, lang, category },
@@ -53,7 +53,7 @@ export default async function Post({ params: { slug, lang, category } }: { param
 					<h1 className="scroll-m-20 text-4xl py-2 font-extrabold tracking-tight lg:text-5xl lg:leading-[1.2]">
 						{title}
 					</h1>
-					<p className="opacity-[0.7]">Published at {publish_at}</p>
+					<p className="opacity-[0.7]">Published at {formatDate(publish_at)}</p>
 				</header>
 				<figure className="w-full md:w-[80%] mx-auto mt-4 relative aspect-video mb-2">
 					<CldImage
