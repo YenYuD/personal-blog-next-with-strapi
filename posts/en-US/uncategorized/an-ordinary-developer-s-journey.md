@@ -1,7 +1,7 @@
 ---
 title: "An Ordinary Developer's Journey"
 lang: "en-US"
-date: 2024-10-05
+publish_at: 2024-10-05
 category: "uncategorized"
 Author: "@Emily D."
 description: "This is my first post. Let me share a bit about myself."

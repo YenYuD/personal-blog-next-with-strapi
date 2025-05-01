@@ -1,7 +1,7 @@
 ---
 title: "Simple and Effective Automated Code Review Software: SonarQube"
 lang: "en-US"
-date: 2024-10-28
+publish_at: 2024-10-28
 category: "frontend"
 Author: "@Emily D."
 description: "SonarQube is an open-source code quality inspection software that's easy to install and cross-platform."
