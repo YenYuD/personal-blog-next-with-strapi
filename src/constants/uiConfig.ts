@@ -2,6 +2,7 @@ import PortfolioImg from '@/assets/portfolio.png';
 import KeypoSuiteImg from '@/assets/Keypo_suite.jpeg';
 import FormosaBlackBearImg from '@/assets/formosa_blackbear.jpeg';
 import BookStoreImg from '@/assets/bookstore.jpeg';
+import type { ArticleType, Language } from '@/service/type';
 
 export const navbarConfig = [
 	{
@@ -96,3 +97,21 @@ export const cardInfo = [
 		repo: '',
 	},
 ];
+
+export const categories = {
+	'en-US': [
+		{ id: 1, name: 'frontend', path: 'frontend', articles: [] },
+		{ id: 2, name: 'uncategorized', path: 'uncategorized', articles: [] },
+	],
+	'zh-TW': [
+		{ id: 1, name: '前端', path: 'frontend', articles: [] },
+		{ id: 2, name: '未分類', path: 'uncategorized', articles: [] },
+	],
+};
+
+export const categoriesWithPostsCount = (posts: ArticleType[], lang: Language) => {
+	return categories[lang].map((category) => ({
+		...category,
+		articles: posts.filter((post) => post.attributes.category === category.path).length,
+	}));
+};

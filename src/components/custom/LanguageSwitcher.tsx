@@ -9,8 +9,6 @@ import {
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { usePathname, useRouter } from 'next/navigation';
-import { useQuery } from '@tanstack/react-query';
-import { ClientUiService } from '@/service/client/uiService';
 import { cn } from '@/lib/utils';
 
 export default function LanguageSwitcher() {
@@ -25,35 +23,23 @@ export default function LanguageSwitcher() {
 		router.push(`/${value}/${path}`);
 	};
 
-	const { data } = useQuery({
-		queryKey: ['get-languages'],
-		queryFn: () =>
-			ClientUiService.getLanguages({
-				sort: 'order',
-				fields: ['label', 'value', 'order'],
-			}),
-		placeholderData: [
-			{
-				id: 1,
-				attributes: {
-					label: 'English',
-					value: 'en-US',
-					order: 1,
-				},
+	const languages = [
+		{
+			attributes: {
+				label: 'English',
+				value: 'en-US',
 			},
-			{
-				id: 2,
-				attributes: {
-					label: '繁體中文',
-					value: 'zh-TW',
-					order: 2,
-				},
+		},
+		{
+			attributes: {
+				label: '繁體中文',
+				value: 'zh-TW',
 			},
-		],
-	});
+		},
+	];
 
 	const displayedText =
-		data?.find(({ attributes: { value } }) => value === currentLang)?.attributes.label ??
+		languages.find(({ attributes: { value } }) => value === currentLang)?.attributes.label ??
 		'Loading...';
 
 	return (
@@ -73,7 +59,7 @@ export default function LanguageSwitcher() {
 				})}
 			>
 				<DropdownMenuRadioGroup value={currentLang} onValueChange={setCurrentLang}>
-					{data?.map(({ attributes: { value, label } }) => (
+					{languages.map(({ attributes: { value, label } }) => (
 						<DropdownMenuRadioItem
 							className="text-foreground"
 							key={value}
