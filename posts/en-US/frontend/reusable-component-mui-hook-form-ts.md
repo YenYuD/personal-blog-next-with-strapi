@@ -1,7 +1,7 @@
 ---
 title: "Using MUI Components with React Hook Form: A Comprehensive Guide to TypeScript Integration"
 lang: "en-US"
-date: 2024-11-27
+publish_at: 2024-11-27
 category: "frontend"
 Author: "@Emily D."
 description: "This article delves into integrating React Hook Form with MUI's AutoComplete component, tackling the challenges of TypeScript type definitions."
