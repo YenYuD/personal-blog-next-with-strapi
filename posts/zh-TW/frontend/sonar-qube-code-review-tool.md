@@ -1,7 +1,7 @@
 ---
 title: "簡單好用的自動Code Review軟體：SonarQube"
 lang: "zh-TW"
-date: 2024-10-24
+publish_at: 2024-10-24
 category: "frontend"
 Author: "@Emily D."
 description: "在公司沒有Senior幫你code review，或者總是被LGTM嗎？SonarQube是個開源程式碼品質檢測軟體，安裝簡單且跨平台，有免費的community 版本，也有付費的企業版本。其核心概念是clean code，會去檢測你的程式碼是否符合「安全性、可靠性、可維護性」三項指標。"

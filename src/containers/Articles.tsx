@@ -57,7 +57,7 @@ function ArticleCard({ article }: ArticleCardProps) {
 						<h2 className="text-lg lg:text-2xl font-semibold">
 							<LinkItem label={title} href={`/blog/${category}/${slug}`} />
 						</h2>
-						<p className="text-sm text-gray-400">{formatDate(publish_at)}</p>
+						<p className="text-sm text-gray-400">{publish_at}</p>
 						{description && <Description text={description} />}
 					</div>
 					<div className="mt-3">

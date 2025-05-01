@@ -1,7 +1,7 @@
 ---
 title: "如何寫一個 MUI AutoComplete 搭配 React-hook-form 和 TypeScript 的共用元件"
 lang: "zh-TW"
-date: 2024-11-21
+publish_at: 2024-11-21
 category: "frontend"
 Author: "@Emily D."
 description: "如何寫一個 MUI AutoComplete 搭配 React hook form 和 TypeScript 的共用元件"

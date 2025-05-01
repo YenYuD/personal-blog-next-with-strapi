@@ -38,7 +38,6 @@ export async function generateStaticParams() {
 			}));
 		})
 	);
-	console.log(posts.flat());
 	return posts.flat();
 }
 
@@ -54,7 +53,7 @@ export default async function Post({ params: { slug, lang, category } }: { param
 					<h1 className="scroll-m-20 text-4xl py-2 font-extrabold tracking-tight lg:text-5xl lg:leading-[1.2]">
 						{title}
 					</h1>
-					<p className="opacity-[0.7]">Published at {processDateTime(publish_at)}</p>
+					<p className="opacity-[0.7]">Published at {publish_at}</p>
 				</header>
 				<figure className="w-full md:w-[80%] mx-auto mt-4 relative aspect-video mb-2">
 					<CldImage
