@@ -1,4 +1,4 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next';
 import { getAllPosts } from '@/utils/readMarkdown';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

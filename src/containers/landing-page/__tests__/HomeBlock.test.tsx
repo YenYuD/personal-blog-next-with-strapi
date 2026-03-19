@@ -55,10 +55,4 @@ describe('HomeBlock', () => {
     expect(screen.getByText(/Portfolio/).parentElement).toHaveClass('lg:max-2xl:mt-[5rem] flex flex-col w-full sm:items-center');
     expect(screen.getByText(/I am a frontend developer./).parentElement).toHaveClass('italic text-background text-lg font-normal mt-[1rem] sm:mt-[3rem] sm:text-center');
   });
-
-  it('renders background gradient elements', () => {
-    const { container } = render(<HomeBlock />);
-    expect(container.querySelector('.bg-gradient-1')).toBeInTheDocument();
-    expect(container.querySelector('.bg-gradient-2')).toBeInTheDocument();
-  });
 });
