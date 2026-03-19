@@ -1,5 +1,5 @@
 import { Navbar } from '@/containers/layouts';
-import { navbarConfig, siteTitle } from '@/constants/uiConfig';
+import { navbarConfig, siteTitle, cardInfo } from '@/constants/uiConfig';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {

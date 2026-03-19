@@ -97,7 +97,7 @@ export const dynamicParams = true;
 
 ## 🟡 Medium Priority
 
-### ⬜ #6: Optimize Swiper Bundle Size
+### ✅ #6: Optimize Swiper Bundle Size
 **Location:** `src/containers/landing-page/RecentWorks.tsx:8`
 
 **Solution:**
@@ -105,7 +105,7 @@ export const dynamicParams = true;
 import 'swiper/css/navigation'; // Only import needed modules
 ```
 
-**Status:** PENDING
+**Status:** ✅ COMPLETED
 
 ---
 
@@ -118,7 +118,7 @@ import 'swiper/css/navigation'; // Only import needed modules
 
 ---
 
-### ⬜ #8: Add Image Preload Hints
+### ✅ #8: Add Image Preload Hints
 **Location:** RecentWorks portfolio images
 
 **Solution:**
@@ -126,21 +126,21 @@ import 'swiper/css/navigation'; // Only import needed modules
 <link rel="preload" as="image" href={cardInfo[0].imgSrc} fetchpriority="high" />
 ```
 
-**Status:** PENDING
+**Status:** ✅ COMPLETED
 
 ---
 
 ## 🟢 UI/UX Improvements
 
-### ⬜ #9: Limit TextAnimation Infinite Loop
+### ✅ #9: Limit TextAnimation Infinite Loop
 **Location:** `src/components/custom/TextAnimation.tsx:13`
 
 **Solution:**
 ```typescript
-repeat={2} // or check prefers-reduced-motion
+repeat={2} // with prefers-reduced-motion detection
 ```
 
-**Status:** PENDING
+**Status:** ✅ COMPLETED
 
 ---
 
@@ -178,20 +178,20 @@ repeat={2} // or check prefers-reduced-motion
 
 ---
 
-### ⬜ #14: Hide Decorative Elements from Screen Readers
+### ✅ #14: Hide Decorative Elements from Screen Readers
 **Solution:**
 ```typescript
 <section className="bg-gradients" aria-hidden="true">
 ```
 
-**Status:** PENDING
+**Status:** ✅ COMPLETED
 
 ---
 
-### ⬜ #15: External Link Indicators
+### ✅ #15: External Link Indicators
 **Solution:** Add `aria-label="Opens in new window"` to external links
 
-**Status:** PENDING
+**Status:** ✅ COMPLETED
 
 ---
 
@@ -200,14 +200,14 @@ repeat={2} // or check prefers-reduced-motion
 ### ⬜ #16: Add Dynamic Metadata to Blog Posts
 **Location:** Need `[slug]/page.tsx` generateMetadata
 
-**Status:** PENDING
+**Status:** PENDING (Already exists but can be enhanced)
 
 ---
 
-### ⬜ #17: Add sitemap.xml and robots.txt
-**Solution:** Create `src/app/sitemap.ts`
+### ✅ #17: Add sitemap.xml and robots.txt
+**Solution:** Create `src/app/sitemap.ts` and `src/app/robots.ts`
 
-**Status:** PENDING
+**Status:** ✅ COMPLETED
 
 ---
 
@@ -264,8 +264,25 @@ yarn add -D @next/bundle-analyzer
 
 ## Progress Summary
 
-- **Completed:** 7/20 tasks
+- **Completed:** 13/20 tasks (65%)
 - **In Progress:** 0/20 tasks
-- **Pending:** 13/20 tasks
+- **Pending:** 7/20 tasks
+
+### Completed in Round 1 (Performance Improvements):
+1. ✅ #1: Consolidate layout and font loading
+2. ✅ #2: Optimize GradientBackground scroll performance
+3. ✅ #3: Add cache mechanism to markdown reading
+4. ✅ #4: Optimize Cloudinary image parameters
+5. ✅ #5: Add ISR to blog pages
+6. ✅ #19: Improve next.config.mjs
+
+### Completed in Round 2 (UI/UX & Accessibility):
+7. ✅ #6: Optimize Swiper bundle size
+8. ✅ #8: Add image preload hints
+9. ✅ #9: Limit TextAnimation infinite loop
+10. ✅ #14: Hide decorative elements from screen readers
+11. ✅ #15: External link indicators
+12. ✅ #17: Add sitemap.xml and robots.txt
+13. ✅ Bug Fix: CldImage loading conflict
 
 **Last Updated:** 2026-03-18

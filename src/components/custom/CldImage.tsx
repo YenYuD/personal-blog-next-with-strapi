@@ -21,15 +21,20 @@ export default function CldImage({ src, alt, ...others }: Props) {
 
 	const imageUrl = `${cloudinaryDomain}/${cloudName}${src}`;
 
+	// Don't use loading="lazy" if priority is set
+	const { priority, ...restProps } = others;
+	const loadingProp = priority ? {} : { loading: 'lazy' as const };
+
 	return (
 		<CloudaryImg
 			src={imageUrl}
 			alt={alt}
 			quality="auto:good"
 			format="auto"
-			loading="lazy"
 			sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-			{...others}
+			priority={priority}
+			{...loadingProp}
+			{...restProps}
 		/>
 	);
 }

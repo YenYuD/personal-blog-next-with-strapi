@@ -69,7 +69,7 @@ export default function GradientBackground() {
 
 	return (
 		<>
-			<section className="bg-gradients max-h-[100svh] transition">
+			<section className="bg-gradients max-h-[100svh] transition" aria-hidden="true">
 				<div className="bg-gradient-1" style={getGradientStyle()} />
 				<div className="bg-gradient-2" style={getGradientStyle(true)} />
 			</section>
