@@ -26,6 +26,12 @@ export async function generateMetadata({
 	}
 }
 
+// Enable ISR - revalidate every hour
+export const revalidate = 3600;
+
+// Allow dynamic params for new posts
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
 	const langs = ['en-US', 'zh-TW']; // Add all supported languages
 	const posts = await Promise.all(

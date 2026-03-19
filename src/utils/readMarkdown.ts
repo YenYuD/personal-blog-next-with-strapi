@@ -1,13 +1,15 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
+import { cache } from 'react';
 import type { ArticleType } from '@/service/type';
 
-export async function getPostBySlug(
+// Cache wrapper for getPostBySlug to avoid redundant file reads
+export const getPostBySlug = cache(async (
 	slug: string,
 	lang: string,
 	category: string,
-): Promise<ArticleType> {
+): Promise<ArticleType> => {
 	let filePath: string;
 	let fileContents: string;
 
@@ -44,9 +46,10 @@ export async function getPostBySlug(
 		},
 	};
 	return post;
-}
+});
 
-export async function getAllPosts(lang: string, category?: string): Promise<ArticleType[]> {
+// Cache wrapper for getAllPosts to avoid redundant file system reads
+export const getAllPosts = cache(async (lang: string, category?: string): Promise<ArticleType[]> => {
 	let files: string[] = [];
 	if (!category || category === 'all') {
 		// if no category, read all posts recursively
@@ -97,7 +100,7 @@ export async function getAllPosts(lang: string, category?: string): Promise<Arti
 	});
 
 	return posts;
-}
+});
 
 export const countPostsByCategory = (posts: ArticleType[], category: string) => {
 	return posts.filter((post) => post.attributes.category === category).length;

@@ -24,6 +24,12 @@ export async function generateMetadata({
 	};
 }
 
+// Enable ISR - revalidate every hour
+export const revalidate = 3600;
+
+// Allow dynamic params for new categories
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
 	const categories = ['all', 'frontend', 'uncategorized']
 	const languages = ['en-US', 'zh-TW']
