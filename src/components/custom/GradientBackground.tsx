@@ -5,14 +5,14 @@ const SCROLL_BUFFER = 0.7;
 const THROTTLE_DELAY = 100; // ms
 
 // Throttle function to limit scroll event frequency
-function throttle<T extends (...args: any[]) => void>(
+function throttle<T extends (...args: never[]) => void>(
 	func: T,
-	delay: number
+	delay: number,
 ): (...args: Parameters<T>) => void {
 	let timeoutId: NodeJS.Timeout | null = null;
 	let lastRan = 0;
 
-	return function (this: any, ...args: Parameters<T>) {
+	return function (this: unknown, ...args: Parameters<T>) {
 		const now = Date.now();
 
 		if (!lastRan || now - lastRan >= delay) {
