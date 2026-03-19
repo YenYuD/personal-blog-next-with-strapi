@@ -39,14 +39,7 @@ function Description({ text }: DescriptionProps) {
 
 function ArticleCard({ article }: ArticleCardProps) {
 	const {
-		attributes: {
-			category,
-			title,
-			publish_at,
-			description,
-			cover_image_path: imageData,
-			slug,
-		},
+		attributes: { category, title, publish_at, description, cover_image_path: imageData, slug },
 	} = article;
 
 	return (

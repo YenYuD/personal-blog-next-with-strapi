@@ -4,14 +4,16 @@ import type { Language } from '@/service/type';
 import { BlogSideBar } from '@/containers/layouts';
 import { CldImage, Markdown } from '@/components/custom';
 import { cloudinaryDomain, cloudName } from '@/components/custom/CldImage';
-import { getAllPosts, getPostBySlug } from '@/utils/readMarkdown'
+import { getAllPosts, getPostBySlug } from '@/utils/readMarkdown';
 import { formatDate } from '@/service/utils/formatDate';
 
 export async function generateMetadata({
 	params: { slug, lang, category },
 }: { params: { slug: string; lang: Language; category: string } }): Promise<Metadata> {
-	const post = await getPostBySlug(slug, lang, category)
-	const { attributes: { title = '', description = '', cover_image_path = '' } } = post
+	const post = await getPostBySlug(slug, lang, category);
+	const {
+		attributes: { title = '', description = '', cover_image_path = '' },
+	} = post;
 
 	return {
 		title: `${siteTitle} | ${title}`,
@@ -23,7 +25,7 @@ export async function generateMetadata({
 				},
 			],
 		},
-	}
+	};
 }
 
 // Enable ISR - revalidate every hour
@@ -42,14 +44,18 @@ export async function generateStaticParams() {
 				category: post.attributes.category,
 				slug: post.id,
 			}));
-		})
+		}),
 	);
 	return posts.flat();
 }
 
-export default async function Post({ params: { slug, lang, category } }: { params: { slug: string; lang: Language; category: string } }) {
-	const post = await getPostBySlug(slug, lang, category)
-	const { attributes: { title = '', publish_at = '', cover_image_path = '', content = '' } } = post
+export default async function Post({
+	params: { slug, lang, category },
+}: { params: { slug: string; lang: Language; category: string } }) {
+	const post = await getPostBySlug(slug, lang, category);
+	const {
+		attributes: { title = '', publish_at = '', cover_image_path = '', content = '' },
+	} = post;
 
 	return (
 		<div className="mx-auto w-full h-full max-w-6xl pt-[4rem] lg:pt-[5rem] flex flex-col md:flex-row gap-3 lg:gap-12 p-4 pb-0">
@@ -73,5 +79,5 @@ export default async function Post({ params: { slug, lang, category } }: { param
 				<Markdown markdown={content} />
 			</article>
 		</div>
-	)
+	);
 }
