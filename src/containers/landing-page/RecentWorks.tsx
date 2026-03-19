@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import 'swiper/css/navigation';
 import { ArrowRight, ArrowLeft, ChevronsRight, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -91,13 +92,18 @@ export default function RecentWorks() {
 							{cardInfo[activeIndex]?.description}
 						</p>
 						<div className="flex gap-2 mt-2">
-							<a href={cardInfo[activeIndex]?.link} target="_blank" rel="noreferrer">
+							<a
+								href={cardInfo[activeIndex]?.link}
+								target="_blank"
+								rel="noreferrer"
+								aria-label={`Visit ${cardInfo[activeIndex]?.title} (opens in new window)`}
+							>
 								<Badge
 									variant="outline"
 									className="font-thin text-background/60 border-background/60 hover:text-background hover:border-background cursor-pointer"
 								>
 									Visit
-									<ArrowUpRight className="h-4 w-4 ml-1" />
+									<ArrowUpRight className="h-4 w-4 ml-1" aria-hidden="true" />
 								</Badge>
 							</a>
 							{cardInfo[activeIndex]?.repo && (
@@ -105,10 +111,15 @@ export default function RecentWorks() {
 									variant="outline"
 									className="font-thin text-background/60 border-background/60 hover:text-background hover:border-background cursor-pointer"
 								>
-									<a href={cardInfo[activeIndex]?.repo} target="_blank" rel="noreferrer">
+									<a
+										href={cardInfo[activeIndex]?.repo}
+										target="_blank"
+										rel="noreferrer"
+										aria-label={`View ${cardInfo[activeIndex]?.title} repository (opens in new window)`}
+									>
 										Repo
 									</a>
-									<GitHub className="h-4 w-4 ml-1" />
+									<GitHub className="h-4 w-4 ml-1" aria-hidden="true" />
 								</Badge>
 							)}
 						</div>
