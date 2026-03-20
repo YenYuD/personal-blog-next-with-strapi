@@ -1,4 +1,10 @@
+'use client';
+
+import { useState } from 'react';
+
 export default function ProjectsSection() {
+	const [hoveredId, setHoveredId] = useState<number | null>(null);
+
 	const projects = [
 		{
 			id: 1,
@@ -35,7 +41,11 @@ export default function ProjectsSection() {
 					{projects.map((project) => (
 						<div
 							key={project.id}
-							className="flex items-center justify-between py-7 group cursor-pointer"
+							className={`flex items-center justify-between py-7 cursor-pointer px-4 -mx-4 rounded-lg transition-colors duration-200 ${
+								hoveredId === project.id ? 'bg-[#f9f9f9]' : 'bg-white'
+							}`}
+							onMouseEnter={() => setHoveredId(project.id)}
+							onMouseLeave={() => setHoveredId(null)}
 						>
 							<div className="flex items-center gap-8">
 								<span className="text-[#0f0f0f] text-[32px] tracking-[-0.64px] leading-[1] font-jaro">
@@ -59,9 +69,7 @@ export default function ProjectsSection() {
 										</span>
 									))}
 								</div>
-								<span className="text-[#0f0f0f] text-2xl group-hover:translate-x-2 transition-transform font-jaro">
-									→
-								</span>
+								<span className="text-[#0f0f0f] text-2xl font-jaro">→</span>
 							</div>
 						</div>
 					))}
@@ -78,7 +86,11 @@ export default function ProjectsSection() {
 					{projects.map((project) => (
 						<div
 							key={project.id}
-							className="flex items-center justify-between py-[1.125rem] md:py-5 group cursor-pointer"
+							className={`flex items-center justify-between py-[1.125rem] md:py-5 cursor-pointer px-3 -mx-3 rounded-lg transition-colors duration-200 ${
+								hoveredId === project.id ? 'bg-[#f9f9f9]' : 'bg-white'
+							}`}
+							onMouseEnter={() => setHoveredId(project.id)}
+							onMouseLeave={() => setHoveredId(null)}
 						>
 							<div className="flex-1">
 								<div className="flex items-baseline gap-2 mb-1">
@@ -93,9 +105,7 @@ export default function ProjectsSection() {
 									{project.description}
 								</p>
 							</div>
-							<span className="text-[#0f0f0f] text-xl md:text-2xl ml-4 group-hover:translate-x-2 transition-transform font-jaro">
-								→
-							</span>
+							<span className="text-[#0f0f0f] text-xl md:text-2xl ml-4 font-jaro">→</span>
 						</div>
 					))}
 				</div>

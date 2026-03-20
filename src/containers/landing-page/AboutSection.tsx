@@ -1,21 +1,45 @@
+'use client';
+
 import Image from 'next/image';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 export default function AboutSection() {
+	const containerRef = useRef<HTMLDivElement>(null);
+	const { scrollYProgress } = useScroll({
+		target: containerRef,
+		offset: ['start end', 'end start'],
+	});
+
+	const imageY = useTransform(scrollYProgress, [0, 1], ['-10%', '10%']);
+	const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.1, 1, 1.1]);
+
+	const fadeInLeftImage = {
+		initial: { opacity: 0, x: -60 },
+		animate: { opacity: 1, x: 0 },
+		transition: { duration: 1, ease: [0.25, 0.4, 0.25, 1] as const },
+	};
+
 	return (
-		<section className="relative w-full bg-[#f5f0eb]">
+		<section ref={containerRef} className="relative w-full bg-[#f5f0eb]">
 			{/* Desktop Layout - Horizontal */}
 			<div className="hidden lg:flex lg:flex-row h-[31.25rem]">
 				{/* About Image - Left Side */}
-				<div className="relative w-[31.25rem] bg-gray-200">
-					<Image
-						src="https://images.unsplash.com/photo-1581906970825-ed79c31cb540?w=1080&q=80"
-						alt="Person working on laptop"
-						fill
-						className="object-cover"
-						sizes="31.25rem"
-						loading="lazy"
-					/>
-				</div>
+				<motion.div
+					{...fadeInLeftImage}
+					className="relative w-[31.25rem] bg-gray-200 overflow-hidden"
+				>
+					<motion.div style={{ y: imageY, scale: imageScale }} className="w-full h-full">
+						<Image
+							src="https://res.cloudinary.com/dyrubjejf/image/upload/v1773982267/1767273971000_R0014315_gpg3dc.jpg"
+							alt="Person working on laptop"
+							fill
+							className="object-cover"
+							sizes="31.25rem"
+							loading="lazy"
+						/>
+					</motion.div>
+				</motion.div>
 
 				{/* About Text - Right Side */}
 				<div className="flex flex-col justify-center gap-6 px-[3.75rem] flex-1">
@@ -45,16 +69,23 @@ export default function AboutSection() {
 			{/* Tablet Layout - Vertical Stacked */}
 			<div className="hidden md:flex lg:hidden flex-col">
 				{/* About Image - Top */}
-				<div className="relative h-[15rem] bg-gray-200">
-					<Image
-						src="https://images.unsplash.com/photo-1581906970825-ed79c31cb540?w=800&q=80"
-						alt="Person working on laptop"
-						fill
-						className="object-cover"
-						sizes="100vw"
-						loading="lazy"
-					/>
-				</div>
+				<motion.div
+					initial={{ opacity: 0, y: -30 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 1, ease: [0.25, 0.4, 0.25, 1] as const }}
+					className="relative h-[15rem] bg-gray-200 overflow-hidden"
+				>
+					<motion.div style={{ y: imageY, scale: imageScale }} className="w-full h-full">
+						<Image
+							src="https://images.unsplash.com/photo-1581906970825-ed79c31cb540?w=800&q=80"
+							alt="Person working on laptop"
+							fill
+							className="object-cover"
+							sizes="100vw"
+							loading="lazy"
+						/>
+					</motion.div>
+				</motion.div>
 
 				{/* About Text - Bottom */}
 				<div className="flex flex-col gap-[1.125rem] px-6 py-10">
@@ -83,16 +114,23 @@ export default function AboutSection() {
 			{/* Mobile Layout - Vertical Stacked */}
 			<div className="flex md:hidden flex-col">
 				{/* About Image - Top */}
-				<div className="relative h-[12.5rem] bg-gray-200">
-					<Image
-						src="https://images.unsplash.com/photo-1581906970825-ed79c31cb540?w=600&q=80"
-						alt="Person working on laptop"
-						fill
-						className="object-cover"
-						sizes="100vw"
-						loading="lazy"
-					/>
-				</div>
+				<motion.div
+					initial={{ opacity: 0, y: -30 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 1, ease: [0.25, 0.4, 0.25, 1] as const }}
+					className="relative h-[12.5rem] bg-gray-200 overflow-hidden"
+				>
+					<motion.div style={{ y: imageY, scale: imageScale }} className="w-full h-full">
+						<Image
+							src="https://images.unsplash.com/photo-1581906970825-ed79c31cb540?w=600&q=80"
+							alt="Person working on laptop"
+							fill
+							className="object-cover"
+							sizes="100vw"
+							loading="lazy"
+						/>
+					</motion.div>
+				</motion.div>
 
 				{/* About Text - Bottom */}
 				<div className="flex flex-col gap-3.5 px-5 py-7">

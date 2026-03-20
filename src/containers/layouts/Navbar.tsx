@@ -1,16 +1,35 @@
+'use client';
+
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import CheckerboardPattern from '@/components/custom/CheckerboardPattern';
 
 export default function Navbar() {
 	const navLinks = ['About', 'Projects', 'Blog', 'Contact'];
+	const [isScrolled, setIsScrolled] = useState(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			setIsScrolled(window.scrollY > 10);
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
 
 	return (
 		<>
 			{/* Desktop & Tablet Navigation */}
-			<nav className="hidden md:flex items-center justify-between w-full bg-white px-6 lg:px-[1.875rem] py-3.5 lg:py-4 sticky top-0 z-50 border-b border-transparent">
+			<nav
+				className={`hidden md:flex items-center justify-between w-full px-6 lg:px-[1.875rem] py-3.5 lg:py-4 sticky top-0 z-50 transition-all duration-300 ${
+					isScrolled
+						? 'bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-200'
+						: 'bg-white border-b border-transparent'
+				}`}
+			>
 				<Link
 					href="/"
-					className="text-[#0f0f0f] text-[2.125rem] lg:text-[2.625rem] tracking-[-2px] lg:tracking-[-2.5px] leading-[0.84] font-jaro"
+					className="text-[#0f0f0f] text-[2.125rem] lg:text-[2.625rem] tracking-[-2px] lg:tracking-[0.01rem] leading-[0.84] font-jaro transition-transform hover:scale-105"
 				>
 					YenYu.
 				</Link>
@@ -19,9 +38,10 @@ export default function Navbar() {
 						<Link
 							key={link}
 							href={`#${link.toLowerCase()}`}
-							className="text-[#7c7c7c] text-lg lg:text-[1.375rem] tracking-[-0.0225rem] lg:tracking-[0.01rem] leading-[1.39] hover:text-[#0f0f0f] transition-colors font-jaro"
+							className="relative text-[#7c7c7c] text-lg lg:text-[1.375rem] tracking-[-0.0225rem] lg:tracking-[0.01rem] leading-[1.39] font-jaro group"
 						>
 							{link}
+							<span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#0f0f0f] transition-all duration-300 group-hover:w-full" />
 						</Link>
 					))}
 				</div>

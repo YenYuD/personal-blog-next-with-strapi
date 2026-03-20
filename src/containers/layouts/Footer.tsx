@@ -25,7 +25,7 @@ export default function Footer() {
 									<li key={link}>
 										<Link
 											href={`#${link.toLowerCase()}`}
-											className="text-[#7c7c7c] text-sm hover:text-[#0f0f0f] transition-colors font-geist"
+											className="text-[#7c7c7c] text-sm hover:text-[#0f0f0f] transition-colors font-"
 										>
 											{link}
 										</Link>
