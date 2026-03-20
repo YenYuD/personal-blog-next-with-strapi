@@ -4,10 +4,10 @@ import { Button } from '@/components/ui/button';
 export default function ContactCTA() {
 	return (
 		<section className="relative w-full bg-[#2c2825]">
-			{/* Desktop Layout */}
-			<div className="hidden lg:flex lg:flex-row h-[560px]">
+			{/* Desktop Layout - Horizontal */}
+			<div className="hidden lg:flex lg:flex-row h-[35rem]">
 				{/* CTA Text - Left Side */}
-				<div className="flex flex-col justify-center gap-7 px-16 py-16 flex-1">
+				<div className="flex flex-col justify-center gap-7 px-[3.75rem] flex-1">
 					<p className="text-[#7c7c7c] tracking-[4px] text-xs font-bold font-geist">
 						— AVAILABLE FOR WORK
 					</p>
@@ -29,22 +29,22 @@ export default function ContactCTA() {
 				</div>
 
 				{/* CTA Image - Right Side */}
-				<div className="relative w-[580px] bg-gray-700">
+				<div className="relative w-[36.25rem] bg-gray-700">
 					<Image
 						src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1080&q=80"
 						alt="Team collaboration"
 						fill
 						className="object-cover"
-						sizes="580px"
+						sizes="36.25rem"
 						loading="lazy"
 					/>
 				</div>
 			</div>
 
-			{/* Tablet Layout */}
+			{/* Tablet Layout - Vertical Stacked */}
 			<div className="hidden md:flex lg:hidden flex-col">
 				{/* CTA Image - Top */}
-				<div className="relative h-[280px] bg-gray-700">
+				<div className="relative h-[17.5rem] bg-gray-700">
 					<Image
 						src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80"
 						alt="Team collaboration"
@@ -76,10 +76,10 @@ export default function ContactCTA() {
 				</div>
 			</div>
 
-			{/* Mobile Layout */}
+			{/* Mobile Layout - Vertical Stacked */}
 			<div className="flex md:hidden flex-col">
 				{/* CTA Image - Top */}
-				<div className="relative h-[220px] bg-gray-700">
+				<div className="relative h-[13.75rem] bg-gray-700">
 					<Image
 						src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80"
 						alt="Team collaboration"

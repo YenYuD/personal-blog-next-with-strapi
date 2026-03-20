@@ -18,9 +18,9 @@ export default function TechStackMarquee() {
 	];
 
 	return (
-		<section className="relative w-full bg-[#f5f0eb] overflow-hidden">
-			{/* Desktop */}
-			<div className="hidden lg:flex items-center justify-between gap-10 px-8 py-4">
+		<section className="relative w-full bg-[#f5f0eb] overflow-hidden hidden md:block">
+			{/* Desktop - All 13 items */}
+			<div className="hidden lg:flex items-center justify-between gap-10 px-[1.875rem] py-4">
 				{techStack.map((item) => (
 					<span
 						key={item.id}
@@ -33,8 +33,8 @@ export default function TechStackMarquee() {
 				))}
 			</div>
 
-			{/* Tablet */}
-			<div className="hidden md:flex lg:hidden items-center justify-between gap-6 px-6 py-3.5">
+			{/* Tablet - First 9 items only */}
+			<div className="flex md:flex lg:hidden items-center justify-between gap-6 px-6 py-3.5">
 				{techStack.slice(0, 9).map((item) => (
 					<span
 						key={item.id}
@@ -47,19 +47,7 @@ export default function TechStackMarquee() {
 				))}
 			</div>
 
-			{/* Mobile - Hidden on mobile per design */}
-			<div className="flex md:hidden items-center gap-4 px-5 py-3 overflow-x-auto no-scrollbar">
-				{techStack.slice(0, 9).map((item) => (
-					<span
-						key={item.id}
-						className={`font-staatliches text-lg tracking-[0.9px] leading-[1.3] whitespace-nowrap ${
-							item.isDivider ? 'text-[#7c7c7c]' : 'text-[#2c2825]'
-						}`}
-					>
-						{item.text}
-					</span>
-				))}
-			</div>
+			{/* Mobile - Completely hidden per design spec */}
 		</section>
 	);
 }

@@ -26,7 +26,7 @@ export default function ProjectsSection() {
 	return (
 		<section className="relative w-full bg-white">
 			{/* Desktop Layout */}
-			<div className="hidden lg:block px-8 py-16">
+			<div className="hidden lg:block px-[1.875rem] py-[3.75rem]">
 				<p className="text-[#7c7c7c] tracking-[4px] text-xs font-bold mb-5 font-geist">
 					— SELECTED PROJECTS
 				</p>
@@ -69,7 +69,7 @@ export default function ProjectsSection() {
 			</div>
 
 			{/* Tablet & Mobile Layout */}
-			<div className="lg:hidden px-6 md:px-6 py-10 md:py-10">
+			<div className="lg:hidden px-5 md:px-6 py-8 md:py-10">
 				<p className="text-[#7c7c7c] tracking-[3px] md:tracking-[4px] text-[10px] md:text-[11px] font-bold mb-4 font-geist">
 					— SELECTED PROJECTS
 				</p>
@@ -78,7 +78,7 @@ export default function ProjectsSection() {
 					{projects.map((project) => (
 						<div
 							key={project.id}
-							className="flex items-center justify-between py-5 md:py-5 group cursor-pointer"
+							className="flex items-center justify-between py-[1.125rem] md:py-5 group cursor-pointer"
 						>
 							<div className="flex-1">
 								<div className="flex items-baseline gap-2 mb-1">

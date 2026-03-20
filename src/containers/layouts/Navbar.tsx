@@ -7,10 +7,10 @@ export default function Navbar() {
 	return (
 		<>
 			{/* Desktop & Tablet Navigation */}
-			<nav className="hidden md:flex items-center justify-between w-full bg-white px-6 lg:px-8 py-4 lg:py-4 sticky top-0 z-50 border-b border-transparent">
+			<nav className="hidden md:flex items-center justify-between w-full bg-white px-6 lg:px-[1.875rem] py-3.5 lg:py-4 sticky top-0 z-50 border-b border-transparent">
 				<Link
 					href="/"
-					className="text-[#0f0f0f] text-[2.125rem] lg:text-[2.625rem] tracking-[-0.125rem] lg:tracking-[0.01rem] leading-[0.84] font-jaro"
+					className="text-[#0f0f0f] text-[2.125rem] lg:text-[2.625rem] tracking-[-2px] lg:tracking-[-2.5px] leading-[0.84] font-jaro"
 				>
 					YenYu.
 				</Link>
@@ -31,7 +31,7 @@ export default function Navbar() {
 			<nav className="flex md:hidden items-center justify-between w-full bg-white px-5 py-3.5 sticky top-0 z-50">
 				<Link
 					href="/"
-					className="text-[#0f0f0f] text-[1.75rem] tracking-[-0.09375rem] leading-[0.84] font-jaro"
+					className="text-[#0f0f0f] text-[1.75rem] tracking-[-1.5px] leading-[0.84] font-jaro"
 				>
 					YenYu.
 				</Link>

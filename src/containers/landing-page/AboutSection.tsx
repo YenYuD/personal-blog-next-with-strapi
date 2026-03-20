@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function AboutSection() {
 	return (
 		<section className="relative w-full bg-[#f5f0eb]">
-			{/* Desktop Layout */}
+			{/* Desktop Layout - Horizontal */}
 			<div className="hidden lg:flex lg:flex-row h-[31.25rem]">
 				{/* About Image - Left Side */}
 				<div className="relative w-[31.25rem] bg-gray-200">
@@ -18,7 +18,7 @@ export default function AboutSection() {
 				</div>
 
 				{/* About Text - Right Side */}
-				<div className="flex flex-col justify-center gap-6 px-12 lg:px-16 py-16 flex-1">
+				<div className="flex flex-col justify-center gap-6 px-[3.75rem] flex-1">
 					<p className="text-[#7c7c7c] tracking-[0.25rem] text-xs font-bold font-geist">
 						— ABOUT ME
 					</p>
@@ -42,7 +42,7 @@ export default function AboutSection() {
 				</div>
 			</div>
 
-			{/* Tablet Layout */}
+			{/* Tablet Layout - Vertical Stacked */}
 			<div className="hidden md:flex lg:hidden flex-col">
 				{/* About Image - Top */}
 				<div className="relative h-[15rem] bg-gray-200">
@@ -57,7 +57,7 @@ export default function AboutSection() {
 				</div>
 
 				{/* About Text - Bottom */}
-				<div className="flex flex-col gap-5 px-6 py-10">
+				<div className="flex flex-col gap-[1.125rem] px-6 py-10">
 					<p className="text-[#7c7c7c] tracking-[0.25rem] text-[0.6875rem] font-bold font-geist">
 						— ABOUT ME
 					</p>
@@ -80,7 +80,7 @@ export default function AboutSection() {
 				</div>
 			</div>
 
-			{/* Mobile Layout */}
+			{/* Mobile Layout - Vertical Stacked */}
 			<div className="flex md:hidden flex-col">
 				{/* About Image - Top */}
 				<div className="relative h-[12.5rem] bg-gray-200">

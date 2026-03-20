@@ -1,9 +1,8 @@
 export default function CheckerboardPattern() {
 	return (
 		<div
-			className="w-full"
+			className="w-full h-7 md:h-8"
 			style={{
-				height: '32px',
 				backgroundColor: '#0f0f0f',
 				backgroundImage: `
 					linear-gradient(45deg, #ffffff 25%, transparent 25%),
