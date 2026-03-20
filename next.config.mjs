@@ -9,7 +9,13 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: 'https',
-				hostname: process.env.NEXT_PUBLIC_CLOUDINARY_DOMAIN?.replace('https://', '') || 'res.cloudinary.com',
+				hostname:
+					process.env.NEXT_PUBLIC_CLOUDINARY_DOMAIN?.replace('https://', '') ||
+					'res.cloudinary.com',
+			},
+			{
+				protocol: 'https',
+				hostname: 'images.unsplash.com',
 			},
 		],
 		formats: ['image/avif', 'image/webp'],

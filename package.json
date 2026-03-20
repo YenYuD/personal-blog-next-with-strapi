@@ -31,6 +31,7 @@
 		"axios": "^1.7.4",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
+		"geist": "^1.7.0",
 		"gray-matter": "^4.0.3",
 		"lucide-react": "^0.427.0",
 		"negotiator": "^0.6.3",

@@ -1,5 +1,4 @@
-import { Navbar } from '@/containers/layouts';
-import { navbarConfig, siteTitle, cardInfo } from '@/constants/uiConfig';
+import { siteTitle } from '@/constants/uiConfig';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -25,10 +24,5 @@ export default function HomeLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	return (
-		<div className="relative">
-			<Navbar config={navbarConfig} />
-			{children}
-		</div>
-	);
+	return <div className="relative">{children}</div>;
 }
