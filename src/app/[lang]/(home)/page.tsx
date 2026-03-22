@@ -1,30 +1,30 @@
-import { GradientBackground } from '@/components/custom';
-import { HomeBlock, AboutMe, RecentWorks } from '@/containers/landing-page';
-import { Footer } from '@/containers/layouts';
-import { cardInfo } from '@/constants/uiConfig';
+import HeroSection from '@/containers/landing-page/HeroSection';
+import AboutSection from '@/containers/landing-page/AboutSection';
+import TechStackMarquee from '@/containers/landing-page/TechStackMarquee';
+import ProjectsSection from '@/containers/landing-page/ProjectsSection';
+import ContactCTA from '@/containers/landing-page/ContactCTA';
+import Navbar from '@/containers/layouts/Navbar';
+import Footer from '@/containers/layouts/Footer';
+import { CldImage } from '@/components/custom';
 
 export default function HomePage() {
-	// Preload the first portfolio image for better LCP
-	const firstCardImage = cardInfo[0]?.imgSrc?.src;
-
 	return (
 		<>
-			{firstCardImage && (
-				<link
-					rel="preload"
-					as="image"
-					href={firstCardImage}
-					// @ts-ignore - fetchpriority is valid but not in types yet
-					fetchpriority="high"
-				/>
-			)}
-			<div className="flex justify-start flex-col items-center bg-gradient-container pt-[64px]">
-				<div className="relative flex flex-col z-10 justify-evenly w-full max-w-6xl p-4 pb-[2.5rem]">
-					<GradientBackground />
-					<HomeBlock />
-					<AboutMe />
-					<RecentWorks />
-				</div>
+			{/* <link
+				rel="preload"
+				as="image"
+				href="https://images.unsplash.com/photo-1571128973497-2066dda438bc?w=1080&q=80"
+				fetchPriority="high"
+			/> */}
+			<div className="min-h-screen bg-white">
+				<Navbar />
+				<main>
+					<HeroSection />
+					<AboutSection />
+					<TechStackMarquee />
+					<ProjectsSection />
+					<ContactCTA />
+				</main>
 				<Footer />
 			</div>
 		</>
