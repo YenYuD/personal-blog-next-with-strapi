@@ -221,31 +221,33 @@ export const landingPageContent = {
 	},
 	'zh-TW': {
 		hero: {
-			subtitle: '軟體開發者',
-			title: ['不只是工程師', '更是問題解決者'],
-			description: '嗨，我是 YenYu，目前在台北工作。我喜歡打造解決真實問題的產品。',
-			cta: '查看作品',
+			subtitle: 'SOFTWARE DEVELOPER',
+			title: ['Not just a coder', 'but a problem solver'],
+			description:
+				"Hi, I'm YenYu. Currently based in Taipei, Taiwan. I'm a developer who enjoys building works that solve real-world problems.",
+			cta: 'View my work',
 		},
 		about: {
-			subtitle: '關於我',
-			title: ['對更流暢工作流程', '的熱情'],
+			subtitle: 'ABOUT ME',
+			title: ['A quiet passion', 'for smoother workflows.'],
 			description: {
 				desktop:
-					'我是一名擁有 2.5 年以上 React、Next.js 和 TypeScript 開發經驗的軟體工程師。熱衷於打造流暢使用者體驗的 Web 應用程式、AI 工作流程整合，並持續探索新技術。',
+					"I'm a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I'm passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.",
 				tablet:
-					'我是一名擁有 2.5 年以上 React、Next.js 和 TypeScript 開發經驗的軟體工程師。熱衷於打造流暢使用者體驗的 Web 應用程式、AI 工作流程整合，並持續探索新技術。',
+					"I'm a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I'm passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.",
 				mobile:
-					'我是一名擁有 2.5 年以上 React、Next.js 和 TypeScript 開發經驗的軟體工程師。熱衷於打造流暢使用者體驗的 Web 應用程式、AI 工作流程整合，並持續探索新技術。',
+					"I'm a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I'm passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.",
 			},
-			cta: '我的部落格 →',
+			cta: 'My Blog →',
 		},
 		projects: {
-			subtitle: '精選作品',
+			subtitle: 'SELECTED PROJECTS',
 			items: [
 				{
 					number: '01',
 					title: 'PERSONAL WEBSITE',
-					description: '個人網站與部落格，運用 Pencil MCP、Next.js App Router 與 shadcn UI。',
+					description:
+						'Personal website with personal blog. Utilized Pencil MCP, Next.js App Router, and shadcn UI library.',
 					tags: [
 						'Next.js',
 						'TypeScript',
@@ -260,49 +262,54 @@ export const landingPageContent = {
 				{
 					number: '02',
 					title: 'AI NOTE GENERATOR',
-					description: 'AI 筆記生成器，支援從文字輸入生成 Markdown/PDF 格式筆記。',
+					description:
+						'AI Note Generator is a web application that uses AI to generate notes from text. Markdown/PDF are supported.',
 					tags: ['React', 'Vite', 'Node.js', 'Express.js', 'Gemini API', 'GitHub Action'],
 					year: '2025',
 				},
 				{
 					number: '03',
 					title: 'Personal Blog',
-					description: '整合 react-markdown 的個人部落格，支援雙語切換。',
+					description: 'Personal blog with react-markdown integration. Bilingual support.',
 					tags: ['Next.js', 'TypeScript', 'TailwindCSS', 'Strapi', 'Vitest'],
 					year: '2024',
 				},
 				{
 					number: '04',
 					title: 'KEYPO SUITE',
-					description: '整合三項產品功能的客戶端帳號管理平台。',
+					description:
+						'A client-facing portal that integrates three distinct products for comprehensive account management.',
 					tags: ['Next.js', 'TypeScript', 'React-hook-form', 'MUI', 'React-Query'],
 					year: '2024',
 				},
 				{
 					number: '05',
 					title: 'IF BLACK BEARS DISAPPEARED',
-					description: '致力於台灣黑熊保育議題的靜態網站。',
+					description: 'A Static Website Dedicated to the Conservation of the Formosan Black Bear.',
 					tags: ['Next.js', 'GSAP', 'Scroll Trigger', 'TailwindCSS'],
 					year: '2023',
 				},
 				{
 					number: '06',
 					title: 'IF BOOKSTORES DISAPPEARED',
-					description: '收錄實體書店與紙本書籍分析報告的靜態網站。',
+					description:
+						'A Static Website Comprising Analytical Reports on Physical Bookstores and Printed Books.',
 					tags: ['Next.js', 'GSAP', 'Scroll Trigger', 'AOS'],
 					year: '2023',
 				},
 			],
 		},
 		contact: {
-			subtitle: '歡迎合作',
-			title: ['聯絡我！'],
+			subtitle: 'AVAILABLE FOR WORK',
+			title: ["Let's Connect!"],
 			description: {
-				desktop: '歡迎自由接案、全職機會，\n或各種創意合作。',
-				tablet: '歡迎自由接案、全職機會，或各種創意合作。',
-				mobile: '歡迎自由接案或創意合作。',
+				desktop:
+					'Open to freelance projects, full-time roles,\nand creative collaborations all around the world.',
+				tablet:
+					'Open to freelance projects, full-time roles, and creative collaborations all around the world.',
+				mobile: 'Open to freelance projects and creative collaborations all around the world.',
 			},
-			cta: '立即聯絡',
+			cta: 'Get in touch',
 		},
 	},
 };
