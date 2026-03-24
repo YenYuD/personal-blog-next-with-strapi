@@ -124,6 +124,9 @@ const config = {
 			fontFamily: {
 				merri: ['var(--font-merriweather)'],
 				saira: ['var(--font-saira)'],
+				jaro: ['Jaro', 'sans-serif'],
+				staatliches: ['var(--font-staatliches)', 'sans-serif'],
+				geist: ['var(--font-geist-sans)', 'sans-serif'],
 			},
 			dropShadow: {
 				lg: '0 1px 6px rgba(255, 255, 255, 0.5)',

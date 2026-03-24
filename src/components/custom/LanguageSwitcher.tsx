@@ -1,6 +1,5 @@
 'use client';
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -9,12 +8,10 @@ import {
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { usePathname, useRouter } from 'next/navigation';
-import { cn } from '@/lib/utils';
 
 export default function LanguageSwitcher() {
 	const lang = usePathname().split('/')[1] ?? 'en-US';
 	const path = usePathname().split('/').slice(2).join('/');
-	const isBlogPage = path.includes('blog');
 	const [currentLang, setCurrentLang] = useState<string>(lang ?? 'en-US');
 	const router = useRouter();
 
@@ -45,23 +42,22 @@ export default function LanguageSwitcher() {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<Button
-					className="min-w-[90px] max-w-32 font-medium focus-visible:ring-0 bg-transparent border-foreground focus-visible:ring-offset-0 hover:bg-transparent hover:text-foreground"
-					variant="outline"
+				<button
+					className={`relative text-[#7c7c7c] tracking-[-0.0225rem] lg:tracking-[0.01rem] leading-[1.39] group transition-colors hover:text-[#0f0f0f] focus:outline-none ${currentLang === 'zh-TW' ? 'font-saira text-base lg:text-[1rem]' : 'font-jaro text-lg lg:text-[1.375rem]'}`}
+					type="button"
 				>
 					{displayedText}
-				</Button>
+					<span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#0f0f0f] transition-all duration-300 group-hover:w-full" />
+				</button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent
-				className={cn('w-auto ', {
-					'bg-background': isBlogPage,
-					'md:bg-transparent bg-background': !isBlogPage,
-				})}
+				className="bg-white/95 backdrop-blur-sm border border-gray-200 shadow-lg min-w-[140px]"
+				align="end"
 			>
 				<DropdownMenuRadioGroup value={currentLang} onValueChange={setCurrentLang}>
 					{languages.map(({ attributes: { value, label } }) => (
 						<DropdownMenuRadioItem
-							className="text-foreground"
+							className={`text-[#7c7c7c] hover:text-[#0f0f0f] hover:bg-gray-50 focus:text-[#0f0f0f] focus:bg-gray-50 cursor-pointer tracking-[-0.01rem] ${value === 'zh-TW' ? 'font-saira text-sm' : 'font-jaro text-base'}`}
 							key={value}
 							value={value}
 							onClick={() => handleChange(value)}
