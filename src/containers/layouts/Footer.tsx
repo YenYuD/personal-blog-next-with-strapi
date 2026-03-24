@@ -1,10 +1,58 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import CheckerboardPattern from '@/components/custom/CheckerboardPattern';
 
 export default function Footer() {
+	const pathname = usePathname();
+	const lang = pathname.split('/')[1] || 'en-US';
+
+	const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+		// Only handle hash links
+		if (!href.startsWith('#')) return;
+
+		e.preventDefault();
+		const targetId = href.substring(1);
+		const targetElement = document.getElementById(targetId);
+
+		if (targetElement) {
+			targetElement.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start',
+			});
+
+			// Update URL hash without jumping
+			window.history.pushState(null, '', href);
+		}
+	};
+
 	const footerLinks = [
-		{ id: 1, title: 'Navigation', links: ['Home', 'About', 'Projects', 'Blog'] },
-		{ id: 2, title: 'Connect', links: ['GitHub', 'LinkedIn', 'Twitter', 'Email'] },
+		{
+			id: 1,
+			title: 'Navigation',
+			links: [
+				{ label: 'Home', href: '#home' },
+				{ label: 'About', href: '#about' },
+				{ label: 'Projects', href: '#projects' },
+				{ label: 'Blog', href: `/${lang}/blog/all` },
+			],
+		},
+		{
+			id: 2,
+			title: 'Connect',
+			links: [
+				{ label: 'GitHub', href: process.env.NEXT_PUBLIC_GIT_HUB_LINK || 'https://github.com' },
+				{
+					label: 'LinkedIn',
+					href: process.env.NEXT_PUBLIC_LINKEDIN_LINK || 'https://linkedin.com',
+				},
+				{
+					label: 'Email',
+					href: `mailto:${process.env.NEXT_PUBLIC_EMAIL || 'contact@example.com'}`,
+				},
+			],
+		},
 	];
 
 	const THIS_YEAR = new Date().getFullYear();
@@ -23,13 +71,25 @@ export default function Footer() {
 						</h4>
 						<ul className="flex flex-col gap-1.5 md:gap-1.5 lg:gap-2">
 							{section.links.map((link) => (
-								<li key={link}>
-									<Link
-										href={`#${link.toLowerCase()}`}
-										className="text-[#7c7c7c] text-[0.6875rem] md:text-xs lg:text-sm hover:text-[#0f0f0f] transition-colors font-geist md:font-geist lg:font-jaro"
-									>
-										{link}
-									</Link>
+								<li key={link.label}>
+									{section.title === 'Connect' ? (
+										<a
+											href={link.href}
+											target="_blank"
+											rel="noopener noreferrer"
+											className="text-[#7c7c7c] text-[0.6875rem] md:text-xs lg:text-sm hover:text-[#0f0f0f] transition-colors font-jaro"
+										>
+											{link.label}
+										</a>
+									) : (
+										<Link
+											href={link.href}
+											onClick={(e) => handleSmoothScroll(e, link.href)}
+											className="text-[#7c7c7c] text-[0.6875rem] md:text-xs lg:text-sm hover:text-[#0f0f0f] transition-colors font-jaro"
+										>
+											{link.label}
+										</Link>
+									)}
 								</li>
 							))}
 						</ul>

@@ -12,11 +12,16 @@ export default function TechStackMarquee() {
 		{ id: 6, text: '·', isDivider: true },
 		{ id: 7, text: 'Tailwind', isDivider: false },
 		{ id: 8, text: '·', isDivider: true },
-		{ id: 9, text: 'Figma', isDivider: false },
+		{ id: 9, text: 'Node.js', isDivider: false },
 		{ id: 10, text: '·', isDivider: true },
-		{ id: 11, text: 'Node.js', isDivider: false },
+		{ id: 11, text: 'Express.js', isDivider: false },
 		{ id: 12, text: '·', isDivider: true },
-		{ id: 13, text: 'Storybook', isDivider: false },
+		{ id: 13, text: 'PostgreSQL', isDivider: false },
+		{ id: 14, text: '·', isDivider: true },
+		{ id: 15, text: 'Claude Code', isDivider: false },
+		{ id: 16, text: '·', isDivider: true },
+		{ id: 17, text: 'GitHub Action', isDivider: false },
+		{ id: 18, text: '·', isDivider: true },
 	];
 
 	return (

@@ -1,46 +1,78 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
+import { landingPageContent } from '@/constants/uiConfig';
+import type { Language } from '@/service/type';
 
-export default function ProjectsSection() {
+interface ProjectsSectionProps {
+	lang: Language;
+}
+
+export default function ProjectsSection({ lang }: ProjectsSectionProps) {
 	const [hoveredId, setHoveredId] = useState<number | null>(null);
+	const content = landingPageContent[lang].projects;
 
-	const projects = [
+	const projectImages = [
 		{
-			id: 1,
-			number: '01',
-			title: 'PERSONAL BLOG',
-			description: 'Full-stack Next.js portfolio',
-			tags: ['Next.js', 'Strapi', 'TypeScript'],
+			imgSrc:
+				'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774312061/personal-website_v7pteo.png',
+			link: 'https://dev.emilydiao.blog',
+			repo: 'https://github.com/YenYuD/personal-blog-next-with-strapi',
 		},
 		{
-			id: 2,
-			number: '02',
-			title: 'E-COMMERCE PLATFORM',
-			description: 'Scalable shopping experience',
-			tags: ['React', 'Node.js', 'PostgreSQL'],
+			imgSrc:
+				'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309788/ai_note_generator_x7l6rm.png',
+			link: 'https://ai-note-generator-ten.vercel.app',
+			repo: 'https://github.com/YenYuD/ai-note-generator',
 		},
 		{
-			id: 3,
-			number: '03',
-			title: 'DESIGN SYSTEM',
-			description: 'Component library for teams',
-			tags: ['Storybook', 'TailwindCSS', 'Figma'],
+			imgSrc:
+				'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309885/blog_d3dgwe.png',
+			link: 'https://dev.emilydiao.blog/en-US/blog/all',
+			repo: 'https://github.com/YenYuD/personal-blog-next-with-strapi',
+		},
+		{
+			imgSrc:
+				'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309746/Keypo_suite_tvvcbn.jpg',
+			link: 'https://suite-info.keypo.ai/en',
+			repo: '',
+		},
+		{
+			imgSrc:
+				'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309746/formosa_blackbear_iicdgx.jpg',
+			link: 'https://dailyview.tw/blackbear',
+			repo: '',
+		},
+		{
+			imgSrc:
+				'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309746/bookstore_yky7gq.jpg',
+			link: 'https://dailyview.tw/lostbooks',
+			repo: '',
 		},
 	];
 
+	const projects = content.items.map((item, index) => ({
+		id: index + 1,
+		...item,
+		...projectImages[index],
+	}));
+
 	return (
-		<section className="relative w-full bg-white">
+		<section id="projects" className="relative w-full bg-white">
 			{/* Desktop Layout */}
 			<div className="hidden lg:block px-[1.875rem] py-[3.75rem]">
 				<p className="text-[#7c7c7c] tracking-[4px] text-xs font-bold mb-5 font-geist">
-					— SELECTED PROJECTS
+					— {content.subtitle}
 				</p>
 
 				<div className="divide-y divide-[#e0e0e0]">
 					{projects.map((project) => (
-						<div
+						<a
 							key={project.id}
+							href={project.link}
+							target="_blank"
+							rel="noreferrer"
 							className={`flex items-center justify-between py-7 cursor-pointer px-4 -mx-4 rounded-lg transition-colors duration-200 ${
 								hoveredId === project.id ? 'bg-[#f9f9f9]' : 'bg-white'
 							}`}
@@ -48,19 +80,35 @@ export default function ProjectsSection() {
 							onMouseLeave={() => setHoveredId(null)}
 						>
 							<div className="flex items-center gap-8">
-								<span className="text-[#0f0f0f] text-[32px] tracking-[-0.64px] leading-[1] font-jaro">
-									{project.number}
-								</span>
+								<div className="relative w-[120px] h-[80px] rounded-lg overflow-hidden flex-shrink-0">
+									<Image
+										src={project.imgSrc}
+										alt={project.title}
+										fill
+										className="object-cover"
+										sizes="120px"
+										quality={85}
+										loading="lazy"
+									/>
+								</div>
 								<div>
-									<h3 className="text-[#0f0f0f] text-[28px] tracking-[-0.56px] leading-[1] mb-1 font-jaro">
-										{project.title}
-									</h3>
-									<p className="text-[#7c7c7c] text-sm font-geist">{project.description}</p>
+									<div className="flex items-center gap-3 mb-1">
+										<span className="text-[#0f0f0f] text-[20px] tracking-[-0.4px] leading-[1] font-jaro">
+											{project.number}
+										</span>
+										<h3 className="text-[#0f0f0f] text-[28px] tracking-[-0.56px] leading-[1] font-jaro">
+											{project.title}
+										</h3>
+										<span className="text-[#7c7c7c] text-xs font-geist">({project.year})</span>
+									</div>
+									<p className="text-[#7c7c7c] text-sm font-geist max-w-[600px]">
+										{project.description}
+									</p>
 								</div>
 							</div>
 							<div className="flex items-center gap-6">
-								<div className="flex gap-2">
-									{project.tags.map((tag) => (
+								<div className="flex gap-2 flex-wrap max-w-[300px]">
+									{project.tags.slice(0, 6).map((tag) => (
 										<span
 											key={tag}
 											className="px-3 py-1 bg-[#f5f0eb] text-[#2c2825] text-xs rounded-full font-geist"
@@ -71,7 +119,7 @@ export default function ProjectsSection() {
 								</div>
 								<span className="text-[#0f0f0f] text-2xl font-jaro">→</span>
 							</div>
-						</div>
+						</a>
 					))}
 				</div>
 			</div>
@@ -79,34 +127,58 @@ export default function ProjectsSection() {
 			{/* Tablet & Mobile Layout */}
 			<div className="lg:hidden px-5 md:px-6 py-8 md:py-10">
 				<p className="text-[#7c7c7c] tracking-[3px] md:tracking-[4px] text-[10px] md:text-[11px] font-bold mb-4 font-geist">
-					— SELECTED PROJECTS
+					— {content.subtitle}
 				</p>
 
 				<div className="divide-y divide-[#e0e0e0]">
 					{projects.map((project) => (
-						<div
+						<a
 							key={project.id}
-							className={`flex items-center justify-between py-[1.125rem] md:py-5 cursor-pointer px-3 -mx-3 rounded-lg transition-colors duration-200 ${
+							href={project.link}
+							target="_blank"
+							rel="noreferrer"
+							className={`flex gap-3 py-[1.125rem] md:py-5 cursor-pointer px-3 -mx-3 rounded-lg transition-colors duration-200 ${
 								hoveredId === project.id ? 'bg-[#f9f9f9]' : 'bg-white'
 							}`}
 							onMouseEnter={() => setHoveredId(project.id)}
 							onMouseLeave={() => setHoveredId(null)}
 						>
+							<div className="relative w-[80px] md:w-[100px] h-[60px] md:h-[70px] rounded-lg overflow-hidden flex-shrink-0">
+								<Image
+									src={project.imgSrc}
+									alt={project.title}
+									fill
+									className="object-cover"
+									sizes="(max-width: 768px) 80px, 100px"
+									quality={85}
+									loading="lazy"
+								/>
+							</div>
 							<div className="flex-1">
 								<div className="flex items-baseline gap-2 mb-1">
-									<span className="text-[#0f0f0f] text-lg md:text-xl tracking-[-0.36px] md:tracking-[-0.4px] font-jaro">
+									<span className="text-[#0f0f0f] text-sm md:text-base tracking-[-0.28px] md:tracking-[-0.32px] font-jaro">
 										{project.number}
 									</span>
-									<h3 className="text-[#0f0f0f] text-lg md:text-xl tracking-[-0.36px] md:tracking-[-0.4px] font-jaro">
+									<h3 className="text-[#0f0f0f] text-sm md:text-lg tracking-[-0.28px] md:tracking-[-0.36px] font-jaro">
 										{project.title}
 									</h3>
 								</div>
-								<p className="text-[#7c7c7c] text-xs md:text-sm font-geist">
+								<p className="text-[#7c7c7c] text-xs md:text-sm font-geist mb-2">
 									{project.description}
 								</p>
+								<div className="flex gap-1.5 flex-wrap">
+									{project.tags.slice(0, 3).map((tag) => (
+										<span
+											key={tag}
+											className="px-2 py-0.5 bg-[#f5f0eb] text-[#2c2825] text-[10px] md:text-xs rounded-full font-geist"
+										>
+											{tag}
+										</span>
+									))}
+								</div>
 							</div>
-							<span className="text-[#0f0f0f] text-xl md:text-2xl ml-4 font-jaro">→</span>
-						</div>
+							<span className="text-[#0f0f0f] text-lg md:text-xl font-jaro self-center">→</span>
+						</a>
 					))}
 				</div>
 			</div>

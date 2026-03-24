@@ -1,30 +1,52 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { landingPageContent } from '@/constants/uiConfig';
+import type { Language } from '@/service/type';
 
-export default function ContactCTA() {
+interface ContactCTAProps {
+	lang: Language;
+}
+
+export default function ContactCTA({ lang }: ContactCTAProps) {
+	const content = landingPageContent[lang].contact;
 	return (
-		<section className="relative w-full bg-[#2c2825]">
+		<section id="contact" className="relative w-full bg-[#2c2825]">
 			{/* Desktop Layout - Horizontal */}
 			<div className="hidden lg:flex lg:flex-row h-[35rem]">
 				{/* CTA Text - Left Side */}
 				<div className="flex flex-col justify-center gap-7 px-[3.75rem] flex-1">
 					<p className="text-[#7c7c7c] tracking-[4px] text-xs font-bold font-geist">
-						— AVAILABLE FOR WORK
+						— {content.subtitle}
 					</p>
 					<h2 className="text-[88px] leading-[0.88] tracking-[0.88px] text-white font-staatliches">
-						Let's build
-						<br />
-						something
-						<br />
-						beautiful.
+						{/* biome-ignore lint/suspicious/noArrayIndexKey: Static content array, order never changes */}
+						{content.title.map((line, index) => (
+							<span key={`${line}-${index}`}>
+								{line}
+								{index < content.title.length - 1 && <br />}
+							</span>
+						))}
 					</h2>
 					<p className="text-[#7c7c7c] text-[15px] leading-[1.6] tracking-[-0.15px] max-w-[420px] font-geist">
-						Open to freelance projects, full-time roles,
-						<br />
-						and creative collaborations in Taipei.
+						{/* biome-ignore lint/suspicious/noArrayIndexKey: Static content array, order never changes */}
+						{content.description.desktop.split('\n').map((line, index) => (
+							<span key={`${line}-${index}`}>
+								{line}
+								{index === 0 && <br />}
+							</span>
+						))}
 					</p>
-					<Button className="rounded-full bg-white text-[#2c2825] px-9 py-3.5 text-sm font-medium hover:bg-gray-100 transition-colors w-fit font-geist">
-						Get in touch
+					<Button
+						asChild
+						className="rounded-full bg-white text-[#2c2825] px-9 py-3.5 text-sm font-medium hover:bg-gray-100 transition-colors w-fit font-geist"
+					>
+						<a
+							href={process.env.NEXT_PUBLIC_LINKEDIN_LINK || 'https://linkedin.com'}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{content.cta}
+						</a>
 					</Button>
 				</div>
 
@@ -58,20 +80,31 @@ export default function ContactCTA() {
 				{/* CTA Text - Bottom */}
 				<div className="flex flex-col gap-5 px-6 py-10">
 					<p className="text-[#7c7c7c] tracking-[4px] text-[11px] font-bold font-geist">
-						— AVAILABLE FOR WORK
+						— {content.subtitle}
 					</p>
 					<h2 className="text-[62px] leading-[0.88] tracking-[0.62px] text-white font-staatliches">
-						Let's build
-						<br />
-						something
-						<br />
-						beautiful.
+						{/* biome-ignore lint/suspicious/noArrayIndexKey: Static content array, order never changes */}
+						{content.title.map((line, index) => (
+							<span key={`${line}-${index}`}>
+								{line}
+								{index < content.title.length - 1 && <br />}
+							</span>
+						))}
 					</h2>
 					<p className="text-[#7c7c7c] text-sm leading-[1.6] tracking-[-0.14px] font-geist">
-						Open to freelance projects, full-time roles, and creative collaborations.
+						{content.description.tablet}
 					</p>
-					<Button className="rounded-full bg-white text-[#2c2825] px-8 py-3 text-sm font-medium hover:bg-gray-100 transition-colors w-fit font-geist">
-						Get in touch
+					<Button
+						asChild
+						className="rounded-full bg-white text-[#2c2825] px-8 py-3 text-sm font-medium hover:bg-gray-100 transition-colors w-fit font-geist"
+					>
+						<a
+							href={process.env.NEXT_PUBLIC_LINKEDIN_LINK || 'https://linkedin.com'}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{content.cta}
+						</a>
 					</Button>
 				</div>
 			</div>
@@ -93,20 +126,31 @@ export default function ContactCTA() {
 				{/* CTA Text - Bottom */}
 				<div className="flex flex-col gap-4 px-5 py-8">
 					<p className="text-[#7c7c7c] tracking-[3px] text-[10px] font-bold font-geist">
-						— AVAILABLE FOR WORK
+						— {content.subtitle}
 					</p>
 					<h2 className="text-[50px] leading-[0.88] tracking-[0.5px] text-white font-staatliches">
-						Let's build
-						<br />
-						something
-						<br />
-						beautiful.
+						{/* biome-ignore lint/suspicious/noArrayIndexKey: Static content array, order never changes */}
+						{content.title.map((line, index) => (
+							<span key={`${line}-${index}`}>
+								{line}
+								{index < content.title.length - 1 && <br />}
+							</span>
+						))}
 					</h2>
 					<p className="text-[#7c7c7c] text-[13px] leading-[1.6] tracking-[-0.13px] font-geist">
-						Open to freelance projects and creative collaborations.
+						{content.description.mobile}
 					</p>
-					<Button className="rounded-full bg-white text-[#2c2825] px-6 py-2.5 text-sm font-medium hover:bg-gray-100 transition-colors w-fit font-geist">
-						Get in touch
+					<Button
+						asChild
+						className="rounded-full bg-white text-[#2c2825] px-6 py-2.5 text-sm font-medium hover:bg-gray-100 transition-colors w-fit font-geist"
+					>
+						<a
+							href={process.env.NEXT_PUBLIC_LINKEDIN_LINK || 'https://linkedin.com'}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{content.cta}
+						</a>
 					</Button>
 				</div>
 			</div>
