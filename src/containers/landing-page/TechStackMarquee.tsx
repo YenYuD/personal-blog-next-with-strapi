@@ -12,11 +12,16 @@ export default function TechStackMarquee() {
 		{ id: 6, text: '·', isDivider: true },
 		{ id: 7, text: 'Tailwind', isDivider: false },
 		{ id: 8, text: '·', isDivider: true },
-		{ id: 9, text: 'Figma', isDivider: false },
+		{ id: 9, text: 'Node.js', isDivider: false },
 		{ id: 10, text: '·', isDivider: true },
-		{ id: 11, text: 'Node.js', isDivider: false },
+		{ id: 11, text: 'Express.js', isDivider: false },
 		{ id: 12, text: '·', isDivider: true },
-		{ id: 13, text: 'Storybook', isDivider: false },
+		{ id: 13, text: 'PostgreSQL', isDivider: false },
+		{ id: 14, text: '·', isDivider: true },
+		{ id: 15, text: 'Claude Code', isDivider: false },
+		{ id: 16, text: '·', isDivider: true },
+		{ id: 17, text: 'GitHub Action', isDivider: false },
+		{ id: 18, text: '·', isDivider: true },
 	];
 
 	return (
@@ -27,9 +32,8 @@ export default function TechStackMarquee() {
 					{techStack.map((item) => (
 						<span
 							key={item.id}
-							className={`font-staatliches text-2xl tracking-[1.2px] leading-[1.3] whitespace-nowrap mx-5 ${
-								item.isDivider ? 'text-[#7c7c7c]' : 'text-[#2c2825]'
-							}`}
+							className={`font-staatliches text-2xl tracking-[1.2px] leading-[1.3] whitespace-nowrap mx-5 ${item.isDivider ? 'text-[#7c7c7c]' : 'text-[#2c2825]'
+								}`}
 						>
 							{item.text}
 						</span>
@@ -43,9 +47,8 @@ export default function TechStackMarquee() {
 					{techStack.slice(0, 9).map((item) => (
 						<span
 							key={item.id}
-							className={`font-staatliches text-xl tracking-[1px] leading-[1.3] whitespace-nowrap mx-3 ${
-								item.isDivider ? 'text-[#7c7c7c]' : 'text-[#2c2825]'
-							}`}
+							className={`font-staatliches text-xl tracking-[1px] leading-[1.3] whitespace-nowrap mx-3 ${item.isDivider ? 'text-[#7c7c7c]' : 'text-[#2c2825]'
+								}`}
 						>
 							{item.text}
 						</span>

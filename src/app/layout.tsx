@@ -1,4 +1,4 @@
-import { Saira, Staatliches } from 'next/font/google';
+import { Saira, Staatliches, Noto_Serif_TC } from 'next/font/google';
 import { GeistSans } from 'geist/font/sans';
 import { GoogleTagManager } from '@next/third-parties/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -18,6 +18,13 @@ const staatliches = Staatliches({
 	subsets: ['latin'],
 	display: 'swap',
 	variable: '--font-staatliches',
+});
+
+const notoSerifTC = Noto_Serif_TC({
+	weight: ['600'],
+	subsets: ['latin'],
+	display: 'swap',
+	variable: '--font-noto-serif-tc',
 });
 
 export default function RootLayout({
@@ -45,7 +52,7 @@ export default function RootLayout({
 				`}
 			</Script>
 			<body
-				className={`${saira.variable} ${staatliches.variable} ${GeistSans.variable} font-saira relative min-h-[100svh]`}
+				className={`${saira.variable} ${staatliches.variable} ${GeistSans.variable} ${notoSerifTC.variable} font-saira relative min-h-[100svh]`}
 			>
 				{children}
 				<SpeedInsights />

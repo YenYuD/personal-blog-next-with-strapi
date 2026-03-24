@@ -2,70 +2,38 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import PortfolioImg from '@/assets/portfolio.png';
-import KeypoSuiteImg from '@/assets/Keypo_suite.jpeg';
-import FormosaBlackBearImg from '@/assets/formosa_blackbear.jpeg';
-import BookStoreImg from '@/assets/bookstore.jpeg';
+import { landingPageContent } from '@/constants/uiConfig';
+import type { Language } from '@/service/type';
 
-export default function ProjectsSection() {
+interface ProjectsSectionProps {
+	lang: Language;
+}
+
+export default function ProjectsSection({ lang }: ProjectsSectionProps) {
 	const [hoveredId, setHoveredId] = useState<number | null>(null);
+	const content = landingPageContent[lang].projects;
 
-	const projects = [
-		{
-			id: 1,
-			number: '01',
-			title: 'FRONTEND PORTFOLIO',
-			description:
-				'Frontend portfolio with personal blog. Integrate with Strapi CMS, ReactMarkdown and shadcn UI library.',
-			tags: ['Next.js', 'TypeScript', 'TailwindCSS', 'Strapi', 'Vitest'],
-			year: '2024',
-			imgSrc: PortfolioImg,
-			link: process.env.NEXT_PUBLIC_WEBSITE_LINK,
-			repo: 'https://github.com/YenYuD/personal-blog-next-with-strapi',
-		},
-		{
-			id: 2,
-			number: '02',
-			title: 'KEYPO SUITE',
-			description:
-				'A client-facing portal that integrates three distinct products for comprehensive account management.',
-			tags: ['Next.js', 'TypeScript', 'React-hook-form', 'MUI', 'React-Query'],
-			year: '2024',
-			imgSrc: KeypoSuiteImg,
-			link: 'https://suite-info.keypo.ai/en',
-			repo: '',
-		},
-		{
-			id: 3,
-			number: '03',
-			title: 'IF BLACK BEARS DISAPPEARED',
-			description: 'A Static Website Dedicated to the Conservation of the Formosan Black Bear.',
-			tags: ['Next.js', 'GSAP', 'Scroll Trigger', 'TailwindCSS'],
-			year: '2023',
-			imgSrc: FormosaBlackBearImg,
-			link: 'https://dailyview.tw/blackbear',
-			repo: '',
-		},
-		{
-			id: 4,
-			number: '04',
-			title: 'IF BOOKSTORES DISAPPEARED',
-			description:
-				'A Static Website Comprising Analytical Reports on Physical Bookstores and Printed Books.',
-			tags: ['Next.js', 'GSAP', 'Scroll Trigger', 'AOS'],
-			year: '2023',
-			imgSrc: BookStoreImg,
-			link: 'https://dailyview.tw/lostbooks',
-			repo: '',
-		},
+	const projectImages = [
+		{ imgSrc: 'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774312061/personal-website_v7pteo.png', link: 'https://dev.emilydiao.blog', repo: 'https://github.com/YenYuD/personal-blog-next-with-strapi' },
+		{ imgSrc: 'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309788/ai_note_generator_x7l6rm.png', link: 'https://ai-note-generator-ten.vercel.app', repo: 'https://github.com/YenYuD/ai-note-generator' },
+		{ imgSrc: 'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309885/blog_d3dgwe.png', link: 'https://dev.emilydiao.blog/en-US/blog/all', repo: 'https://github.com/YenYuD/personal-blog-next-with-strapi' },
+		{ imgSrc: 'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309746/Keypo_suite_tvvcbn.jpg', link: 'https://suite-info.keypo.ai/en', repo: '' },
+		{ imgSrc: 'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309746/formosa_blackbear_iicdgx.jpg', link: 'https://dailyview.tw/blackbear', repo: '' },
+		{ imgSrc: 'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309746/bookstore_yky7gq.jpg', link: 'https://dailyview.tw/lostbooks', repo: '' },
 	];
 
+	const projects = content.items.map((item, index) => ({
+		id: index + 1,
+		...item,
+		...projectImages[index],
+	}));
+
 	return (
-		<section className="relative w-full bg-white">
+		<section id="projects" className="relative w-full bg-white">
 			{/* Desktop Layout */}
 			<div className="hidden lg:block px-[1.875rem] py-[3.75rem]">
 				<p className="text-[#7c7c7c] tracking-[4px] text-xs font-bold mb-5 font-geist">
-					— SELECTED PROJECTS
+					— {content.subtitle}
 				</p>
 
 				<div className="divide-y divide-[#e0e0e0]">
@@ -75,9 +43,8 @@ export default function ProjectsSection() {
 							href={project.link}
 							target="_blank"
 							rel="noreferrer"
-							className={`flex items-center justify-between py-7 cursor-pointer px-4 -mx-4 rounded-lg transition-colors duration-200 ${
-								hoveredId === project.id ? 'bg-[#f9f9f9]' : 'bg-white'
-							}`}
+							className={`flex items-center justify-between py-7 cursor-pointer px-4 -mx-4 rounded-lg transition-colors duration-200 ${hoveredId === project.id ? 'bg-[#f9f9f9]' : 'bg-white'
+								}`}
 							onMouseEnter={() => setHoveredId(project.id)}
 							onMouseLeave={() => setHoveredId(null)}
 						>
@@ -89,6 +56,8 @@ export default function ProjectsSection() {
 										fill
 										className="object-cover"
 										sizes="120px"
+										quality={85}
+										loading="lazy"
 									/>
 								</div>
 								<div>
@@ -108,7 +77,7 @@ export default function ProjectsSection() {
 							</div>
 							<div className="flex items-center gap-6">
 								<div className="flex gap-2 flex-wrap max-w-[300px]">
-									{project.tags.slice(0, 4).map((tag) => (
+									{project.tags.slice(0, 6).map((tag) => (
 										<span
 											key={tag}
 											className="px-3 py-1 bg-[#f5f0eb] text-[#2c2825] text-xs rounded-full font-geist"
@@ -127,7 +96,7 @@ export default function ProjectsSection() {
 			{/* Tablet & Mobile Layout */}
 			<div className="lg:hidden px-5 md:px-6 py-8 md:py-10">
 				<p className="text-[#7c7c7c] tracking-[3px] md:tracking-[4px] text-[10px] md:text-[11px] font-bold mb-4 font-geist">
-					— SELECTED PROJECTS
+					— {content.subtitle}
 				</p>
 
 				<div className="divide-y divide-[#e0e0e0]">
@@ -137,9 +106,8 @@ export default function ProjectsSection() {
 							href={project.link}
 							target="_blank"
 							rel="noreferrer"
-							className={`flex gap-3 py-[1.125rem] md:py-5 cursor-pointer px-3 -mx-3 rounded-lg transition-colors duration-200 ${
-								hoveredId === project.id ? 'bg-[#f9f9f9]' : 'bg-white'
-							}`}
+							className={`flex gap-3 py-[1.125rem] md:py-5 cursor-pointer px-3 -mx-3 rounded-lg transition-colors duration-200 ${hoveredId === project.id ? 'bg-[#f9f9f9]' : 'bg-white'
+								}`}
 							onMouseEnter={() => setHoveredId(project.id)}
 							onMouseLeave={() => setHoveredId(null)}
 						>
@@ -150,6 +118,8 @@ export default function ProjectsSection() {
 									fill
 									className="object-cover"
 									sizes="(max-width: 768px) 80px, 100px"
+									quality={85}
+									loading="lazy"
 								/>
 							</div>
 							<div className="flex-1">

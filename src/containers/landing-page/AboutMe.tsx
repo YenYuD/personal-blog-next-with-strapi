@@ -8,7 +8,6 @@ import {
 	TailwindCSS,
 	TypeScript,
 } from '@/components/custom/icons';
-import SelfPortrait from '@/assets/DSC9487.jpg';
 import { AnimatedTitle, MarqueeBar } from '@/components/custom';
 
 export default async function SecondBlock() {
@@ -19,11 +18,11 @@ export default async function SecondBlock() {
 					<AnimatedTitle title="About Me /" />
 					<div className="relative aspect-square mt-[1rem] md:mt-[3rem] max-w-[125px] mx-auto w-full rounded-full overflow-hidden">
 						<Image
-							src={SelfPortrait}
+							src="https://res.cloudinary.com/dyrubjejf/image/upload/v1774212835/DSC9487.jpg"
 							alt="self-protrait"
 							fill
 							className="object-cover"
-							sizes="100vw"
+							sizes="125px"
 						/>
 					</div>
 					<div className="mt-6 flex-1 font-saira lg:text-lg max-w-[85vw] text-center scrollable lg:max-w-6xl break-words mx-auto text-black leading-8 font-[300] max-md:overflow-y-scroll no-scrollbar">
