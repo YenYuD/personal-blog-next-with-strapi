@@ -7,7 +7,7 @@ import { BlogSideBar } from '@/containers/layouts';
 import { Suspense } from 'react';
 import { LoadingSkeleton } from '@/components/custom';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { getAllPosts } from '@/utils/readMarkdown'
+import { getAllPosts } from '@/utils/readMarkdown';
 import Articles from '@/containers/Articles';
 
 export async function generateMetadata({
@@ -18,20 +18,26 @@ export async function generateMetadata({
 	};
 }): Promise<Metadata> {
 	return {
-		title: category
-			? `${siteTitle} | Blog | ${capitalize(category)} `
-			: `${siteTitle} | Blog`,
+		title: category ? `${siteTitle} | Blog | ${capitalize(category)} ` : `${siteTitle} | Blog`,
 	};
 }
 
-export async function generateStaticParams() {
-	const categories = ['all', 'frontend', 'uncategorized']
-	const languages = ['en-US', 'zh-TW']
+// Enable ISR - revalidate every hour
+export const revalidate = 3600;
 
-	return languages.flatMap(language => categories.map(category => ({
-		lang: language,
-		category
-	})))
+// Allow dynamic params for new categories
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+	const categories = ['all', 'frontend', 'uncategorized'];
+	const languages = ['en-US', 'zh-TW'];
+
+	return languages.flatMap((language) =>
+		categories.map((category) => ({
+			lang: language,
+			category,
+		})),
+	);
 }
 
 function BlogContent({
@@ -41,8 +47,7 @@ function BlogContent({
 	displayedText: string;
 	articles: ArticleType[];
 }) {
-
-	const text = displayedText === 'all' ? 'All Articles' : capitalize(displayedText)
+	const text = displayedText === 'all' ? 'All Articles' : capitalize(displayedText);
 
 	return (
 		<ScrollArea className="flex-1">
@@ -60,7 +65,7 @@ export default async function BlogPage({
 }: {
 	params: { lang: Language; category: string };
 }) {
-	const posts = await getAllPosts(lang, category)
+	const posts = await getAllPosts(lang, category);
 
 	return (
 		<div className="mx-auto w-full h-full max-w-6xl pt-[5rem] flex flex-col md:flex-row gap-6 lg:gap-12 p-4">

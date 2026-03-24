@@ -1,102 +1,151 @@
+'use client';
+
 import Link from 'next/link';
-import Image from 'next/image';
-import { Menu } from 'lucide-react';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Button } from '@/components/ui/button';
-import { type LinkConfig, navbarConfig, siteTitle } from '@/constants/uiConfig';
-import { LinkItem, LanguageSwitcher } from '@/components/custom';
-import Provider from '@/Provider';
-import { GitHub, LinkedIn } from '@/components/custom/icons';
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import CheckerboardPattern from '@/components/custom/CheckerboardPattern';
+import LanguageSwitcher from '@/components/custom/LanguageSwitcher';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
-type Props = {
-	config: LinkConfig;
-};
+export default function Navbar() {
+	const navLinks = ['About', 'Projects', 'Blog', 'Contact'];
+	const [isScrolled, setIsScrolled] = useState(false);
+	const [isSheetOpen, setIsSheetOpen] = useState(false);
+	const pathname = usePathname();
+	const lang = pathname.split('/')[1] || 'en-US';
+	const isBlogPage = pathname?.includes('/blog');
 
-const iconConfig = [
-	{
-		link: process.env.GIT_HUB_LINK,
-		icon: <GitHub className="h-5 w-5 opacity-90" />,
-	},
-	{
-		link: process.env.LINKEDIN_LINK,
-		icon: <LinkedIn className="h-6 w-6 opacity-90" />,
-	},
-];
+	useEffect(() => {
+		const handleScroll = () => {
+			setIsScrolled(window.scrollY > 10);
+		};
 
-export const NAB_BAR_HEIGHT = 64;
+		window.addEventListener('scroll', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
 
-export default function Navbar({ config }: Props) {
+	const handleSmoothScroll = (
+		e: React.MouseEvent<HTMLAnchorElement>,
+		href: string,
+		closeSheet = false,
+	) => {
+		// Only handle hash links
+		if (!href.startsWith('#')) {
+			// Close sheet for non-hash links (like Blog)
+			if (closeSheet) {
+				setIsSheetOpen(false);
+			}
+			return;
+		}
+
+		e.preventDefault();
+		const targetId = href.substring(1);
+		const targetElement = document.getElementById(targetId);
+
+		if (targetElement) {
+			targetElement.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start',
+			});
+
+			// Update URL hash without jumping
+			window.history.pushState(null, '', href);
+
+			// Close sheet after scrolling
+			if (closeSheet) {
+				setIsSheetOpen(false);
+			}
+		}
+	};
+
 	return (
-		<header className="fixed top-0 flex min-h-16 items-center gap-4 bg-transparent w-full px-4 md:px-6 max-h-16 z-[15]">
-			<div className="mx-auto grid w-full max-w-6xl items-center lg:gap-12 md:grid-cols-[180px_1fr] lg:grid-cols-[150px_1fr]">
-				<Link href="/" className="flex items-center gap-2 text-lg ">
-					<Image src="/favicon.ico" alt="logo" width={36} height={36} />
-					<span className="text-[1.25rem]">{siteTitle}</span>
+		<>
+			{/* Desktop & Tablet Navigation */}
+			<nav
+				className={`hidden md:flex items-center justify-between w-full px-6 lg:px-[1.875rem] py-3.5 lg:py-4 sticky top-0 z-50 transition-all duration-300 ${
+					isScrolled
+						? 'bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-200'
+						: 'bg-white border-b border-transparent'
+				}`}
+			>
+				<Link
+					href={`/${lang}`}
+					className="text-[#0f0f0f] text-[2.125rem] lg:text-[2.625rem] tracking-[-2px] lg:tracking-[0.01rem] leading-[0.84] font-jaro transition-transform hover:scale-105"
+				>
+					YenYu.
 				</Link>
-				<div className="max-w-6xl mx-auto flex flex-1 ml-[10px] items-center w-full justify-between">
-					<nav className="hidden flex-col gap-6 text-lg md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-						{navbarConfig.map((item) => (
-							<LinkItem key={item.href} label={item.label} href={item.href} />
-						))}
-						<Provider>
-							<LanguageSwitcher />
-						</Provider>
-					</nav>
-					<div className="hidden md:flex">
-						{iconConfig.map((item) => (
-							<Button
-								key={item.link}
-								variant="ghost"
-								size="icon"
-								className="hover:bg-transparent hover:text-white"
+				<div className="flex items-center gap-5 lg:gap-8">
+					{navLinks.map((link) => {
+						const href = link === 'Blog' ? `/${lang}/blog/all` : `#${link.toLowerCase()}`;
+						return (
+							<Link
+								key={link}
+								href={href}
+								onClick={(e) => handleSmoothScroll(e, href)}
+								className="relative text-[#7c7c7c] text-lg lg:text-[1.375rem] tracking-[-0.0225rem] lg:tracking-[0.01rem] leading-[1.39] font-jaro group"
 							>
-								<a target="_blank" href={item.link} key={item.link} rel="noreferrer">
-									{item.icon}
-								</a>
-							</Button>
-						))}
-					</div>
+								{link}
+								<span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#0f0f0f] transition-all duration-300 group-hover:w-full" />
+							</Link>
+						);
+					})}
+					{isBlogPage && <LanguageSwitcher />}
 				</div>
-			</div>
-			<Sheet>
-				<SheetTrigger asChild>
-					<Button
-						variant="outline"
-						size="icon"
-						className="shrink-0 md:hidden hover:text-foreground bg-transparent hover:bg-transparent border-none focus-visible:ring-transparent focus-visible:ring-offset-transparent"
-					>
-						<Menu className="h-7 w-7 bg-transparent" />
-					</Button>
-				</SheetTrigger>
-				<SheetContent side="left" className="bg-background/70 border-r-0">
-					<nav className="grid gap-6 text-lg">
-						<Link href="#" className="flex items-center gap-2 text-lg">
-							<Image src="/favicon.ico" alt="logo" width={32} height={32} />
-							<span>{siteTitle}</span>
-						</Link>
-						{config.map((item) => (
-							<LinkItem key={item.label} label={item.label} href={item.href} isSheet />
-						))}
-						<Provider>
-							<LanguageSwitcher />
-						</Provider>
-						<div className="flex">
-							{iconConfig.map((item) => (
-								<Button
-									key={item.link}
-									className="hover:bg-transparent hover:text-white"
-									variant="ghost"
-									size="icon"
+			</nav>
+
+			{/* Mobile Navigation */}
+			<nav className="flex md:hidden items-center justify-between w-full bg-white px-5 py-3.5 sticky top-0 z-50">
+				<Link
+					href={`/${lang}`}
+					className="text-[#0f0f0f] text-[1.75rem] tracking-[-1.5px] leading-[0.84] font-jaro"
+				>
+					YenYu.
+				</Link>
+				<div className="flex items-center gap-3">
+					{isBlogPage ? (
+						<LanguageSwitcher />
+					) : (
+						<Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+							<SheetTrigger asChild>
+								<button
+									type="button"
+									className="flex flex-col gap-[0.3125rem] p-1"
+									aria-label="Menu"
 								>
-									<a target="_blank" href={item.link} key={item.link} rel="noreferrer">
-										{item.icon}
-									</a>
-								</Button>
-							))}
-						</div>
-					</nav>
-				</SheetContent>
-			</Sheet>
-		</header>
+									<span className="w-6 h-0.5 bg-[#0f0f0f]" />
+									<span className="w-[1.125rem] h-0.5 bg-[#0f0f0f]" />
+									<span className="w-6 h-0.5 bg-[#0f0f0f]" />
+								</button>
+							</SheetTrigger>
+							<SheetContent side="right" className="w-[300px] bg-white">
+								<SheetHeader>
+									<SheetTitle className="text-[#0f0f0f] text-2xl font-jaro text-left">
+										Menu
+									</SheetTitle>
+								</SheetHeader>
+								<div className="flex flex-col gap-6 mt-8">
+									{navLinks.map((link) => {
+										const href = link === 'Blog' ? `/${lang}/blog/all` : `#${link.toLowerCase()}`;
+										return (
+											<Link
+												key={link}
+												href={href}
+												onClick={(e) => handleSmoothScroll(e, href, true)}
+												className="text-[#7c7c7c] text-xl hover:text-[#0f0f0f] transition-colors font-jaro border-b border-gray-100 pb-3"
+											>
+												{link}
+											</Link>
+										);
+									})}
+								</div>
+							</SheetContent>
+						</Sheet>
+					)}
+				</div>
+			</nav>
+
+			{/* Checkerboard Pattern Border */}
+			<CheckerboardPattern />
+		</>
 	);
 }

@@ -1,28 +1,55 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 const SCROLL_BUFFER = 0.7;
+const THROTTLE_DELAY = 100; // ms
+
+// Throttle function to limit scroll event frequency
+function throttle<T extends (...args: never[]) => void>(
+	func: T,
+	delay: number,
+): (...args: Parameters<T>) => void {
+	let timeoutId: NodeJS.Timeout | null = null;
+	let lastRan = 0;
+
+	return function (this: unknown, ...args: Parameters<T>) {
+		const now = Date.now();
+
+		if (!lastRan || now - lastRan >= delay) {
+			func.apply(this, args);
+			lastRan = now;
+		} else {
+			if (timeoutId) clearTimeout(timeoutId);
+			timeoutId = setTimeout(() => {
+				func.apply(this, args);
+				lastRan = Date.now();
+			}, delay);
+		}
+	};
+}
 
 export default function GradientBackground() {
 	const [scrollStage, setScrollStage] = useState(0);
 
-	useEffect(() => {
-		const handleScroll = () => {
-			const scrollPosition = window.scrollY;
-			const viewportHeight = window.innerHeight;
+	const handleScroll = useCallback(() => {
+		const scrollPosition = window.scrollY;
+		const viewportHeight = window.innerHeight;
 
-			if (scrollPosition > viewportHeight * SCROLL_BUFFER * 2) {
-				setScrollStage(2);
-			} else if (scrollPosition > viewportHeight * SCROLL_BUFFER) {
-				setScrollStage(1);
-			} else {
-				setScrollStage(0);
-			}
-		};
-
-		window.addEventListener('scroll', handleScroll);
-		return () => window.removeEventListener('scroll', handleScroll);
+		if (scrollPosition > viewportHeight * SCROLL_BUFFER * 2) {
+			setScrollStage(2);
+		} else if (scrollPosition > viewportHeight * SCROLL_BUFFER) {
+			setScrollStage(1);
+		} else {
+			setScrollStage(0);
+		}
 	}, []);
+
+	useEffect(() => {
+		const throttledScroll = throttle(handleScroll, THROTTLE_DELAY);
+
+		window.addEventListener('scroll', throttledScroll, { passive: true });
+		return () => window.removeEventListener('scroll', throttledScroll);
+	}, [handleScroll]);
 
 	const getGradientStyle = (isSecond = false) => {
 		const gradientPairs = [
@@ -42,7 +69,7 @@ export default function GradientBackground() {
 
 	return (
 		<>
-			<section className="bg-gradients max-h-[100svh] transition">
+			<section className="bg-gradients max-h-[100svh] transition" aria-hidden="true">
 				<div className="bg-gradient-1" style={getGradientStyle()} />
 				<div className="bg-gradient-2" style={getGradientStyle(true)} />
 			</section>
