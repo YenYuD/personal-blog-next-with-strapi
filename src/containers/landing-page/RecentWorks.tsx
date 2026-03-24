@@ -85,7 +85,7 @@ export default function RecentWorks() {
 				<div className=" max-lg:flex-1 ">
 					<p className="pt-[1rem] lg:mt-[2rem] text-lg uppercase lg:text-4xl flex items-center drop-shadow-md ">
 						<ChevronsRight className="animate-pulse" /> {`${cardInfo[activeIndex]?.title}`}
-						<span className="font-thin text-sm lg:text-sm text-primary-foreground ml-4">{`${cardInfo[activeIndex]?.year}`}</span>
+						<span className="font-thin text-base lg:text-base text-primary-foreground ml-4">{`${cardInfo[activeIndex]?.year}`}</span>
 					</p>
 					<div className="mt-[1rem] lg:mt-[2rem]">
 						<p className=" text-md  font-light lg:text-lg  text-slate-800">
