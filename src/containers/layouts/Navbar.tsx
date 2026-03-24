@@ -52,20 +52,21 @@ export default function Navbar() {
 					YenYu.
 				</Link>
 				<div className="flex items-center gap-5 lg:gap-8">
-					{navLinks.map((link) => {
-						const href = link === 'Blog' ? `/${lang}/blog/all` : `#${link.toLowerCase()}`;
-						return (
-							<Link
-								key={link}
-								href={href}
-								onClick={(e) => handleSmoothScroll(e, href)}
-								className="relative text-[#7c7c7c] text-lg lg:text-[1.375rem] tracking-[-0.0225rem] lg:tracking-[0.01rem] leading-[1.39] font-jaro group"
-							>
-								{link}
-								<span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#0f0f0f] transition-all duration-300 group-hover:w-full" />
-							</Link>
-						);
-					})}
+					{!isBlogPage &&
+						navLinks.map((link) => {
+							const href = link === 'Blog' ? `/${lang}/blog/all` : `#${link.toLowerCase()}`;
+							return (
+								<Link
+									key={link}
+									href={href}
+									onClick={(e) => handleSmoothScroll(e, href)}
+									className="relative text-[#7c7c7c] text-lg lg:text-[1.375rem] tracking-[-0.0225rem] lg:tracking-[0.01rem] leading-[1.39] font-jaro group"
+								>
+									{link}
+									<span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#0f0f0f] transition-all duration-300 group-hover:w-full" />
+								</Link>
+							);
+						})}
 					{isBlogPage && <LanguageSwitcher />}
 				</div>
 			</nav>
