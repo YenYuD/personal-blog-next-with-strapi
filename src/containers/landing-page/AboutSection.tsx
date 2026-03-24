@@ -61,9 +61,8 @@ export default function AboutSection({ lang }: AboutSectionProps) {
 					— {content.subtitle}
 				</p>
 				<h2 className="text-[2.25rem] md:text-[2.75rem] lg:text-[3.5rem] leading-[0.92] tracking-[0.0225rem] md:tracking-[0.0275rem] lg:tracking-[0.035rem] text-[#0f0f0f] font-staatliches">
-					{/* biome-ignore lint/suspicious/noArrayIndexKey: Static content array, order never changes */}
 					{content.title.map((line, index) => (
-						<span key={`${line}-${index}`}>
+						<span key={line}>
 							{line}
 							{index < content.title.length - 1 && <br />}
 						</span>

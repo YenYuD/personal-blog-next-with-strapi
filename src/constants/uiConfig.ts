@@ -139,11 +139,11 @@ export const landingPageContent = {
 			title: ['A quiet passion', 'for smoother workflows.'],
 			description: {
 				desktop:
-					'I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.',
+					"I'm a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I'm passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.",
 				tablet:
-					'I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.',
+					"I'm a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I'm passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.",
 				mobile:
-					'I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.',
+					"I'm a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I'm passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.",
 			},
 			cta: 'My Blog →',
 		},
@@ -221,33 +221,31 @@ export const landingPageContent = {
 	},
 	'zh-TW': {
 		hero: {
-			subtitle: 'SOFTWARE DEVELOPER',
-			title: ['Not just a coder', 'but a problem solver'],
-			description:
-				"Hi, I'm YenYu. Currently based in Taipei, Taiwan. I'm a developer who enjoys building works that solve real-world problems.",
-			cta: 'View my work',
+			subtitle: '軟體開發者',
+			title: ['不只是工程師', '更是問題解決者'],
+			description: '嗨，我是 YenYu，目前在台北工作。我喜歡打造解決真實問題的產品。',
+			cta: '查看作品',
 		},
 		about: {
-			subtitle: 'ABOUT ME',
-			title: ['A quiet passion', 'for smoother workflows.'],
+			subtitle: '關於我',
+			title: ['對更流暢工作流程', '的熱情'],
 			description: {
 				desktop:
-					'I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.',
+					'我是一名擁有 2.5 年以上 React、Next.js 和 TypeScript 開發經驗的軟體工程師。熱衷於打造流暢使用者體驗的 Web 應用程式、AI 工作流程整合，並持續探索新技術。',
 				tablet:
-					'I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.',
+					'我是一名擁有 2.5 年以上 React、Next.js 和 TypeScript 開發經驗的軟體工程師。熱衷於打造流暢使用者體驗的 Web 應用程式、AI 工作流程整合，並持續探索新技術。',
 				mobile:
-					'I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.',
+					'我是一名擁有 2.5 年以上 React、Next.js 和 TypeScript 開發經驗的軟體工程師。熱衷於打造流暢使用者體驗的 Web 應用程式、AI 工作流程整合，並持續探索新技術。',
 			},
-			cta: 'My Blog →',
+			cta: '我的部落格 →',
 		},
 		projects: {
-			subtitle: 'SELECTED PROJECTS',
+			subtitle: '精選作品',
 			items: [
 				{
 					number: '01',
 					title: 'PERSONAL WEBSITE',
-					description:
-						'Personal website with personal blog. Utilized Pencil MCP, Next.js App Router, and shadcn UI library.',
+					description: '個人網站與部落格，運用 Pencil MCP、Next.js App Router 與 shadcn UI。',
 					tags: [
 						'Next.js',
 						'TypeScript',
@@ -262,54 +260,49 @@ export const landingPageContent = {
 				{
 					number: '02',
 					title: 'AI NOTE GENERATOR',
-					description:
-						'AI Note Generator is a web application that uses AI to generate notes from text. Markdown/PDF are supported.',
+					description: 'AI 筆記生成器，支援從文字輸入生成 Markdown/PDF 格式筆記。',
 					tags: ['React', 'Vite', 'Node.js', 'Express.js', 'Gemini API', 'GitHub Action'],
 					year: '2025',
 				},
 				{
 					number: '03',
 					title: 'Personal Blog',
-					description: 'Personal blog with react-markdown integration. Bilingual support.',
+					description: '整合 react-markdown 的個人部落格，支援雙語切換。',
 					tags: ['Next.js', 'TypeScript', 'TailwindCSS', 'Strapi', 'Vitest'],
 					year: '2024',
 				},
 				{
 					number: '04',
 					title: 'KEYPO SUITE',
-					description:
-						'A client-facing portal that integrates three distinct products for comprehensive account management.',
+					description: '整合三項產品功能的客戶端帳號管理平台。',
 					tags: ['Next.js', 'TypeScript', 'React-hook-form', 'MUI', 'React-Query'],
 					year: '2024',
 				},
 				{
 					number: '05',
 					title: 'IF BLACK BEARS DISAPPEARED',
-					description: 'A Static Website Dedicated to the Conservation of the Formosan Black Bear.',
+					description: '致力於台灣黑熊保育議題的靜態網站。',
 					tags: ['Next.js', 'GSAP', 'Scroll Trigger', 'TailwindCSS'],
 					year: '2023',
 				},
 				{
 					number: '06',
 					title: 'IF BOOKSTORES DISAPPEARED',
-					description:
-						'A Static Website Comprising Analytical Reports on Physical Bookstores and Printed Books.',
+					description: '收錄實體書店與紙本書籍分析報告的靜態網站。',
 					tags: ['Next.js', 'GSAP', 'Scroll Trigger', 'AOS'],
 					year: '2023',
 				},
 			],
 		},
 		contact: {
-			subtitle: 'AVAILABLE FOR WORK',
-			title: ["Let's Connect!"],
+			subtitle: '歡迎合作',
+			title: ['聯絡我！'],
 			description: {
-				desktop:
-					'Open to freelance projects, full-time roles,\nand creative collaborations all around the world.',
-				tablet:
-					'Open to freelance projects, full-time roles, and creative collaborations all around the world.',
-				mobile: 'Open to freelance projects and creative collaborations all around the world.',
+				desktop: '歡迎自由接案、全職機會，\n或各種創意合作。',
+				tablet: '歡迎自由接案、全職機會，或各種創意合作。',
+				mobile: '歡迎自由接案或創意合作。',
 			},
-			cta: 'Get in touch',
+			cta: '立即聯絡',
 		},
 	},
 };

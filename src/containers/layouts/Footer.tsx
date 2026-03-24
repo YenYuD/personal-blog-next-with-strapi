@@ -3,29 +3,12 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import CheckerboardPattern from '@/components/custom/CheckerboardPattern';
+import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 
 export default function Footer() {
 	const pathname = usePathname();
 	const lang = pathname.split('/')[1] || 'en-US';
-
-	const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-		// Only handle hash links
-		if (!href.startsWith('#')) return;
-
-		e.preventDefault();
-		const targetId = href.substring(1);
-		const targetElement = document.getElementById(targetId);
-
-		if (targetElement) {
-			targetElement.scrollIntoView({
-				behavior: 'smooth',
-				block: 'start',
-			});
-
-			// Update URL hash without jumping
-			window.history.pushState(null, '', href);
-		}
-	};
+	const handleSmoothScroll = useSmoothScroll();
 
 	const footerLinks = [
 		{

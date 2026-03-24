@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import CheckerboardPattern from '@/components/custom/CheckerboardPattern';
 import LanguageSwitcher from '@/components/custom/LanguageSwitcher';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { useSmoothScroll } from '@/hooks/useSmoothScroll';
 
 export default function Navbar() {
 	const navLinks = ['About', 'Projects', 'Blog', 'Contact'];
@@ -14,6 +15,7 @@ export default function Navbar() {
 	const pathname = usePathname();
 	const lang = pathname.split('/')[1] || 'en-US';
 	const isBlogPage = pathname?.includes('/blog');
+	const smoothScroll = useSmoothScroll();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -29,33 +31,8 @@ export default function Navbar() {
 		href: string,
 		closeSheet = false,
 	) => {
-		// Only handle hash links
-		if (!href.startsWith('#')) {
-			// Close sheet for non-hash links (like Blog)
-			if (closeSheet) {
-				setIsSheetOpen(false);
-			}
-			return;
-		}
-
-		e.preventDefault();
-		const targetId = href.substring(1);
-		const targetElement = document.getElementById(targetId);
-
-		if (targetElement) {
-			targetElement.scrollIntoView({
-				behavior: 'smooth',
-				block: 'start',
-			});
-
-			// Update URL hash without jumping
-			window.history.pushState(null, '', href);
-
-			// Close sheet after scrolling
-			if (closeSheet) {
-				setIsSheetOpen(false);
-			}
-		}
+		smoothScroll(e, href);
+		if (closeSheet) setIsSheetOpen(false);
 	};
 
 	return (

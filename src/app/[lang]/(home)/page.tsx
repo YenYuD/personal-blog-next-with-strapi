@@ -22,12 +22,6 @@ export default function HomePage({ params }: HomePageProps) {
 	const { lang } = params;
 	return (
 		<>
-			{/* <link
-				rel="preload"
-				as="image"
-				href="https://images.unsplash.com/photo-1571128973497-2066dda438bc?w=1080&q=80"
-				fetchPriority="high"
-			/> */}
 			<div className="min-h-screen bg-white max-w-[1920px] mx-auto">
 				<Navbar />
 				<main>
