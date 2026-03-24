@@ -5,13 +5,7 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import CheckerboardPattern from '@/components/custom/CheckerboardPattern';
 import LanguageSwitcher from '@/components/custom/LanguageSwitcher';
-import {
-	Sheet,
-	SheetContent,
-	SheetHeader,
-	SheetTitle,
-	SheetTrigger,
-} from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
 export default function Navbar() {
 	const navLinks = ['About', 'Projects', 'Blog', 'Contact'];
@@ -113,7 +107,11 @@ export default function Navbar() {
 					) : (
 						<Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
 							<SheetTrigger asChild>
-								<button type="button" className="flex flex-col gap-[0.3125rem] p-1" aria-label="Menu">
+								<button
+									type="button"
+									className="flex flex-col gap-[0.3125rem] p-1"
+									aria-label="Menu"
+								>
 									<span className="w-6 h-0.5 bg-[#0f0f0f]" />
 									<span className="w-[1.125rem] h-0.5 bg-[#0f0f0f]" />
 									<span className="w-6 h-0.5 bg-[#0f0f0f]" />

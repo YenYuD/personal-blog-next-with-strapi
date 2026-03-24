@@ -1,9 +1,37 @@
+import type { Metadata } from 'next';
 import { Saira, Staatliches, Noto_Serif_TC } from 'next/font/google';
 import { GeistSans } from 'geist/font/sans';
 import { GoogleTagManager } from '@next/third-parties/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import Script from 'next/script';
+
+export const metadata: Metadata = {
+	metadataBase: new URL(process.env.NEXT_PUBLIC_WEBSITE_LINK || 'https://emilydiao.blog'),
+	title: {
+		default: 'YenYu | Web Developer',
+		template: '%s | YenYu',
+	},
+	description: 'Frontend developer portfolio and blog featuring web development projects and technical articles.',
+	openGraph: {
+		type: 'website',
+		locale: 'en_US',
+		siteName: 'YenYu',
+		images: [
+			{
+				url: 'https://res.cloudinary.com/dyrubjejf/image/upload/v1774312061/personal-website_v7pteo.png',
+				width: 1200,
+				height: 630,
+				alt: 'YenYu - Web Developer',
+			},
+		],
+	},
+	twitter: {
+		card: 'summary_large_image',
+		images: ['https://res.cloudinary.com/dyrubjejf/image/upload/v1774312061/personal-website_v7pteo.png'],
+	},
+};
 
 const saira = Saira({
 	weight: ['200', '300', '400', '500', '700'],
@@ -56,6 +84,7 @@ export default function RootLayout({
 			>
 				{children}
 				<SpeedInsights />
+				<Analytics />
 			</body>
 		</html>
 	);

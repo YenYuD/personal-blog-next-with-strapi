@@ -36,7 +36,7 @@ export const backGroundColorSettings = [
 ];
 
 export const cardInfo = [
-		{
+	{
 		id: 1,
 		imgSrc: '',
 		year: '2025',
@@ -44,14 +44,7 @@ export const cardInfo = [
 		title: 'AI Note Generator',
 		description:
 			'AI Note Generator is a web application that uses AI to generate notes from text. Markdown/PDF are supported.',
-		techStack: [
-		'React',
-		'Vite',
-		'Node.js',
-		'Express.js',
-		'Gemini API',
-		'GitHub Action',
-		],
+		techStack: ['React', 'Vite', 'Node.js', 'Express.js', 'Gemini API', 'GitHub Action'],
 		link: 'https://ai-note-generator-ten.vercel.app',
 		repo: 'https://github.com/YenYuD/ai-note-generator',
 	},
@@ -136,8 +129,9 @@ export const landingPageContent = {
 	'en-US': {
 		hero: {
 			subtitle: 'SOFTWARE DEVELOPER',
-			title: ['Not just a coder','but a problem solver'],
-			description: 'Hi, I\'m YenYu. Currently based in Taipei, Taiwan. I\'m a developer who enjoys building works that solve real-world problems.',
+			title: ['Not just a coder', 'but a problem solver'],
+			description:
+				"Hi, I'm YenYu. Currently based in Taipei, Taiwan. I'm a developer who enjoys building works that solve real-world problems.",
 			cta: 'View my work',
 		},
 		about: {
@@ -145,11 +139,11 @@ export const landingPageContent = {
 			title: ['A quiet passion', 'for smoother workflows.'],
 			description: {
 				desktop:
-					"I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.",
+					'I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.',
 				tablet:
-					"I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.",
+					'I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.',
 				mobile:
-					"I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.",
+					'I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.',
 			},
 			cta: 'My Blog →',
 		},
@@ -161,7 +155,15 @@ export const landingPageContent = {
 					title: 'PERSONAL WEBSITE',
 					description:
 						'Personal website with personal blog. Utilized Pencil MCP, Next.js App Router, and shadcn UI library.',
-					tags: ['Next.js', 'TypeScript', 'TailwindCSS', 'Pencil MCP', 'Github Action', 'Husky', 'Vercel'],
+					tags: [
+						'Next.js',
+						'TypeScript',
+						'TailwindCSS',
+						'Pencil MCP',
+						'Github Action',
+						'Husky',
+						'Vercel',
+					],
 					year: '2026',
 				},
 				{
@@ -175,8 +177,7 @@ export const landingPageContent = {
 				{
 					number: '03',
 					title: 'Personal Blog',
-					description:
-						'Personal blog with react-markdown integration. Bilingual support.',
+					description: 'Personal blog with react-markdown integration. Bilingual support.',
 					tags: ['Next.js', 'TypeScript', 'TailwindCSS', 'Strapi', 'Vitest'],
 					year: '2024',
 				},
@@ -209,8 +210,10 @@ export const landingPageContent = {
 			subtitle: 'AVAILABLE FOR WORK',
 			title: ["Let's Connect!"],
 			description: {
-				desktop: 'Open to freelance projects, full-time roles,\nand creative collaborations all around the world.',
-				tablet: 'Open to freelance projects, full-time roles, and creative collaborations all around the world.',
+				desktop:
+					'Open to freelance projects, full-time roles,\nand creative collaborations all around the world.',
+				tablet:
+					'Open to freelance projects, full-time roles, and creative collaborations all around the world.',
 				mobile: 'Open to freelance projects and creative collaborations all around the world.',
 			},
 			cta: 'Get in touch',
@@ -219,8 +222,9 @@ export const landingPageContent = {
 	'zh-TW': {
 		hero: {
 			subtitle: 'SOFTWARE DEVELOPER',
-			title: ['Not just a coder','but a problem solver'],
-			description: 'Hi, I\'m YenYu. Currently based in Taipei, Taiwan. I\'m a developer who enjoys building works that solve real-world problems.',
+			title: ['Not just a coder', 'but a problem solver'],
+			description:
+				"Hi, I'm YenYu. Currently based in Taipei, Taiwan. I'm a developer who enjoys building works that solve real-world problems.",
 			cta: 'View my work',
 		},
 		about: {
@@ -228,11 +232,11 @@ export const landingPageContent = {
 			title: ['A quiet passion', 'for smoother workflows.'],
 			description: {
 				desktop:
-					"I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.",
+					'I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.',
 				tablet:
-					"I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.",
+					'I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.',
 				mobile:
-					"I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.",
+					'I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.',
 			},
 			cta: 'My Blog →',
 		},
@@ -244,7 +248,15 @@ export const landingPageContent = {
 					title: 'PERSONAL WEBSITE',
 					description:
 						'Personal website with personal blog. Utilized Pencil MCP, Next.js App Router, and shadcn UI library.',
-					tags: ['Next.js', 'TypeScript', 'TailwindCSS', 'Pencil MCP', 'Github Action', 'Husky', 'Vercel'],
+					tags: [
+						'Next.js',
+						'TypeScript',
+						'TailwindCSS',
+						'Pencil MCP',
+						'Github Action',
+						'Husky',
+						'Vercel',
+					],
 					year: '2026',
 				},
 				{
@@ -258,8 +270,7 @@ export const landingPageContent = {
 				{
 					number: '03',
 					title: 'Personal Blog',
-					description:
-						'Personal blog with react-markdown integration. Bilingual support.',
+					description: 'Personal blog with react-markdown integration. Bilingual support.',
 					tags: ['Next.js', 'TypeScript', 'TailwindCSS', 'Strapi', 'Vitest'],
 					year: '2024',
 				},
@@ -292,8 +303,10 @@ export const landingPageContent = {
 			subtitle: 'AVAILABLE FOR WORK',
 			title: ["Let's Connect!"],
 			description: {
-				desktop: 'Open to freelance projects, full-time roles,\nand creative collaborations all around the world.',
-				tablet: 'Open to freelance projects, full-time roles, and creative collaborations all around the world.',
+				desktop:
+					'Open to freelance projects, full-time roles,\nand creative collaborations all around the world.',
+				tablet:
+					'Open to freelance projects, full-time roles, and creative collaborations all around the world.',
 				mobile: 'Open to freelance projects and creative collaborations all around the world.',
 			},
 			cta: 'Get in touch',

@@ -42,12 +42,15 @@ export default function Footer() {
 			id: 2,
 			title: 'Connect',
 			links: [
-				{ label: 'GitHub', href: process.env.NEXT_PUBLIC_GIT_HUB_LINK },
+				{ label: 'GitHub', href: process.env.NEXT_PUBLIC_GIT_HUB_LINK || 'https://github.com' },
 				{
 					label: 'LinkedIn',
-					href: process.env.NEXT_PUBLIC_LINKEDIN_LINK,
+					href: process.env.NEXT_PUBLIC_LINKEDIN_LINK || 'https://linkedin.com',
 				},
-				{ label: 'Email', href: `mailto:${process.env.NEXT_PUBLIC_EMAIL}` },
+				{
+					label: 'Email',
+					href: `mailto:${process.env.NEXT_PUBLIC_EMAIL || 'contact@example.com'}`,
+				},
 			],
 		},
 	];

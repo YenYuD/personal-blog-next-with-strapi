@@ -14,12 +14,42 @@ export default function ProjectsSection({ lang }: ProjectsSectionProps) {
 	const content = landingPageContent[lang].projects;
 
 	const projectImages = [
-		{ imgSrc: 'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774312061/personal-website_v7pteo.png', link: 'https://dev.emilydiao.blog', repo: 'https://github.com/YenYuD/personal-blog-next-with-strapi' },
-		{ imgSrc: 'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309788/ai_note_generator_x7l6rm.png', link: 'https://ai-note-generator-ten.vercel.app', repo: 'https://github.com/YenYuD/ai-note-generator' },
-		{ imgSrc: 'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309885/blog_d3dgwe.png', link: 'https://dev.emilydiao.blog/en-US/blog/all', repo: 'https://github.com/YenYuD/personal-blog-next-with-strapi' },
-		{ imgSrc: 'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309746/Keypo_suite_tvvcbn.jpg', link: 'https://suite-info.keypo.ai/en', repo: '' },
-		{ imgSrc: 'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309746/formosa_blackbear_iicdgx.jpg', link: 'https://dailyview.tw/blackbear', repo: '' },
-		{ imgSrc: 'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309746/bookstore_yky7gq.jpg', link: 'https://dailyview.tw/lostbooks', repo: '' },
+		{
+			imgSrc:
+				'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774312061/personal-website_v7pteo.png',
+			link: 'https://dev.emilydiao.blog',
+			repo: 'https://github.com/YenYuD/personal-blog-next-with-strapi',
+		},
+		{
+			imgSrc:
+				'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309788/ai_note_generator_x7l6rm.png',
+			link: 'https://ai-note-generator-ten.vercel.app',
+			repo: 'https://github.com/YenYuD/ai-note-generator',
+		},
+		{
+			imgSrc:
+				'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309885/blog_d3dgwe.png',
+			link: 'https://dev.emilydiao.blog/en-US/blog/all',
+			repo: 'https://github.com/YenYuD/personal-blog-next-with-strapi',
+		},
+		{
+			imgSrc:
+				'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309746/Keypo_suite_tvvcbn.jpg',
+			link: 'https://suite-info.keypo.ai/en',
+			repo: '',
+		},
+		{
+			imgSrc:
+				'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309746/formosa_blackbear_iicdgx.jpg',
+			link: 'https://dailyview.tw/blackbear',
+			repo: '',
+		},
+		{
+			imgSrc:
+				'https://res.cloudinary.com/dyrubjejf/image/upload/c_scale,w_240,f_webp,q_auto:good/v1774309746/bookstore_yky7gq.jpg',
+			link: 'https://dailyview.tw/lostbooks',
+			repo: '',
+		},
 	];
 
 	const projects = content.items.map((item, index) => ({
@@ -43,8 +73,9 @@ export default function ProjectsSection({ lang }: ProjectsSectionProps) {
 							href={project.link}
 							target="_blank"
 							rel="noreferrer"
-							className={`flex items-center justify-between py-7 cursor-pointer px-4 -mx-4 rounded-lg transition-colors duration-200 ${hoveredId === project.id ? 'bg-[#f9f9f9]' : 'bg-white'
-								}`}
+							className={`flex items-center justify-between py-7 cursor-pointer px-4 -mx-4 rounded-lg transition-colors duration-200 ${
+								hoveredId === project.id ? 'bg-[#f9f9f9]' : 'bg-white'
+							}`}
 							onMouseEnter={() => setHoveredId(project.id)}
 							onMouseLeave={() => setHoveredId(null)}
 						>
@@ -106,8 +137,9 @@ export default function ProjectsSection({ lang }: ProjectsSectionProps) {
 							href={project.link}
 							target="_blank"
 							rel="noreferrer"
-							className={`flex gap-3 py-[1.125rem] md:py-5 cursor-pointer px-3 -mx-3 rounded-lg transition-colors duration-200 ${hoveredId === project.id ? 'bg-[#f9f9f9]' : 'bg-white'
-								}`}
+							className={`flex gap-3 py-[1.125rem] md:py-5 cursor-pointer px-3 -mx-3 rounded-lg transition-colors duration-200 ${
+								hoveredId === project.id ? 'bg-[#f9f9f9]' : 'bg-white'
+							}`}
 							onMouseEnter={() => setHoveredId(project.id)}
 							onMouseLeave={() => setHoveredId(null)}
 						>

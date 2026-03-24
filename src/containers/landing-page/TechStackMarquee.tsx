@@ -32,8 +32,9 @@ export default function TechStackMarquee() {
 					{techStack.map((item) => (
 						<span
 							key={item.id}
-							className={`font-staatliches text-2xl tracking-[1.2px] leading-[1.3] whitespace-nowrap mx-5 ${item.isDivider ? 'text-[#7c7c7c]' : 'text-[#2c2825]'
-								}`}
+							className={`font-staatliches text-2xl tracking-[1.2px] leading-[1.3] whitespace-nowrap mx-5 ${
+								item.isDivider ? 'text-[#7c7c7c]' : 'text-[#2c2825]'
+							}`}
 						>
 							{item.text}
 						</span>
@@ -47,8 +48,9 @@ export default function TechStackMarquee() {
 					{techStack.slice(0, 9).map((item) => (
 						<span
 							key={item.id}
-							className={`font-staatliches text-xl tracking-[1px] leading-[1.3] whitespace-nowrap mx-3 ${item.isDivider ? 'text-[#7c7c7c]' : 'text-[#2c2825]'
-								}`}
+							className={`font-staatliches text-xl tracking-[1px] leading-[1.3] whitespace-nowrap mx-3 ${
+								item.isDivider ? 'text-[#7c7c7c]' : 'text-[#2c2825]'
+							}`}
 						>
 							{item.text}
 						</span>

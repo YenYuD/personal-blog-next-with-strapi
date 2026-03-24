@@ -36,8 +36,17 @@ export default function ContactCTA({ lang }: ContactCTAProps) {
 							</span>
 						))}
 					</p>
-					<Button className="rounded-full bg-white text-[#2c2825] px-9 py-3.5 text-sm font-medium hover:bg-gray-100 transition-colors w-fit font-geist">
-						{content.cta}
+					<Button
+						asChild
+						className="rounded-full bg-white text-[#2c2825] px-9 py-3.5 text-sm font-medium hover:bg-gray-100 transition-colors w-fit font-geist"
+					>
+						<a
+							href={process.env.NEXT_PUBLIC_LINKEDIN_LINK || 'https://linkedin.com'}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{content.cta}
+						</a>
 					</Button>
 				</div>
 
@@ -85,8 +94,17 @@ export default function ContactCTA({ lang }: ContactCTAProps) {
 					<p className="text-[#7c7c7c] text-sm leading-[1.6] tracking-[-0.14px] font-geist">
 						{content.description.tablet}
 					</p>
-					<Button className="rounded-full bg-white text-[#2c2825] px-8 py-3 text-sm font-medium hover:bg-gray-100 transition-colors w-fit font-geist">
-						{content.cta}
+					<Button
+						asChild
+						className="rounded-full bg-white text-[#2c2825] px-8 py-3 text-sm font-medium hover:bg-gray-100 transition-colors w-fit font-geist"
+					>
+						<a
+							href={process.env.NEXT_PUBLIC_LINKEDIN_LINK || 'https://linkedin.com'}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{content.cta}
+						</a>
 					</Button>
 				</div>
 			</div>
@@ -122,8 +140,17 @@ export default function ContactCTA({ lang }: ContactCTAProps) {
 					<p className="text-[#7c7c7c] text-[13px] leading-[1.6] tracking-[-0.13px] font-geist">
 						{content.description.mobile}
 					</p>
-					<Button className="rounded-full bg-white text-[#2c2825] px-6 py-2.5 text-sm font-medium hover:bg-gray-100 transition-colors w-fit font-geist">
-						{content.cta}
+					<Button
+						asChild
+						className="rounded-full bg-white text-[#2c2825] px-6 py-2.5 text-sm font-medium hover:bg-gray-100 transition-colors w-fit font-geist"
+					>
+						<a
+							href={process.env.NEXT_PUBLIC_LINKEDIN_LINK || 'https://linkedin.com'}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{content.cta}
+						</a>
 					</Button>
 				</div>
 			</div>
