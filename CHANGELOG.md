@@ -1,3 +1,41 @@
+# [1.1.0](https://github.com/YenYuD/personal-blog-next-with-strapi/compare/v1.0.9...v1.1.0) (2026-04-09)
+
+
+### Bug Fixes
+
+* disable husky in CI for semantic-release commits ([bce9268](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/bce9268103f628e5c5ec9c197db76704d5ac9a7c))
+* improve RWD responsiveness to match design specifications ([00a3d8f](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/00a3d8fd24581f2e0cef40b73e88e756b78c0e12))
+* increase mobile font sizes for better readability ([cee93fd](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/cee93fda297dd50a99ece6f92c7ffacbbd63e7c6))
+* markdown adjustment, add hr and ol ([6a2431c](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/6a2431c8f175d7de946613a79f1613978c6f2436))
+* typo ([060c944](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/060c9449e7b67af7488cebc9681d22240aedc12e))
+* typos in test cases ([6e0355e](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/6e0355ecc1eececa939d258a7106b6f1cf9de2c9))
+* upgrade Node version to 20 for semantic-release compatibility ([b749151](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/b749151c26c707613f62476671cbb21e268112fe))
+
+
+### Features
+
+* add new articles on MUI AutoComplete integration with React Hook Form, SonarQube code review tool, and personal developer journey ([292b4de](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/292b4deb63c25ba7ac4b79a986f31b9caed0dcc6))
+* add SEO metadata and LinkedIn CTA integration ([28661ce](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/28661cefa57e8d7a2bb8df51c5cc52247779dbcd))
+* add UI/UX and accessibility improvements ([fd16a31](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/fd16a31ffd1bee5b0cb0e3cd0bc2e2fa0cd3edf9)), closes [#6](https://github.com/YenYuD/personal-blog-next-with-strapi/issues/6) [#8](https://github.com/YenYuD/personal-blog-next-with-strapi/issues/8) [#9](https://github.com/YenYuD/personal-blog-next-with-strapi/issues/9) [#14](https://github.com/YenYuD/personal-blog-next-with-strapi/issues/14) [#15](https://github.com/YenYuD/personal-blog-next-with-strapi/issues/15) [#17](https://github.com/YenYuD/personal-blog-next-with-strapi/issues/17)
+* enhance navigation UX and optimize image loading ([195f859](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/195f8592f759ea42dbe70ea0a48382f2f382066d))
+* hide nav links on blog pages, show only language switcher ([5894b54](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/5894b5448a03001b1acf470313679eb065605517))
+* hide nav links on blog pages, show only language switcher ([21c3894](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/21c38948be00aaf2ddcd09fed023227d3f591f40))
+* implement core homepage animations with Framer Motion ([27c21ce](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/27c21ce80a8140ba201cc6c5e99a031a71232d12))
+* improve homepage design with rem units and fixed checkerboard pattern ([0f00371](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/0f00371c4e9584a20594833eb98aa31a05de7f91))
+* improve TextAnimation UX with infinite loop ([6fab835](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/6fab835cd2eb27db5ba0ebe1a7bb855ee43f6eaa))
+* refactor blog page structure to use markdown files for posts, update routing and metadata generation ([d383131](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/d3831319789b4f0df6f853cbb32ee9fa1d04eb22))
+* update projects section and fix biome lint suppressions ([eaf7fed](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/eaf7fed77dd822b332b5ee197d91c17cded7609d))
+
+
+### Performance Improvements
+
+* implement high-priority performance optimizations ([881d26b](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/881d26b74d2ac8571d5cdaba69f0b52f94008c2c)), closes [#1](https://github.com/YenYuD/personal-blog-next-with-strapi/issues/1) [#2](https://github.com/YenYuD/personal-blog-next-with-strapi/issues/2) [#3](https://github.com/YenYuD/personal-blog-next-with-strapi/issues/3) [#4](https://github.com/YenYuD/personal-blog-next-with-strapi/issues/4) [#5](https://github.com/YenYuD/personal-blog-next-with-strapi/issues/5) [#19](https://github.com/YenYuD/personal-blog-next-with-strapi/issues/19)
+
+
+### Reverts
+
+* keep zh-TW landing page content in English ([d2e09b4](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/d2e09b47bc8f32ff9ec6e529e7e39b0a2159474c))
+
 Changes since v1.0.0:
 8e9e5ee - Merge branch 'develop' (YenYu)
 5b287ea - Merge branch 'worktree-zesty-crunching-gray' into develop (YenYu)
