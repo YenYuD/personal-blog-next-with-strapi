@@ -1,51 +1,42 @@
-# Changes since v1.0.4:
-
-## SEO Optimization
-- 🤖 Added robots.txt for search engine crawling instructions
-- 🗺️ Implemented sitemap.xml for improved search engine indexing
-- 🔄 Modified SSG function to accommodate slug name changes
-
-## Refactoring and Optimizations
-- 🔗 Changed article identification from 'id' to 'slug' for more semantic URLs
-- 🖼️ Added cover image to article pages
-- 🧹 Removed unused NestedAccordion component
-- 🎨 Optimized CldImage component
-
-## Bug Fixes
-- 📄 Fixed robots.txt filename
-- 🔍 Various SEO-related adjustments and fixes
-
-## Other Changes
-- 🔀 Merged multiple branches including 'develop' and 'refactor/seo-optimization'
-
-
-# Changes since v1.0.3:
-
-## New Features
-- ✨ Added recent works showcase
-- 🏗️ Refactored folder structure and implemented `generateStaticParams` function for static pages
-
-## Refactoring and Optimizations
-### Sidebar Improvements
-- 🗑️ Removed sub-sidebar
-- 🔄 Using only category data in sidebar
-- 🛠️ Made general sidebar adjustments
-
-### Other Refactoring
-- 🔧 Navbar and footer adjustments
-- 📱 Installed drawer component for mobile sidebar
-- 🔨 Refactored article page, deleted redundant `CardWrapper` component
-- ⏱️ Adjusted fetcher revalidate time settings
-- 🎨 Adjusted `LanguageSwitcher` component style
-
-## Bug Fixes
-- 📅 Added title and publish time in article content
-- ⏲️ Implemented `processDateTime` utility function
-
-## Performance Improvements
-- 📜 Installed scroll area component
-- 🖱️ Added scroll area to the articles section
-- 🚀 Deleted `loading.tsx` as loading UI is now customized
-
-## Other Changes
-- 🔀 Merged multiple branches including `develop`, `bugfix/articles-scroll-area`, and `refactor/blog-side-bar`
+Changes since v1.0.0:
+8e9e5ee - Merge branch 'develop' (YenYu)
+5b287ea - Merge branch 'worktree-zesty-crunching-gray' into develop (YenYu)
+cee93fd - fix: increase mobile font sizes for better readability (YenYu)
+eca56cc - Merge branch 'refactor/rwd-single-dom-pattern' into develop (YenYu)
+28661ce - feat: add SEO metadata and LinkedIn CTA integration (YenYu)
+195f859 - feat: enhance navigation UX and optimize image loading (YenYu)
+189d95a - refactor: update projects section (YenYu)
+24f0eba - Merge branch 'refactor/rwd-single-dom-pattern' into develop (YenYu)
+158d8e8 - Merge branch 'feature/design-improvements-font-units' into develop (YenYu)
+d9fcdd5 - refactor: consolidate responsive layouts to single DOM pattern (YenYu)
+27c21ce - feat: implement core homepage animations with Framer Motion (YenYu)
+00a3d8f - fix: improve RWD responsiveness to match design specifications (YenYu)
+96e19d8 - chore: update configuration files for new homepage design (YenYu)
+0f00371 - feat: improve homepage design with rem units and fixed checkerboard pattern (YenYu)
+676334e - Merge branch 'feature/ui-ux-accessibility-improvements' into develop (YenYu)
+b471add - style: apply Biome formatter to multiple files (YenYu)
+6fab835 - feat: improve TextAnimation UX with infinite loop (YenYu)
+1d735d3 - Merge branch 'feature/ui-ux-accessibility-improvements' into develop (YenYu)
+c6a6edb - docs: update IMPROVEMENT.md progress tracker (YenYu)
+fd16a31 - feat: add UI/UX and accessibility improvements (YenYu)
+5c42d8b - Merge branch 'feature/performance-improvements' into develop (YenYu)
+6e0355e - fix: typos in test cases (YenYu)
+881d26b - perf: implement high-priority performance optimizations (YenYu)
+3b565b8 - Merge pull request #10 from YenYuD/develop (Emily.Diao)
+7009379 - Merge branch 'refactor/remove-strapi-api-integration' into develop (YenYu)
+bbc3ea0 - refactor: replace raw publish_at with formatted date in blog post and article card components for improved readability (YenYu)
+a53ef18 - Merge pull request #9 from YenYuD/develop (Emily.Diao)
+b464546 - Merge branch 'refactor/remove-strapi-api-integration' into develop (YenYu)
+5414194 - refactor: update article metadata to use publish_at instead of date for consistency across posts (YenYu)
+5e8d9ac - Merge pull request #8 from YenYuD/develop (Emily.Diao)
+e086758 - Merge branch 'refactor/remove-strapi-api-integration' into develop (YenYu)
+5f2b418 - chore: add sharp package and update dependencies in package.json and yarn.lock (YenYu)
+5aa6dbc - Merge branch 'develop' (YenYu)
+f50de90 - Merge branch 'refactor/remove-strapi-api-integration' into develop (YenYu)
+a7eee1b - refactor: streamline blog sidebar and language switcher components, enhance category handling and metadata generation (YenYu)
+d383131 - feat: refactor blog page structure to use markdown files for posts, update routing and metadata generation (YenYu)
+46e31b0 - chore: update dependencies in package.json and yarn.lock, add gray-matter package (YenYu)
+292b4de - feat: add new articles on MUI AutoComplete integration with React Hook Form, SonarQube code review tool, and personal developer journey (YenYu)
+8bebc0d - Merge branch 'develop' (YenYu)
+1f0d756 - Merge branch 'bugfix/typo' into develop (YenYu)
+060c944 - fix: typo (YenYu)
