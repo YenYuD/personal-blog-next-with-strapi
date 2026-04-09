@@ -19,8 +19,8 @@ export default function ContactCTA({ lang }: ContactCTAProps) {
 						— {content.subtitle}
 					</p>
 					<h2 className="text-[88px] leading-[0.88] tracking-[0.88px] text-white font-staatliches">
-						{/* biome-ignore lint/suspicious/noArrayIndexKey: Static content array, order never changes */}
 						{content.title.map((line, index) => (
+							// biome-ignore lint/suspicious/noArrayIndexKey: Static content array, order never changes
 							<span key={`${line}-${index}`}>
 								{line}
 								{index < content.title.length - 1 && <br />}
@@ -28,8 +28,8 @@ export default function ContactCTA({ lang }: ContactCTAProps) {
 						))}
 					</h2>
 					<p className="text-[#7c7c7c] text-[15px] leading-[1.6] tracking-[-0.15px] max-w-[420px] font-geist">
-						{/* biome-ignore lint/suspicious/noArrayIndexKey: Static content array, order never changes */}
 						{content.description.desktop.split('\n').map((line, index) => (
+							// biome-ignore lint/suspicious/noArrayIndexKey: Static content array, order never changes
 							<span key={`${line}-${index}`}>
 								{line}
 								{index === 0 && <br />}
@@ -83,8 +83,8 @@ export default function ContactCTA({ lang }: ContactCTAProps) {
 						— {content.subtitle}
 					</p>
 					<h2 className="text-[62px] leading-[0.88] tracking-[0.62px] text-white font-staatliches">
-						{/* biome-ignore lint/suspicious/noArrayIndexKey: Static content array, order never changes */}
 						{content.title.map((line, index) => (
+							// biome-ignore lint/suspicious/noArrayIndexKey: Static content array, order never changes
 							<span key={`${line}-${index}`}>
 								{line}
 								{index < content.title.length - 1 && <br />}
@@ -129,8 +129,8 @@ export default function ContactCTA({ lang }: ContactCTAProps) {
 						— {content.subtitle}
 					</p>
 					<h2 className="text-[50px] leading-[0.88] tracking-[0.5px] text-white font-staatliches">
-						{/* biome-ignore lint/suspicious/noArrayIndexKey: Static content array, order never changes */}
 						{content.title.map((line, index) => (
+							// biome-ignore lint/suspicious/noArrayIndexKey: Static content array, order never changes
 							<span key={`${line}-${index}`}>
 								{line}
 								{index < content.title.length - 1 && <br />}

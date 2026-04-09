@@ -13,7 +13,8 @@ export const metadata: Metadata = {
 		default: 'YenYu | Web Developer',
 		template: '%s | YenYu',
 	},
-	description: 'Frontend developer portfolio and blog featuring web development projects and technical articles.',
+	description:
+		'Frontend developer portfolio and blog featuring web development projects and technical articles.',
 	openGraph: {
 		type: 'website',
 		locale: 'en_US',
@@ -29,7 +30,9 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: 'summary_large_image',
-		images: ['https://res.cloudinary.com/dyrubjejf/image/upload/v1774312061/personal-website_v7pteo.png'],
+		images: [
+			'https://res.cloudinary.com/dyrubjejf/image/upload/v1774312061/personal-website_v7pteo.png',
+		],
 	},
 };
 

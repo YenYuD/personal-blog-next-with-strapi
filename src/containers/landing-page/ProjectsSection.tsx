@@ -60,9 +60,8 @@ export default function ProjectsSection({ lang }: ProjectsSectionProps) {
 
 	return (
 		<section id="projects" className="relative w-full bg-white">
-			{/* Desktop Layout */}
-			<div className="hidden lg:block px-[1.875rem] py-[3.75rem]">
-				<p className="text-[#7c7c7c] tracking-[4px] text-xs font-bold mb-5 font-geist">
+			<div className="px-5 md:px-6 lg:px-[1.875rem] py-8 md:py-10 lg:py-[3.75rem]">
+				<p className="text-[#7c7c7c] tracking-[3px] md:tracking-[4px] text-[10px] md:text-[11px] lg:text-xs font-bold mb-4 lg:mb-5 font-geist">
 					— {content.subtitle}
 				</p>
 
@@ -73,41 +72,58 @@ export default function ProjectsSection({ lang }: ProjectsSectionProps) {
 							href={project.link}
 							target="_blank"
 							rel="noreferrer"
-							className={`flex items-center justify-between py-7 cursor-pointer px-4 -mx-4 rounded-lg transition-colors duration-200 ${
+							className={`flex items-start lg:items-center justify-between py-[1.125rem] md:py-5 lg:py-7 cursor-pointer px-3 md:px-4 -mx-3 md:-mx-4 rounded-lg transition-colors duration-200 ${
 								hoveredId === project.id ? 'bg-[#f9f9f9]' : 'bg-white'
 							}`}
 							onMouseEnter={() => setHoveredId(project.id)}
 							onMouseLeave={() => setHoveredId(null)}
 						>
-							<div className="flex items-center gap-8">
-								<div className="relative w-[120px] h-[80px] rounded-lg overflow-hidden flex-shrink-0">
+							{/* Left: image + info */}
+							<div className="flex items-start lg:items-center gap-3 lg:gap-8 flex-1 min-w-0">
+								<div className="relative w-[80px] md:w-[100px] lg:w-[120px] h-[60px] md:h-[70px] lg:h-[80px] rounded-lg overflow-hidden flex-shrink-0">
 									<Image
 										src={project.imgSrc}
 										alt={project.title}
 										fill
 										className="object-cover"
-										sizes="120px"
+										sizes="(max-width: 768px) 80px, (max-width: 1024px) 100px, 120px"
 										quality={85}
 										loading="lazy"
 									/>
 								</div>
-								<div>
-									<div className="flex items-center gap-3 mb-1">
-										<span className="text-[#0f0f0f] text-[20px] tracking-[-0.4px] leading-[1] font-jaro">
+								<div className="flex-1 min-w-0">
+									<div className="flex items-baseline gap-2 lg:gap-3 mb-1">
+										<span className="text-[#0f0f0f] text-sm md:text-base lg:text-[20px] tracking-[-0.28px] md:tracking-[-0.32px] lg:tracking-[-0.4px] leading-[1] font-jaro">
 											{project.number}
 										</span>
-										<h3 className="text-[#0f0f0f] text-[28px] tracking-[-0.56px] leading-[1] font-jaro">
+										<h3 className="text-[#0f0f0f] text-sm md:text-lg lg:text-[28px] tracking-[-0.28px] md:tracking-[-0.36px] lg:tracking-[-0.56px] leading-[1] font-jaro">
 											{project.title}
 										</h3>
-										<span className="text-[#7c7c7c] text-xs font-geist">({project.year})</span>
+										<span className="hidden lg:inline text-[#7c7c7c] text-xs font-geist">
+											({project.year})
+										</span>
 									</div>
-									<p className="text-[#7c7c7c] text-sm font-geist max-w-[600px]">
+									<p className="text-[#7c7c7c] text-xs md:text-sm font-geist lg:max-w-[600px] mb-1.5 lg:mb-0">
 										{project.description}
 									</p>
+									{/* Tags - mobile/tablet only */}
+									<div className="flex lg:hidden gap-1.5 flex-wrap">
+										{project.tags.slice(0, 3).map((tag) => (
+											<span
+												key={tag}
+												className="px-2 py-0.5 bg-[#f5f0eb] text-[#2c2825] text-[10px] md:text-xs rounded-full font-geist"
+											>
+												{tag}
+											</span>
+										))}
+									</div>
 								</div>
 							</div>
-							<div className="flex items-center gap-6">
-								<div className="flex gap-2 flex-wrap max-w-[300px]">
+
+							{/* Right: tags (desktop) + arrow */}
+							<div className="flex items-center gap-6 flex-shrink-0 ml-2 lg:ml-0 self-center">
+								{/* Tags - desktop only */}
+								<div className="hidden lg:flex gap-2 flex-wrap max-w-[300px]">
 									{project.tags.slice(0, 6).map((tag) => (
 										<span
 											key={tag}
@@ -117,67 +133,8 @@ export default function ProjectsSection({ lang }: ProjectsSectionProps) {
 										</span>
 									))}
 								</div>
-								<span className="text-[#0f0f0f] text-2xl font-jaro">→</span>
+								<span className="text-[#0f0f0f] text-lg md:text-xl lg:text-2xl font-jaro">→</span>
 							</div>
-						</a>
-					))}
-				</div>
-			</div>
-
-			{/* Tablet & Mobile Layout */}
-			<div className="lg:hidden px-5 md:px-6 py-8 md:py-10">
-				<p className="text-[#7c7c7c] tracking-[3px] md:tracking-[4px] text-[10px] md:text-[11px] font-bold mb-4 font-geist">
-					— {content.subtitle}
-				</p>
-
-				<div className="divide-y divide-[#e0e0e0]">
-					{projects.map((project) => (
-						<a
-							key={project.id}
-							href={project.link}
-							target="_blank"
-							rel="noreferrer"
-							className={`flex gap-3 py-[1.125rem] md:py-5 cursor-pointer px-3 -mx-3 rounded-lg transition-colors duration-200 ${
-								hoveredId === project.id ? 'bg-[#f9f9f9]' : 'bg-white'
-							}`}
-							onMouseEnter={() => setHoveredId(project.id)}
-							onMouseLeave={() => setHoveredId(null)}
-						>
-							<div className="relative w-[80px] md:w-[100px] h-[60px] md:h-[70px] rounded-lg overflow-hidden flex-shrink-0">
-								<Image
-									src={project.imgSrc}
-									alt={project.title}
-									fill
-									className="object-cover"
-									sizes="(max-width: 768px) 80px, 100px"
-									quality={85}
-									loading="lazy"
-								/>
-							</div>
-							<div className="flex-1">
-								<div className="flex items-baseline gap-2 mb-1">
-									<span className="text-[#0f0f0f] text-sm md:text-base tracking-[-0.28px] md:tracking-[-0.32px] font-jaro">
-										{project.number}
-									</span>
-									<h3 className="text-[#0f0f0f] text-sm md:text-lg tracking-[-0.28px] md:tracking-[-0.36px] font-jaro">
-										{project.title}
-									</h3>
-								</div>
-								<p className="text-[#7c7c7c] text-xs md:text-sm font-geist mb-2">
-									{project.description}
-								</p>
-								<div className="flex gap-1.5 flex-wrap">
-									{project.tags.slice(0, 3).map((tag) => (
-										<span
-											key={tag}
-											className="px-2 py-0.5 bg-[#f5f0eb] text-[#2c2825] text-[10px] md:text-xs rounded-full font-geist"
-										>
-											{tag}
-										</span>
-									))}
-								</div>
-							</div>
-							<span className="text-[#0f0f0f] text-lg md:text-xl font-jaro self-center">→</span>
 						</a>
 					))}
 				</div>

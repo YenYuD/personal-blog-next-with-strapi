@@ -76,8 +76,8 @@ export default function HeroSection({ lang }: HeroSectionProps) {
 					transition={{ ...fadeInUp.transition, delay: 0.2 }}
 					className="text-[2.75rem] md:text-[3.25rem] lg:text-[4.375rem] leading-[0.9] md:leading-[0.9] lg:leading-[0.88] tracking-[0.0275rem] md:tracking-[0.0325rem] lg:tracking-[0.04375rem] text-[#0f0f0f] font-staatliches"
 				>
-					{/* biome-ignore lint/suspicious/noArrayIndexKey: Static content array, order never changes */}
 					{content.title.map((line, index) => (
+						// biome-ignore lint/suspicious/noArrayIndexKey: Static content array, order never changes
 						<span key={`${line}-${index}`}>
 							{line}
 							{index < content.title.length - 1 && <br />}
