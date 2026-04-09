@@ -139,11 +139,11 @@ export const landingPageContent = {
 			title: ['A quiet passion', 'for smoother workflows.'],
 			description: {
 				desktop:
-					'I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.',
+					"I'm a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I'm passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.",
 				tablet:
-					'I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.',
+					"I'm a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I'm passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.",
 				mobile:
-					'I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.',
+					"I'm a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I'm passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.",
 			},
 			cta: 'My Blog →',
 		},
@@ -232,11 +232,11 @@ export const landingPageContent = {
 			title: ['A quiet passion', 'for smoother workflows.'],
 			description: {
 				desktop:
-					'I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.',
+					"I'm a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I'm passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.",
 				tablet:
-					'I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.',
+					"I'm a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I'm passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.",
 				mobile:
-					'I’m a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I’m passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.',
+					"I'm a software developer with 2.5+ years of experience in React, Next.js, and TypeScript. I'm passionate about creating web applications with seamless user experiences, AI workflow integrations and always exploring new technologies.",
 			},
 			cta: 'My Blog →',
 		},
