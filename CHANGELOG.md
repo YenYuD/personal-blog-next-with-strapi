@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/YenYuD/personal-blog-next-with-strapi/compare/v1.1.0...v1.2.0) (2026-04-09)
+
+
+### Features
+
+* split projects section into side projects and company projects ([fbc8845](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/fbc884512040af1bb52eef9aea36485ec3b71b99))
+
 # [1.1.0](https://github.com/YenYuD/personal-blog-next-with-strapi/compare/v1.0.9...v1.1.0) (2026-04-09)
 
 
