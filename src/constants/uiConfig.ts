@@ -110,10 +110,12 @@ export const categories = {
 	'en-US': [
 		{ id: 1, name: 'frontend', path: 'frontend', articles: [] },
 		{ id: 2, name: 'uncategorized', path: 'uncategorized', articles: [] },
+		{ id: 3, name: 'AI', path: 'AI', articles: [] },
 	],
 	'zh-TW': [
 		{ id: 1, name: '前端', path: 'frontend', articles: [] },
 		{ id: 2, name: '未分類', path: 'uncategorized', articles: [] },
+		{ id: 3, name: 'AI', path: 'AI', articles: [] },
 	],
 };
 

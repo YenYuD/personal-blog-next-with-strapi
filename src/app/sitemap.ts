@@ -4,7 +4,7 @@ import { getAllPosts } from '@/utils/readMarkdown';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const baseUrl = process.env.NEXT_PUBLIC_WEBSITE_LINK || 'http://localhost:5678';
 	const languages = ['en-US', 'zh-TW'];
-	const categories = ['all', 'frontend', 'uncategorized'];
+	const categories = ['all', 'frontend', 'AI', 'uncategorized'];
 
 	// Static pages
 	const staticPages: MetadataRoute.Sitemap = languages.flatMap((lang) => [
