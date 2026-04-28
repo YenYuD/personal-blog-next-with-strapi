@@ -29,7 +29,7 @@ export const revalidate = 3600;
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
-	const categories = ['all', 'frontend', 'uncategorized'];
+	const categories = ['all', 'frontend', 'AI', 'uncategorized'];
 	const languages = ['en-US', 'zh-TW'];
 
 	return languages.flatMap((language) =>
