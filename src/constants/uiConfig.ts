@@ -296,18 +296,20 @@ export const landingPageContent = {
 		},
 		projects: {
 			subtitle: 'SELECTED PROJECTS',
-			sideProjectsLabel: '個人專案',
-			companyProjectsLabel: '公司專案',
+			sideProjectsLabel: 'SIDE PROJECTS',
+			companyProjectsLabel: 'COMPANY PROJECTS',
 			sideProjects: [
 				{
 					number: '01',
-					title: 'PROJECT TITLE',
-					description: 'Project description placeholder.',
-					tags: ['Tag1', 'Tag2', 'Tag3'],
+					title: 'LearnTrack - Learning & Growth Dashboard',
+					description:
+						'A comprehensive learning and growth dashboard that helps users track their learning progress and visualize their time allocation. PWA supported.',
+					tags: ['Next.js', 'TypeScript', 'PWA', 'Google Cloud Run', 'Supabase', 'Prisma'],
 					year: '2026',
-					imgSrc: '',
-					link: '',
-					repo: '',
+					imgSrc:
+						'https://res.cloudinary.com/dyrubjejf/image/upload/q_auto/f_auto/v1775711175/og_image_zdp7zx.png',
+					link: 'https://learning-dashboard-2026-50867215126.asia-east1.run.app/',
+					repo: 'https://github.com/YenYuD/learning-dashboard',
 				},
 				{
 					number: '02',
@@ -356,12 +358,14 @@ export const landingPageContent = {
 			companyProjects: [
 				{
 					number: '05',
-					title: 'PROJECT TITLE',
-					description: 'Project description placeholder.',
-					tags: ['Tag1', 'Tag2', 'Tag3'],
-					year: '2026',
-					imgSrc: '',
-					link: '',
+					title: 'KEYPO',
+					description:
+						'KEYPO is an AI-powered social listening and sentiment analysis platform trusted by over 1000 leading enterprises.',
+					tags: ['Next.js', 'tRPC', 'TypeScript', 'Zustand', 'Docker', 'MUI'],
+					year: '2024',
+					imgSrc:
+						'https://res.cloudinary.com/dyrubjejf/image/upload/q_auto/f_auto/v1775712409/Screenshot_2026-04-08_at_11.26.44_PM_onkwya.png',
+					link: 'https://keypo.ai/en',
 					repo: '',
 				},
 				{
