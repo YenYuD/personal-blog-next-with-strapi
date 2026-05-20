@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/YenYuD/personal-blog-next-with-strapi/compare/v1.1.0...v1.2.0) (2026-05-20)
+
+
+### Features
+
+* add Harness Engineering article in bilingual and register AI category ([efd2bc1](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/efd2bc13038e31273f234335ec36a1de753289eb))
+* split projects section into side projects and company projects ([fbc8845](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/fbc884512040af1bb52eef9aea36485ec3b71b99))
+* update projects section with LearnTrack, KEYPO details, and English labels ([f3b938b](https://github.com/YenYuD/personal-blog-next-with-strapi/commit/f3b938bca77eef7c9a485a9cedeee2f994c4f330))
+
 # [1.2.0](https://github.com/YenYuD/personal-blog-next-with-strapi/compare/v1.1.0...v1.2.0) (2026-04-28)
 
 
